@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculates ephemeris for physical coordinates of the Sun</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fun_sun_ephem {sunxplrr}"><tr><td>fun_sun_ephem {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Calculates ephemeris for physical coordinates of the Sun</h2>
+
+<h3>Description</h3>
+
+<p>Calculates ephemeris for physical coordinates of the Sun, 
+including P0, B0, L0, the Sun's apparent diameter in arcsecs and the 
+Carrington rotation number. 
+Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fun_sun_ephem(hdrlst, sdo.image = "FALSE")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>hdrlst</code></td>
+<td>
+<p>list containing image FITS header keywords and values.</p>
+</td></tr>
+<tr valign="top"><td><code>sdo.image</code></td>
+<td>
+<p>boolean switch for case of sdo image.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
+the Carrington rotation number.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

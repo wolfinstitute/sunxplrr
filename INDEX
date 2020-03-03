@@ -1,0 +1,68 @@
+fun_calc_mode           Calculates the mode of the provided data vector
+fun_center_image        Centers the provided image
+fun_clv_calibrate       Calibrate the image
+fun_clv_correct         Flattens an image
+fun_clv_fitting         Fits an up to eight-parameter
+                        center-to-limb-variation function
+fun_clv_function        Calculates the standardized
+                        center-to-limb-variation function
+fun_clv_rmplane         Subtracts plane from image
+fun_date2jd             Calculates Julian Date from a vector containing
+                        date with time objects
+fun_date_grid           Provides a tibble with dates from start to end
+fun_deltaT              Calculates delta T in seconds according to
+                        formulae by Fred Espenak
+fun_disc_center         Calculates disc center coordinates and radius
+                        of the indicator disc
+fun_disc_coordinates    Determines heliografic coordinates
+fun_disc_grid           Calculates grid of heliografic longitudes and
+                        latitudes
+fun_disc_math           Implements mathematical image manipulations.
+fun_disc_rings          Assigns ring number to disc pixels
+fun_extract_col         Extracts a single column of image frame
+fun_extract_row         Extracts a single row of image frame
+fun_flip_image          Flips the provided image
+fun_flop_image          Flops the provided image
+fun_gather_csv          Gathers output files of an index
+fun_grid_plt            Adds grid to an image
+fun_hdr2list            Extracts image header to list
+fun_jd2date             Calculates date and time vector from Julian
+                        Dates vector
+fun_mask_border         Marks the border pixels of a given mask
+fun_mask_circle         Determines a circle given the center
+                        coordinates and the radius
+fun_mask_create         Marks all pixels above or equal a given
+                        threshold
+fun_mask_diff           Marks all pixels between two given thresholds
+fun_mask_fill           Fills out a given mask
+fun_mat2tibbl           Umwandlung einer Matrix in ein tibble
+fun_parse_header        Parses FITS header
+fun_readFITSarray       Reads FITS binary array from disc
+fun_read_header         Reads FITS ASCII header from disc
+fun_read_image          Reads FITS image from disc
+fun_ring_get            Returns ring parameters given a theta value
+fun_ring_plt            Adds a ring to the image given a theta value
+fun_sdo_keywords        Updates the header and hdrlst with sdo-specific
+                        keywords
+fun_sun_ephem           Calculates ephemeris for physical coordinates
+                        of the Sun
+fun_tibbl2mat           Umwandlung einer tibble oder eines data.frames
+                        in eine Matrix
+fun_write_header        Writes image header
+fun_write_image         Writes FITS image to disc
+mod_clv_correction      Fits the clv function, calibrate it and
+                        flattens the image
+mod_disc_image          Calculates disc center coordinates and radius
+                        and extracts the image
+mod_feature_extraction
+                        Extracts the plage, enhanced network and active
+                        network features
+mod_fits_import         Imports a single FITS file
+mod_index_calculation   Calculates activity indices and provides data
+                        for images and charts
+mod_load_param          Prepares the parameter list for STU and SDO
+                        image analysis
+mod_output              Saves results to disk
+newKwv                  Utilities for modifying FITS header entries
+wrap_mod_calcium        Runs the sunviewr modules for the calcium image
+                        analysis

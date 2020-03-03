@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extracts the plage, enhanced network and active network...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for mod_feature_extraction {sunxplrr}"><tr><td>mod_feature_extraction {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extracts the plage, enhanced network and active network features</h2>
+
+<h3>Description</h3>
+
+<p>Extracts the plage, enhanced network and active network features 
+by applying cutoff thresholds. Calculates also the hemispheric corrected 
+values for the extracted feature areas and contrasts.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+mod_feature_extraction(x, hdrlst, header, plage.contrast = 1.35,
+  en.contrast = 1.25, qn.contrast = 1.1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>tibble containing 3 columns wih pixel coordinates i and j and flat 
+image pixel values.</p>
+</td></tr>
+<tr valign="top"><td><code>hdrlst</code></td>
+<td>
+<p>list containing image FITS header keywords and values.</p>
+</td></tr>
+<tr valign="top"><td><code>header</code></td>
+<td>
+<p>list containing image FITS header.</p>
+</td></tr>
+<tr valign="top"><td><code>plage.contrast</code></td>
+<td>
+<p>cutoff threshold for plages.</p>
+</td></tr>
+<tr valign="top"><td><code>en.contrast</code></td>
+<td>
+<p>cutoff threshold for enhanced network.</p>
+</td></tr>
+<tr valign="top"><td><code>qt.contrast</code></td>
+<td>
+<p>cutoff threshold for quiet network.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>tibble with mask of the extracted features and their contrast values.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

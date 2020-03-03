@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculates delta T in seconds according to formulae by Fred...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fun_deltaT {sunxplrr}"><tr><td>fun_deltaT {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Calculates delta T in seconds according to formulae by Fred Espenak</h2>
+
+<h3>Description</h3>
+
+<p>Calculates delta T = TD - UT in seconds according to formulae 
+given by Fred Espenak. Before 2005, the polynomial expressions for delta T
+are from the Five Millennium Canon of Solar Eclipses: -1999 to +3000. 
+Source: http://www.eclipsewise.com/help/deltatpoly2014.html
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fun_deltaT(date_time)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>date_time</code></td>
+<td>
+<p>vector containing date and time in FITS format.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>value of delta T in seconds.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

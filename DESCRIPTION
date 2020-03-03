@@ -1,0 +1,16 @@
+Package: sunxplrr
+Type: Package
+Title: Tools for exploring Digital Images of the Sun
+Version: 0.1.0
+Date: 2020-01-31
+Author: Thomas k. Friedli <thomas.k.friedli@bluewin.ch>
+Maintainer: Thomas K. Friedli <thomas.k.friedli@bluewin.ch>
+Description: Tools for solar image analysis, feature extraction, indices 
+    calculation and visualisation.
+Depends: dplyr (>= 0.7), tidyr
+Imports: ggplot2
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Built: R 3.5.1; ; 2020-02-04 15:54:22 UTC; windows

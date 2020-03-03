@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Imports a single FITS file</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for mod_fits_import {sunxplrr}"><tr><td>mod_fits_import {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Imports a single FITS file</h2>
+
+<h3>Description</h3>
+
+<p>Imports single FITS file given the file path and name. Returns 
+tibble with image, tibble with hdrlst and character vector header.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+mod_fits_import(inp_data_path, inp_file_name, sdo.image = "FALSE",
+  cut.image = "FALSE")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>inp_data_path</code></td>
+<td>
+<p>string with input data path.</p>
+</td></tr>
+<tr valign="top"><td><code>inp_file_name</code></td>
+<td>
+<p>string with input file name.</p>
+</td></tr>
+<tr valign="top"><td><code>sdo.image</code></td>
+<td>
+<p>if TRUE the image is originally an imported sdo jpg-file.</p>
+</td></tr>
+<tr valign="top"><td><code>cut.image</code></td>
+<td>
+<p>if TRUE the image contains additional text in the corners.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>list with fitsim, hdrlst and header.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

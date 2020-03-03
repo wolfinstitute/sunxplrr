@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculates grid of heliografic longitudes and latitudes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fun_disc_grid {sunxplrr}"><tr><td>fun_disc_grid {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Calculates grid of heliografic longitudes and latitudes</h2>
+
+<h3>Description</h3>
+
+<p>Calculates positions of grid pixels for heliografic longitudes
+and latitudes in intervals of 10 degrees.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fun_disc_grid(x, hdrlst, grid_each_deg = 10,
+  res_each_deg_on_grid = 0.01)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>tibble containing columns with pixel coordinates i and j and 
+additional columns which were all passed to the output tibble z.</p>
+</td></tr>
+<tr valign="top"><td><code>hdrlst</code></td>
+<td>
+<p>list containing image FITS header keywords and values.</p>
+</td></tr>
+<tr valign="top"><td><code>grid_each_deg</code></td>
+<td>
+<p>num number of degrees between grid lines. Default value
+is one grid line every 10 heliografic degrees.</p>
+</td></tr>
+<tr valign="top"><td><code>res_each_deg_on_grid</code></td>
+<td>
+<p>num indicates the resolution of points of one 
+degree along the grid lines. Default is 0.01, e.g. 100 points per degree.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>z tibble with additional column to x containing the flag for grid
+pixels.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

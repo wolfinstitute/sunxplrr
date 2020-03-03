@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Implements mathematical image manipulations.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fun_disc_math {sunxplrr}"><tr><td>fun_disc_math {sunxplrr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Implements mathematical image manipulations.</h2>
+
+<h3>Description</h3>
+
+<p>Implements three mathematical image manipulations, including 
+multiplication, substraction and summation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fun_disc_math(im1, values_1 = "x", im2, values_2 = "fill",
+  method = "mult", values.name = "image")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>im1</code></td>
+<td>
+<p>tibble containing at least 3 columns wih pixel coordinates i and j
+and pixel values of first image.</p>
+</td></tr>
+<tr valign="top"><td><code>values_1</code></td>
+<td>
+<p>name of variable in im1 containing the pixel values.</p>
+</td></tr>
+<tr valign="top"><td><code>im2</code></td>
+<td>
+<p>tibble containing at least 3 columns wih pixel coordinates i and j
+and pixel values of second image.</p>
+</td></tr>
+<tr valign="top"><td><code>values_2</code></td>
+<td>
+<p>name of variable in im2 containing the pixel values.</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>calculation method. Implemented are thre methods: &quot;mult&quot; for
+image multiplication, &quot;diff&quot; for image substraction and &quot;summ&quot; for image 
+summation.</p>
+</td></tr>
+<tr valign="top"><td><code>values.name</code></td>
+<td>
+<p>name of variable containing the calculated pixel values.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a tibble with additional column containing the resulting image.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>sunxplrr</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>
