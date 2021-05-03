@@ -1,2 +1,2 @@
-# wolfnmbrr
-Tools for data reduction of sunspot number obervations and automatic production of Wolf number series of solar activity
+# sunxplrr
+Tools for solar image analysis, feature extraction, indices calculation and visualisation.
