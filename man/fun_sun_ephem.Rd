@@ -13,14 +13,14 @@ fun_sun_ephem(hdrlst, sdo.image = "FALSE")
 }
 \value{
 tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
-  the Carrington rotation number.
+the Carrington rotation number.
 }
 \description{
-Calculates ephemeris for physical coordinates of the Sun, 
-  including P0, B0, L0, the Sun's apparent diameter in arcsecs and the 
-  Carrington rotation number. 
-  Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
+Calculates ephemeris for physical coordinates of the Sun,
+including P0, B0, L0, the Sun's apparent diameter in arcsecs and the
+Carrington rotation number.
+Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

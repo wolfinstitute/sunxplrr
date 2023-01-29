@@ -19,12 +19,12 @@ ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
 value given by 2^bitpix.}
 }
 \value{
-list containing tibble with 4 columns for i, j pixel coordinates, 
-  intensity value x and binary mask th and tibble with mask.threshold value.
+list containing tibble with 4 columns for i, j pixel coordinates,
+intensity value x and binary mask th and tibble with mask.threshold value.
 }
 \description{
 Calculates binarised pixel mask according to a given thereshold.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

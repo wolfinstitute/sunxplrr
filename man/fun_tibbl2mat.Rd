@@ -2,20 +2,20 @@
 % Please edit documentation in R/fun_tibbl2mat.r
 \name{fun_tibbl2mat}
 \alias{fun_tibbl2mat}
-\title{Umwandlung einer tibble oder eines data.frames in eine Matrix}
+\title{Transforms a tibble or a data.frame to a matrix}
 \usage{
 fun_tibbl2mat(x)
 }
 \arguments{
-\item{x}{tibble with 3 columns for i, j pixel coordinates and intensity 
+\item{x}{tibble with 3 columns for i, j pixel coordinates and intensity
 value x.}
 }
 \value{
 matrix with i columns and j rows.
 }
 \description{
-Wandelt ein tibble oder ein data.frame in eine Matrix um.
+Transforms a tibble or a data.frame to a matrix.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

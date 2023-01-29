@@ -1,4 +1,4 @@
-#' @title Calibrate the image
+#' @title Calibrates the image
 #'
 #' @description Calibrate the image by adding the rescaled fitted degree-5 clv 
 #'   function to the residuals from the multi-parameter fit of the image. 

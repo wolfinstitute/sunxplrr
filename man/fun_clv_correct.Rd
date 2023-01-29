@@ -21,5 +21,5 @@ tibble with additional column to x containing the flattened image.
 Flattens a solar image according to a provided clv function.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

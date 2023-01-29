@@ -7,23 +7,23 @@
 fun_disc_coordinates(x, hdrlst)
 }
 \arguments{
-\item{x}{tibble containing columns with pixel coordinates i and j and 
+\item{x}{tibble containing columns with pixel coordinates i and j and
 additional columns which were all passed to the output tibble z.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 }
 \value{
-z tibble with additional columns to x containing the heliografic 
-  coordinate information.
+z tibble with additional columns to x containing the heliografic
+coordinate information.
 }
 \description{
-Determines heliografic coodinates, including the pixel 
-  coordinates from disc center, the angle theta, measured in degrees from the 
-  disc center to each disc pixel. For limb pixels theta = 90°. Provided are 
-  also the radius r, the angle phi, the heliografic latitude B, the 
-  heliografic longitude l and L as the Carrington rotation number for each
-  pixel.
+Determines heliografic coodinates, including the pixel
+coordinates from disc center, the angle theta, measured in degrees from the
+disc center to each disc pixel. For limb pixels theta = 90°. Provided are
+also the radius r, the angle phi, the heliografic latitude B, the
+heliografic longitude l and L as the Carrington rotation number for each
+pixel.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

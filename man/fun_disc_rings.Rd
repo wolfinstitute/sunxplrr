@@ -13,9 +13,9 @@ fun_disc_rings(x, num.rings = 50)
 z tibble with additional column to x containing the ring number.
 }
 \description{
-Computes a table with the ring borders given the number of rings 
-  and assigns the number of the ring for each disc pixel.
+Computes a table with the ring borders given the number of rings
+and assigns the number of the ring for each disc pixel.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

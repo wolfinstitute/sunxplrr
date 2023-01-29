@@ -17,9 +17,9 @@ mod_index_calculation(x, hdrlst, header)
 list with images, hdrlst, header, indices, charts and syopsis.
 }
 \description{
-Calculates activity indices and provides input data for FITS 
-  images and charts.
+Calculates activity indices and provides input data for FITS
+images and charts.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

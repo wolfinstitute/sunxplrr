@@ -11,8 +11,8 @@ vector containing date with time in FITS format.
 }
 \description{
 Calculates date and time vector from vector containing Julian
-  Dates objects. Does not work for negative years.
+Dates objects. Does not work for negative years.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

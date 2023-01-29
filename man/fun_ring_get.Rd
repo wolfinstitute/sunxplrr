@@ -15,9 +15,9 @@ fun_ring_get(theta = 75, num.rings = 50)
 table and a vector with ring characteristic for a given theta value.
 }
 \description{
-Computes a table with the ring borders given the number of rings 
-  and returns the ring characteristics given a single theta value.
+Computes a table with the ring borders given the number of rings
+and returns the ring characteristics given a single theta value.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -27,17 +27,17 @@ images.}
 }
 \value{
 z tibble with additional column to x containing the standardized clv
-        function and the cf vector with coefficients of the standardized clv
-        function.
+function and the cf vector with coefficients of the standardized clv
+function.
 }
 \description{
 Calculates the center-to-limb-variation function according to
-  formulae published by different authors, including Allen in Cox (2000), 
-  Pierce & Slaughter (1977) and Neckel & Labs (1994). Furthermore, a customly
-  fitted clv may be calculated. Note, that this is the only available option 
-  for SDO images, since near the temperature minimum, a near flat clv is 
-  expected but the SDO images show a clear limb darkening.
+formulae published by different authors, including Allen in Cox (2000),
+Pierce & Slaughter (1977) and Neckel & Labs (1994). Furthermore, a customly
+fitted clv may be calculated. Note, that this is the only available option
+for SDO images, since near the temperature minimum, a near flat clv is
+expected but the SDO images show a clear limb darkening.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

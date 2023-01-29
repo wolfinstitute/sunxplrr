@@ -2,23 +2,23 @@
 % Please edit documentation in R/fun_mat2tibbl.r
 \name{fun_mat2tibbl}
 \alias{fun_mat2tibbl}
-\title{Umwandlung einer Matrix in ein tibble}
+\title{Transforms a matrix to a tibble or a data.frame}
 \usage{
 fun_mat2tibbl(x, tibbl = TRUE)
 }
 \arguments{
 \item{x}{matrix with i columns and j rows.}
 
-\item{tibbl}{boolian If TRUE, the a tibble will be returned, otherwise a 
+\item{tibbl}{boolian If TRUE, the a tibble will be returned, otherwise a
 data.frame.}
 }
 \value{
-a tibble or a data.frame containing 3 columns wih matrix indices 
-  i and j and values x.
+a tibble or a data.frame containing 3 columns wih matrix indices
+i and j and values x.
 }
 \description{
-Wandelt eine Matrix in ein data.frame oder ein tibble um.
+Transforms a matrix to a tibble or a data.frame.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

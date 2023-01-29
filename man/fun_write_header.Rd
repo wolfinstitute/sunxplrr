@@ -25,5 +25,5 @@ z tibble with additional column to x containing the flattened image.
 Writes and closes the image header.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -11,18 +11,18 @@ fun_mask_circle(x, disc.center, border.pix = 0)
 
 \item{border.pix}{number of pixels to be added to the radius of the circle.}
 
-\item{disc_center}{tibble with center coordinates x_i for image columns and 
+\item{disc_center}{tibble with center coordinates x_i for image columns and
 y_j for image rows and radius of the circle.}
 }
 \value{
-z tibble with additional column to x containing the limb pixels of 
-  the circle.
+z tibble with additional column to x containing the limb pixels of
+the circle.
 }
 \description{
 Determines limb pixels of a circle with given center
-  coordinates and radius and stores them in a mask. Optionally,  
-  additional border pixels may be added to the circle radius.
+coordinates and radius and stores them in a mask. Optionally,
+additional border pixels may be added to the circle radius.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

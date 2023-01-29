@@ -14,8 +14,8 @@ list containing FITS header keywords and corresponding values.
 }
 \description{
 Extracts the image header to a list of keywords with values.
- COMMENT and HISTORY lines are omitted.
+COMMENT and HISTORY lines are omitted.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

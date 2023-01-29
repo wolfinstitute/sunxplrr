@@ -8,12 +8,12 @@ fun_clv_rmplane(x, hdrlst, coeff)
 }
 \arguments{
 \item{x}{tibble containing columns with pixel coordinates i and j, pixel
-values x from the original image, fill from the disc mask, image from the 
+values x from the original image, fill from the disc mask, image from the
 extracted image disc and theta.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
-\item{coeff}{containing the previously fitted coefficients of an 
+\item{coeff}{containing the previously fitted coefficients of an
 eight-parameter fit function.}
 }
 \value{
@@ -21,8 +21,8 @@ tibble containing the corrected image values.
 }
 \description{
 Subtracts a previously fitted plane from the provided image
-  values.
+values.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

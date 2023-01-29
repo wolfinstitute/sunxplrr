@@ -7,7 +7,7 @@
 fun_center_image(image, hdrlst, header, sdo.image = "FALSE")
 }
 \arguments{
-\item{image}{tibble image with i and j pixel coordinates and pixel values x. 
+\item{image}{tibble image with i and j pixel coordinates and pixel values x.
 Additional columns are ignored and will be not returned.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -19,12 +19,12 @@ images.}
 tibble with centered image.
 }
 \description{
-Centers the provided image by shifting the x-axis and the 
-  y-axis of the image appropriately. Do not center sdo images, since they
-  are centered already. The algorithm is slightly adapted from
-  Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing, 
-  2nd edition 2005, p. 323.
+Centers the provided image by shifting the x-axis and the
+y-axis of the image appropriately. Do not center sdo images, since they
+are centered already. The algorithm is slightly adapted from
+Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
+2nd edition 2005, p. 323.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

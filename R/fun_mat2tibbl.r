@@ -1,6 +1,6 @@
-#' @title Umwandlung einer Matrix in ein tibble
+#' @title Transforms a matrix to a tibble or a data.frame
 #'
-#' @description Wandelt eine Matrix in ein data.frame oder ein tibble um.
+#' @description Transforms a matrix to a tibble or a data.frame.
 #'
 #' @param x matrix with i columns and j rows.
 #'

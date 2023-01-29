@@ -13,13 +13,13 @@ and disc indicator values disk.}
 \item{disc}{name of variable in x with disc indicator values.}
 }
 \value{
-tibble with intensity center coordinates x_i for image columns 
-  and y_j for image rows and radius of the disc indicator circle.
+tibble with intensity center coordinates x_i for image columns
+and y_j for image rows and radius of the disc indicator circle.
 }
 \description{
 Calculates disc center coordinates and the radius for a given
-  disc indicator.
+disc indicator.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

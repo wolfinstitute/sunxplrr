@@ -1,6 +1,6 @@
-#' @title Prepares the parameter list for STU and SDO image analysis
+#' @title Sets the parameter list for STU and SDO image analysis
 #'
-#' @description Prepares the parameter list for STU and SDO image analysis. The 
+#' @description Sets the parameter list for STU and SDO image analysis. The 
 #'   add.border.pix and contrast thresholds are set following the recommendation
 #'   of Jannine Meier from 13.01.2020.
 #'

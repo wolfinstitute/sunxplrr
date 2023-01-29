@@ -20,10 +20,10 @@ images.}
 list with updated header and hdrlst.
 }
 \description{
-Reconstructs the FITS keywords DATE-OBS, NAXISn and WAVELNTH 
-  from the provided sdo file name. Updates the header and hdrlst with some 
-  other missing keywords.
+Reconstructs the FITS keywords DATE-OBS, NAXISn and WAVELNTH
+from the provided sdo file name. Updates the header and hdrlst with some
+other missing keywords.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

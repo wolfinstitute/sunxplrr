@@ -15,13 +15,13 @@ fun_date_grid(start_date, end_date, granularity = "day")
 }
 \value{
 tibble containing date, and depending on the granularity also year,
-  month and day.
+month and day.
 }
 \description{
 Privides a tibble with dates and columns containing year, month
-  and day. The granularity can be chosen from year month or day. Works for
-  all years within the gregorian calendar.
+and day. The granularity can be chosen from year month or day. Works for
+all years within the gregorian calendar.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

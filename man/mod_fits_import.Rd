@@ -24,9 +24,9 @@ mod_fits_import(
 list with fitsim, hdrlst and header.
 }
 \description{
-Imports single FITS file given the file path and name. Returns 
-  tibble with image, tibble with hdrlst and character vector header.
+Imports single FITS file given the file path and name. Returns
+tibble with image, tibble with hdrlst and character vector header.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

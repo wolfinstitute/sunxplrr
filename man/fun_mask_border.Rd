@@ -18,5 +18,5 @@ z tibble with additional column to x containing the border pixels.
 Marks the border pixels of a given mask.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

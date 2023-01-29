@@ -2,13 +2,13 @@
 % Please edit documentation in R/fun_clv_calibrate.r
 \name{fun_clv_calibrate}
 \alias{fun_clv_calibrate}
-\title{Calibrate the image}
+\title{Calibrates the image}
 \usage{
 fun_clv_calibrate(x, sdo.image = "FALSE")
 }
 \arguments{
 \item{x}{tibble containing columns with pixel coordinates i and j, pixel
-values x from the original image, fill from the disc mask, sclv and 
+values x from the original image, fill from the disc mask, sclv and
 residuals from the sclv image.}
 
 \item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
@@ -18,9 +18,9 @@ images.}
 tibble containing the calibrated image values.
 }
 \description{
-Calibrate the image by adding the rescaled fitted degree-5 clv 
-  function to the residuals from the multi-parameter fit of the image.
+Calibrate the image by adding the rescaled fitted degree-5 clv
+function to the residuals from the multi-parameter fit of the image.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

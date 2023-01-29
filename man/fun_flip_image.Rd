@@ -20,11 +20,11 @@ images.}
 tibble with flipped image, updated hdrlst and header.
 }
 \description{
-Flips the provided image by reversing the y-axis of the image 
-  (interchanging up and down). Do not flip for sdo images. Algorithm from
-  Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing, 
-  2nd edition 2005, p. 331f.
+Flips the provided image by reversing the y-axis of the image
+(interchanging up and down). Do not flip for sdo images. Algorithm from
+Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
+2nd edition 2005, p. 331f.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

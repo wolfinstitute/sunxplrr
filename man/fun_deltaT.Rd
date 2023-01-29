@@ -13,11 +13,11 @@ fun_deltaT(date_time)
 value of delta T in seconds.
 }
 \description{
-Calculates delta T = TD - UT in seconds according to formulae 
-  given by Fred Espenak. Before 2005, the polynomial expressions for delta T
-  are from the Five Millennium Canon of Solar Eclipses: -1999 to +3000. 
-  Source: http://www.eclipsewise.com/help/deltatpoly2014.html
+Calculates delta T = TD - UT in seconds according to formulae
+given by Fred Espenak. Before 2005, the polynomial expressions for delta T
+are from the Five Millennium Canon of Solar Eclipses: -1999 to +3000.
+Source: http://www.eclipsewise.com/help/deltatpoly2014.html
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

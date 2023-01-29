@@ -20,12 +20,12 @@ images.}
 tibble with flopped image, updated hdrlst and header.
 }
 \description{
-Flops the provided image by reversing the x-axis of the image 
-  (interchanging left and right side). Do not flop for sdo images, which are
-  oriented east to the left and north to the top. The algorithm is from
-  Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing, 
-  2nd edition 2005, p. 332.
+Flops the provided image by reversing the x-axis of the image
+(interchanging left and right side). Do not flop for sdo images, which are
+oriented east to the left and north to the top. The algorithm is from
+Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
+2nd edition 2005, p. 332.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

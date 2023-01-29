@@ -17,7 +17,7 @@ mod_clv_correction(
 )
 }
 \arguments{
-\item{x}{tibble containing columns wih pixel coordinates i and j and all 
+\item{x}{tibble containing columns wih pixel coordinates i and j and all
 the calculated image information as provided by the disc extraction module.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -27,14 +27,14 @@ the calculated image information as provided by the disc extraction module.}
 \item{model}{implemented are "poly" for polynomial fit with 6 coefficients,
 "poly_with_plane" for polynomial fit with 6 coefficients and an additional
 2 parameter plane through the disc center and a third model named as
-"poly_with_plane_and_nonparametric_background" for polynomial fit with 
+"poly_with_plane_and_nonparametric_background" for polynomial fit with
 6 coefficients, an additional 2 parameter plane and a nonparametric surface
 fit in a gam structure.}
 
-\item{run}{indicates how many iterations for spot and faculae elimination 
+\item{run}{indicates how many iterations for spot and faculae elimination
 should be run. No more than 3 iterations are implemented.}
 
-\item{clip.resid.out}{if "TRUE" the clipped residuals from the last fit 
+\item{clip.resid.out}{if "TRUE" the clipped residuals from the last fit
 iteration are returned. In batch mode this output is not needed.}
 
 \item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
@@ -46,13 +46,13 @@ images.}
 tibble containing clv function, calib image and flat image.
 }
 \description{
-Fits a six parameter polynom to the limb-variation-function. 
-  Additionnally, a plane may be fitted trough the center of the image disc. 
-  Removes all fitted non clv variation from the image and flattens it to 
-  intensity contrasts. Be aware, that the resulting intensity contrast values
-  should be multiplied with some appropriate factor before converting them 
-  back to FITS, since in the FITS image all values are treated as integers.
+Fits a six parameter polynom to the limb-variation-function.
+Additionnally, a plane may be fitted trough the center of the image disc.
+Removes all fitted non clv variation from the image and flattens it to
+intensity contrasts. Be aware, that the resulting intensity contrast values
+should be multiplied with some appropriate factor before converting them
+back to FITS, since in the FITS image all values are treated as integers.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

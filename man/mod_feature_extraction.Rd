@@ -14,7 +14,7 @@ mod_feature_extraction(
 )
 }
 \arguments{
-\item{x}{tibble containing 3 columns wih pixel coordinates i and j and flat 
+\item{x}{tibble containing 3 columns wih pixel coordinates i and j and flat
 image pixel values.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -31,10 +31,10 @@ image pixel values.}
 tibble with mask of the extracted features and their contrast values.
 }
 \description{
-Extracts the plage, enhanced network and active network features 
-  by applying cutoff thresholds. Calculates also the hemispheric corrected 
-  values for the extracted feature areas and contrasts.
+Extracts the plage, enhanced network and active network features
+by applying cutoff thresholds. Calculates also the hemispheric corrected
+values for the extracted feature areas and contrasts.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

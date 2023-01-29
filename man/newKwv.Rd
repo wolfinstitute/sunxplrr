@@ -13,5 +13,5 @@ string vector with modified header.
 Utilities for modifying FITS header entries.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

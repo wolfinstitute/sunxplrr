@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_load_param.r
 \name{mod_load_param}
 \alias{mod_load_param}
-\title{Prepares the parameter list for STU and SDO image analysis}
+\title{Sets the parameter list for STU and SDO image analysis}
 \usage{
 mod_load_param(
   inp_file_name,
@@ -39,10 +39,10 @@ mod_load_param(
 list containing param.lst.
 }
 \description{
-Prepares the parameter list for STU and SDO image analysis. The 
-  add.border.pix and contrast thresholds are set following the recommendation
-  of Jannine Meier from 13.01.2020.
+Sets the parameter list for STU and SDO image analysis. The
+add.border.pix and contrast thresholds are set following the recommendation
+of Jannine Meier from 13.01.2020.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

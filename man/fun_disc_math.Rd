@@ -25,7 +25,7 @@ and pixel values of second image.}
 \item{values_2}{name of variable in im2 containing the pixel values.}
 
 \item{method}{calculation method. Implemented are thre methods: "mult" for
-image multiplication, "diff" for image substraction and "summ" for image 
+image multiplication, "diff" for image substraction and "summ" for image
 summation.}
 
 \item{values.name}{name of variable containing the calculated pixel values.}
@@ -34,9 +34,9 @@ summation.}
 a tibble with additional column containing the resulting image.
 }
 \description{
-Implements three mathematical image manipulations, including 
-  multiplication, substraction and summation.
+Implements three mathematical image manipulations, including
+multiplication, substraction and summation.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

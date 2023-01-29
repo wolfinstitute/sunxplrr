@@ -23,5 +23,5 @@ tibble with additional column containing the image with ring borders.
 Adds grid to an image, both provided by the same tibble.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

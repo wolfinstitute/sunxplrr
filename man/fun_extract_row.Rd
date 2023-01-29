@@ -14,11 +14,11 @@ intensity values x.}
 }
 \value{
 tibble containing 2 columns wih column numbers i and pixel
-  intensity values x.
+intensity values x.
 }
 \description{
 Extracts a single row of image frame.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

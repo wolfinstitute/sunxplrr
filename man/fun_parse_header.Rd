@@ -10,9 +10,9 @@ fun_parse_header(headerName)
 Character vector with parsed FITS header entries.
 }
 \description{
-Parses FITS header. COMMENT, HISTORY, empty and some preserved 
-  keywords are omitted.
+Parses FITS header. COMMENT, HISTORY, empty and some preserved
+keywords are omitted.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

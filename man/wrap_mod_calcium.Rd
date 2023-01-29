@@ -2,7 +2,7 @@
 % Please edit documentation in R/wrap_mod_calcium.r
 \name{wrap_mod_calcium}
 \alias{wrap_mod_calcium}
-\title{Runs the sunviewr modules for the calcium image analysis}
+\title{Runs the modules for the calcium image analysis}
 \usage{
 wrap_mod_calcium(
   inp_file_name,
@@ -39,9 +39,9 @@ wrap_mod_calcium(
 list with resulting image and header.
 }
 \description{
-Runs the sunviewr modules for the exploration of calcium images 
-  and the determination of activity indices for one image.
+Runs the modules for the exploration of calcium images
+and the determination of activity indices for one image.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

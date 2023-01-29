@@ -18,5 +18,5 @@ z tibble with additional column to x containing the filled mask.
 Fills out a given mask within their biggest contours.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

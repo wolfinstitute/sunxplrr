@@ -8,7 +8,7 @@ fun_ring_plt(x, hdrlst, theta = 75, num.rings = 50)
 }
 \arguments{
 \item{x}{tibble containing columns with pixel coordinates i and j, pixel
-values x from the original image, fill from the disc mask, image from the 
+values x from the original image, fill from the disc mask, image from the
 extracted image disc and theta.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -22,8 +22,8 @@ tibble with additional column containing the image with ring borders.
 }
 \description{
 Computes the ring characteristics given a single theta value and
-  adds the inner and outer ring borders to the image.
+adds the inner and outer ring borders to the image.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

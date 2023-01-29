@@ -19,5 +19,5 @@ list with image matrix, parsed header and full header vectors.
 Reads 16 bit or 8 bit FITS image from disc.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

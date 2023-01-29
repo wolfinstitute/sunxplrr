@@ -33,17 +33,17 @@ intensity values x.}
 ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
 value given by 2^bitpix.}
 
-\item{cut.threshold}{cutoff threshold for images with text in the corners 
+\item{cut.threshold}{cutoff threshold for images with text in the corners
 in absolute or relative units.}
 
 \item{cut.method}{If cut.method = 'absolute' then the cutoff thereshold value
 for images with text in the corners is in ADU units. Otherwise it is the
 cut.threshold / 100 fraction of the maximal ADU value given by 2^bitpix.}
 
-\item{cut.border.pix}{number of pixels to be added to the radius of the 
+\item{cut.border.pix}{number of pixels to be added to the radius of the
 circle to extract the image without the text in the corners.}
 
-\item{add.border.pix}{number of pixels to be added to the radius of the 
+\item{add.border.pix}{number of pixels to be added to the radius of the
 circle to extract the final image.}
 
 \item{image.values.name}{name of column with image values in final image.}
@@ -51,20 +51,20 @@ circle to extract the final image.}
 \item{grid_each_deg}{num number of degrees between grid lines. Default value
 is one grid line every 10 heliografic degrees.}
 
-\item{res_each_deg_on_grid}{num indicates the resolution of points of one 
+\item{res_each_deg_on_grid}{num indicates the resolution of points of one
 degree along the grid lines. Default is 0.01, e.g. 100 points per degree.}
 }
 \value{
 list with disc.image, hdrlst and header.
 }
 \description{
-Calculates disc center coordinates and radius and extracts the 
-  image. If the original image contains additional text in the image corners,
-  the approximate center coordinates and the approximate radius of the image
-  disc are estimated and the image disk is extracted with an oversized mask.
-  The size of the image and the number of bits per pixel are taken from the 
-  FITS header provided by hdrlst.
+Calculates disc center coordinates and radius and extracts the
+image. If the original image contains additional text in the image corners,
+the approximate center coordinates and the approximate radius of the image
+disc are estimated and the image disk is extracted with an oversized mask.
+The size of the image and the number of bits per pixel are taken from the
+FITS header provided by hdrlst.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

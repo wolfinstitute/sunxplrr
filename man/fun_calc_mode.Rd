@@ -14,8 +14,8 @@ mode value.
 }
 \description{
 Calculates the mode (most frequent value) of the provided data
-  vector.
+vector.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

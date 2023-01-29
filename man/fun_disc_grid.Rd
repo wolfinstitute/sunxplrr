@@ -7,7 +7,7 @@
 fun_disc_grid(x, hdrlst, grid_each_deg = 10, res_each_deg_on_grid = 0.01)
 }
 \arguments{
-\item{x}{tibble containing columns with pixel coordinates i and j and 
+\item{x}{tibble containing columns with pixel coordinates i and j and
 additional columns which were all passed to the output tibble z.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -15,17 +15,17 @@ additional columns which were all passed to the output tibble z.}
 \item{grid_each_deg}{num number of degrees between grid lines. Default value
 is one grid line every 10 heliografic degrees.}
 
-\item{res_each_deg_on_grid}{num indicates the resolution of points of one 
+\item{res_each_deg_on_grid}{num indicates the resolution of points of one
 degree along the grid lines. Default is 0.01, e.g. 100 points per degree.}
 }
 \value{
 z tibble with additional column to x containing the flag for grid
-  pixels.
+pixels.
 }
 \description{
 Calculates positions of grid pixels for heliografic longitudes
-  and latitudes in intervals of 10 degrees.
+and latitudes in intervals of 10 degrees.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }

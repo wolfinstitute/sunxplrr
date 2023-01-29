@@ -1,6 +1,6 @@
-#' @title Runs the sunviewr modules for the calcium image analysis
+#' @title Runs the modules for the calcium image analysis
 #'
-#' @description Runs the sunviewr modules for the exploration of calcium images 
+#' @description Runs the modules for the exploration of calcium images 
 #'   and the determination of activity indices for one image.
 #'
 #' @param inp_file_name input file name with extension.

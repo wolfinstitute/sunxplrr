@@ -50,5 +50,5 @@ list containing images, hdrlst, header, indices and charts.
 Saves results to disk.
 }
 \author{
-[Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
 }
