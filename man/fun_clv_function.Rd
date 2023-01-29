@@ -18,12 +18,12 @@ values x, pixel coordinates xi, yj and angle theta from an image disc.}
 
 \item{clv.i0}{central intensity of the fitted clv function of the image.}
 
+\item{sclv.method}{implemented are "Allen", "PS", "NL" and "fit".}
+
 \item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
 images.}
 
 \item{clv.coeff}{vector with 6 coefficients from the fitted clv function.}
-
-\item{method}{implemented are "Allen", "PS", "NL" and "fit".}
 }
 \value{
 z tibble with additional column to x containing the standardized clv

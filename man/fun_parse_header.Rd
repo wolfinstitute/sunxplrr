@@ -6,6 +6,9 @@
 \usage{
 fun_parse_header(headerName)
 }
+\arguments{
+\item{headerName}{list containing image FITS header.}
+}
 \value{
 Character vector with parsed FITS header entries.
 }

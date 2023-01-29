@@ -6,6 +6,9 @@
 \usage{
 fun_jd2date(JD)
 }
+\arguments{
+\item{JD}{Julian Dates vector.}
+}
 \value{
 vector containing date with time in FITS format.
 }

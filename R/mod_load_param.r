@@ -18,9 +18,9 @@
 #'
 #' @param light.save if TRUE only a small selection of csv files are saved.
 #'
-#' @param fits.output if TRUE some fits images are saved.
+#' @param fits.save if TRUE some fits images are saved.
 #'
-#' @param jpg.output if TRUE some daily charts are saved as jpg files.
+#' @param jpg.save if TRUE some daily charts are saved as jpg files.
 #'
 #' @return list containing param.lst.
 #'

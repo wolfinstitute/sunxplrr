@@ -15,7 +15,7 @@
 #'
 #' @param en.contrast cutoff threshold for enhanced network.
 #'
-#' @param qt.contrast cutoff threshold for quiet network.
+#' @param qn.contrast cutoff threshold for quiet network.
 #'
 #' @return tibble with mask of the extracted features and their contrast values.
 #'

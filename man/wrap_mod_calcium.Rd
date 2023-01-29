@@ -31,9 +31,9 @@ wrap_mod_calcium(
 
 \item{light.save}{if TRUE only a small selection of csv files are saved.}
 
-\item{fits.output}{if TRUE some fits images are saved.}
+\item{fits.save}{if TRUE some fits images are saved.}
 
-\item{jpg.output}{if TRUE some daily charts are saved as jpg files.}
+\item{jpg.save}{if TRUE some daily charts are saved as jpg files.}
 }
 \value{
 list with resulting image and header.

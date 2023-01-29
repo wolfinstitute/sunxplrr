@@ -27,6 +27,8 @@
 #' @param clip.resid.out if "TRUE" the clipped residuals from the last fit 
 #'   iteration are returned. In batch mode this output is not needed.
 #' 
+#' @param sclv.method implemented are "Allen", "PS", "NL" and "fit".
+#'   
 #' @param sdo.image boolean switch for dummy use in the case of non sdo calcium
 #'   images.
 #'

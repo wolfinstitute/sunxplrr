@@ -4,13 +4,13 @@
 \alias{fun_read_image}
 \title{Reads FITS image from disc}
 \usage{
-fun_read_image(filename = "sunviewr.fits", maxLines = 5000)
+fun_read_image(filename = "sunxplrr.fits", maxLines = 5000)
 }
 \arguments{
+\item{filename}{output path and file name.}
+
 \item{maxLines}{maximal number of header lines to search for END statement.
 May be increased for very large headers.}
-
-\item{file}{output path and file name.}
 }
 \value{
 list with image matrix, parsed header and full header vectors.

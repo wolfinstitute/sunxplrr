@@ -12,7 +12,7 @@
 #'
 #' @param clv.i0 central intensity of the fitted clv function of the image.
 #'   
-#' @param method implemented are "Allen", "PS", "NL" and "fit".
+#' @param sclv.method implemented are "Allen", "PS", "NL" and "fit".
 #'   
 #' @param sdo.image boolean switch for dummy use in the case of non sdo calcium
 #'   images.

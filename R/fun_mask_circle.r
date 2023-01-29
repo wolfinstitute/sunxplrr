@@ -6,7 +6,7 @@
 #'
 #' @param x tibble containing columns with pixel coordinates i and j.
 #'
-#' @param disc_center tibble with center coordinates x_i for image columns and 
+#' @param disc.center tibble with center coordinates x_i for image columns and 
 #'   y_j for image rows and radius of the circle.
 #'   
 #' @param border.pix number of pixels to be added to the radius of the circle.

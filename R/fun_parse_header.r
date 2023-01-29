@@ -3,6 +3,8 @@
 #' @description Parses FITS header. COMMENT, HISTORY, empty and some preserved 
 #'   keywords are omitted.
 #'
+#' @param headerName list containing image FITS header.
+#'
 #' @return Character vector with parsed FITS header entries.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)

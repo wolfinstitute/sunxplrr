@@ -25,7 +25,7 @@ image pixel values.}
 
 \item{en.contrast}{cutoff threshold for enhanced network.}
 
-\item{qt.contrast}{cutoff threshold for quiet network.}
+\item{qn.contrast}{cutoff threshold for quiet network.}
 }
 \value{
 tibble with mask of the extracted features and their contrast values.

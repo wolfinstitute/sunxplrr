@@ -14,9 +14,9 @@
 #'
 #' @param light.save if TRUE only a small selection of csv files are saved.
 #'
-#' @param fits.output if TRUE some fits images are saved.
+#' @param fits.save if TRUE some fits images are saved.
 #'
-#' @param jpg.output if TRUE some daily charts are saved as jpg files.
+#' @param jpg.save if TRUE some daily charts are saved as jpg files.
 #'
 #' @param out_data_path full path to output directory.
 #' 
@@ -108,7 +108,7 @@ mod_output <- function(images, hdrlst, header,
     imDat <- fun_tibbl2mat(disc.calib.save)
   
     out_file_name = paste0(name,"_calib.fit") 
-    fun_write_image(imDat, paste0(out_data_path,out_file_name), hdrlst, header)
+    fun_write_image(imDat, paste0(out_data_path, out_file_name), hdrlst, header)
   
     #flat
     disc.flat.save <- images %>% 
@@ -118,7 +118,7 @@ mod_output <- function(images, hdrlst, header,
     imDat <- fun_tibbl2mat(disc.flat.save)
   
     out_file_name = paste0(name,"_flat.fit") 
-    fun_write_image(imDat, paste0(out_data_path,out_file_name), hdrlst, header)
+    fun_write_image(imDat, paste0(out_data_path, out_file_name), hdrlst, header)
   
     #ttarea
     disc.ttarea.save <- images %>% 
@@ -128,7 +128,7 @@ mod_output <- function(images, hdrlst, header,
     imDat <- fun_tibbl2mat(disc.ttarea.save)
   
     out_file_name = paste0(name,"_ttarea.fit") 
-    fun_write_image(imDat, paste0(out_data_path,out_file_name), hdrlst, header)
+    fun_write_image(imDat, paste0(out_data_path, out_file_name), hdrlst, header)
   
     #ttcntrst
     disc.ttcntrst.save <- images %>% 
@@ -138,7 +138,7 @@ mod_output <- function(images, hdrlst, header,
     imDat <- fun_tibbl2mat(disc.ttcntrst.save)
   
     out_file_name = paste0(name,"_ttcntrst.fit") 
-    fun_write_image(imDat, paste0(out_data_path,out_file_name), hdrlst, header)
+    fun_write_image(imDat, paste0(out_data_path, out_file_name), hdrlst, header)
  
   }
   

@@ -3,6 +3,8 @@
 #' @description Calculates date and time vector from vector containing Julian
 #'   Dates objects. Does not work for negative years.
 #' 
+#' @param JD Julian Dates vector.
+#'
 #' @return vector containing date with time in FITS format.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)

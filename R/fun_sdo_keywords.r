@@ -4,7 +4,7 @@
 #'   from the provided sdo file name. Updates the header and hdrlst with some 
 #'   other missing keywords.
 #'
-#' @param filename original file name of sdo image.
+#' @param file.name original file name of sdo image.
 #'
 #' @param header list containing image FITS header.
 #'

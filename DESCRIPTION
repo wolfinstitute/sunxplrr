@@ -16,7 +16,10 @@ URL: https://github.com/wolfinstitute/sunxplrr
 BugReports: https://github.com/wolfinstitute/sunxplrr/issues
 Imports: 
     dplyr (>= 0.7),
-    tidyr
+    tidyr,
+	lubridate,
+	stringr,
+	readr
 Suggests: 
     ggplot2
 Encoding: UTF-8

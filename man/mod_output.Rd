@@ -37,11 +37,11 @@ mod_output(
 
 \item{light.save}{if TRUE only a small selection of csv files are saved.}
 
+\item{fits.save}{if TRUE some fits images are saved.}
+
+\item{jpg.save}{if TRUE some daily charts are saved as jpg files.}
+
 \item{out_data_path}{full path to output directory.}
-
-\item{fits.output}{if TRUE some fits images are saved.}
-
-\item{jpg.output}{if TRUE some daily charts are saved as jpg files.}
 }
 \value{
 list containing images, hdrlst, header, indices and charts.

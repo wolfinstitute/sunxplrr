@@ -9,10 +9,10 @@ fun_mask_circle(x, disc.center, border.pix = 0)
 \arguments{
 \item{x}{tibble containing columns with pixel coordinates i and j.}
 
-\item{border.pix}{number of pixels to be added to the radius of the circle.}
-
-\item{disc_center}{tibble with center coordinates x_i for image columns and
+\item{disc.center}{tibble with center coordinates x_i for image columns and
 y_j for image rows and radius of the circle.}
+
+\item{border.pix}{number of pixels to be added to the radius of the circle.}
 }
 \value{
 z tibble with additional column to x containing the limb pixels of

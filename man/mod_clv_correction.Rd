@@ -37,6 +37,8 @@ should be run. No more than 3 iterations are implemented.}
 \item{clip.resid.out}{if "TRUE" the clipped residuals from the last fit
 iteration are returned. In batch mode this output is not needed.}
 
+\item{sclv.method}{implemented are "Allen", "PS", "NL" and "fit".}
+
 \item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
 images.}
 

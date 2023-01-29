@@ -7,14 +7,14 @@
 fun_sdo_keywords(file.name, header, hdrlst, sdo.image = "FALSE")
 }
 \arguments{
+\item{file.name}{original file name of sdo image.}
+
 \item{header}{list containing image FITS header.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
 \item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
 images.}
-
-\item{filename}{original file name of sdo image.}
 }
 \value{
 list with updated header and hdrlst.
