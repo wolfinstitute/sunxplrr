@@ -1,25 +1,22 @@
-Package: sunxplrr
 Type: Package
+Package: sunxplrr
 Title: Tools for exploring Digital Images of the Sun
 Version: 0.1.0100
 Date: 2023-01-29
-Authors@R: person(given = "Thomas K.",
-				  family = "Friedli",
-                  email = "thomas.k.friedli@bluewin.ch",
-                  role = c("cre", "aut", "cph"),
-                  comment = c(ORCID = "0000-0002-2086-7192")
-			)
-Description: Tools for solar image analysis, feature extraction, indices 
+Authors@R: 
+    person("Thomas K.", "Friedli", , "thomas.k.friedli@bluewin.ch", role = c("cre", "aut", "cph"),
+           comment = c(ORCID = "0000-0002-2086-7192"))
+Description: Tools for solar image analysis, feature extraction, indices
     calculation and visualisation.
 License: MIT + file LICENSE
 URL: https://github.com/wolfinstitute/sunxplrr
 BugReports: https://github.com/wolfinstitute/sunxplrr/issues
 Imports: 
-    dplyr (>= 0.7),
-    tidyr,
-	lubridate,
-	stringr,
-	readr
+    dplyr,
+    lubridate,
+    readr,
+    stringr,
+    tidyr
 Suggests: 
     ggplot2
 Encoding: UTF-8
