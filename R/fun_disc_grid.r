@@ -17,11 +17,13 @@
 #' @return z tibble with additional column to x containing the flag for grid
 #'   pixels.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-12-31 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-29 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #

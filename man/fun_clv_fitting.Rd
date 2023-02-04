@@ -17,7 +17,7 @@ fun_clv_fitting(
 \item{x}{tibble containing columns with pixel coordinates i and j, pixel
 values x from the original image, border and fill from the disc mask,
 image from the extracted image disc, pixel coordinates xi and yj measured
-from the estimated disc center and the heliographic coordinates theta, phi,
+from the estimated disc center and the heliografic coordinates theta, phi,
 L and B.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -28,6 +28,8 @@ L and B.}
 "poly_with_plane_and_nonparametric_background" for polynomial fit with
 6 coefficients, an additional 2 parameter plane and a nonparametric surface
 fit in a gam structure.}
+
+\item{run}{implemented are maximal 3 runs for residual clipping.}
 
 \item{clip.resid.out}{if "TRUE" the clipped residuals from the fit iterations
 are returned. In batch mode this output is not needed.}
@@ -42,12 +44,12 @@ two values with the stdev of the fit and the clip value for low and high
 signals, if applied.
 }
 \description{
-Fits a six parameter polynom to the clv function. On request,
+Fits a six parameter polynomial to the clv function. On request,
 a 2 parameter plane may be fitted trough the center of the image disc.
 Dark sunspots and bright faculae may be eliminated by up to two elimination
 runs, where with the first iteration run all 99\% outliers and with the
 second iteration run all 95\% outliers are eliminated.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

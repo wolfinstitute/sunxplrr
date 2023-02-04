@@ -14,11 +14,13 @@
 #'   
 #' @return tibble containing the corrected image values.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2020-12-01 / Frt
+# - `Last change`: 2023-02-05 / Frt
 # - `Created`    : 2019-12-16 / Frt
 # - `Last test`  : 2020-12-01 / Frt
 #

@@ -13,11 +13,11 @@
 #'   
 #' @return list with fitsim, hdrlst and header.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2019-12-31 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-22 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #

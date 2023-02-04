@@ -11,15 +11,8 @@ Description: Tools for solar image analysis, feature extraction, indices
 License: MIT + file LICENSE
 URL: https://github.com/wolfinstitute/sunxplrr
 BugReports: https://github.com/wolfinstitute/sunxplrr/issues
-Depends: 
-    dplyr,
-    lubridate,
-    readr,
-    stringr,
-    tidyr
-Imports: 
-    ggplot2
 Encoding: UTF-8
+Imports: dplyr, lubridate, stringr, tibble, tidyr
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

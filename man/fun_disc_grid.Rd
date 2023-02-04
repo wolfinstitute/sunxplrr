@@ -27,5 +27,5 @@ Calculates positions of grid pixels for heliografic longitudes
 and latitudes in intervals of 10 degrees.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

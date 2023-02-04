@@ -7,11 +7,13 @@
 #'
 #' @return vector containing date with time in FITS format.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-12-20 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-20 / Frt
 # - `Last test`  : 2019-12-20 / Frt
 #
@@ -65,7 +67,7 @@ fun_jd2date <- function(JD){
       
   datetime <- lubridate::make_datetime(year = year, month = month, day = day, 
                                        hour = hour, min = minute, 
-                                       sec = second, tz = "UTC") %>% 
+                                       sec = second, tz = "UTC")  %>%  
     stringr::str_replace(" ", "T")
       
   return(datetime)

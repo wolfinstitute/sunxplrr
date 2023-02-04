@@ -28,5 +28,5 @@ Imports single FITS file given the file path and name. Returns
 tibble with image, tibble with hdrlst and character vector header.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -24,5 +24,5 @@ coordinates and radius and stores them in a mask. Optionally,
 additional border pixels may be added to the circle radius.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -24,11 +24,11 @@
 #'
 #' @return list containing param.lst.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2020-01-20 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2020-01-13 / Frt
 # - `Last test`  : 2020-01-20 / Frt
 #

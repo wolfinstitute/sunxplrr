@@ -3,7 +3,7 @@
 #' @description Calculates disc center coordinates and the radius for a given
 #'   disc indicator.
 #'
-#' @param x tibble containing at least 3 columns wih pixel coordinates i and j
+#' @param x tibble containing at least 3 columns with pixel coordinates i and j
 #'   and disc indicator values disk.
 #'
 #' @param disc name of variable in x with disc indicator values.
@@ -11,11 +11,13 @@
 #' @return tibble with intensity center coordinates x_i for image columns 
 #'   and y_j for image rows and radius of the disc indicator circle.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-11-24 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-11-17 / Frt
 # - `Last test`  : 2019-11-24 / Frt
 #

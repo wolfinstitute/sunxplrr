@@ -12,11 +12,11 @@
 #' @return tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
 #'   the Carrington rotation number.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2019-12-28 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-20 / Frt
 # - `Last test`  : 2019-12-28 / Frt
 #
@@ -149,7 +149,7 @@ fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE"){
     P0 <- 0
   }
   
-  z <- tibble(P0 = P0, B0 = B0, L0 = L0, SD = SD, CAR_ROT = CAR_ROT)
+  z <- tibble::tibble(P0 = P0, B0 = B0, L0 = L0, SD = SD, CAR_ROT = CAR_ROT)
 
   return(z)
 

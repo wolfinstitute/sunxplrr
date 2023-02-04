@@ -22,5 +22,5 @@ Carrington rotation number.
 Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

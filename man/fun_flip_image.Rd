@@ -26,5 +26,5 @@ Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
 2nd edition 2005, p. 331f.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

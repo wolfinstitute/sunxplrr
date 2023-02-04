@@ -7,18 +7,18 @@
 fun_extract_row(x, row = NULL)
 }
 \arguments{
-\item{x}{tibble containing 3 columns wih pixel coordinates i and j and pixel
+\item{x}{tibble containing 3 columns with pixel coordinates i and j and pixel
 intensity values x.}
 
 \item{row}{int index of row to be extracted.}
 }
 \value{
-tibble containing 2 columns wih column numbers i and pixel
+tibble containing 2 columns with column numbers i and pixel
 intensity values x.
 }
 \description{
 Extracts a single row of image frame.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

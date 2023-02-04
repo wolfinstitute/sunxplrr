@@ -7,14 +7,14 @@
 fun_mask_create(x, hdrlst, threshold = 10, method = "relative")
 }
 \arguments{
-\item{x}{tibble containing 3 columns wih pixel coordinates i and j and pixel
+\item{x}{tibble containing 3 columns with pixel coordinates i and j and pixel
 intensity values x.}
 
 \item{hdrlst}{tibble containing image FITS header keywords and values.}
 
 \item{threshold}{cutoff threshold in absolute or relative units.}
 
-\item{method}{If method = 'absolute' then the cutoff thereshold value is in
+\item{method}{If method = 'absolute' then the cutoff threshold value is in
 ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
 value given by 2^bitpix.}
 }
@@ -23,8 +23,8 @@ list containing tibble with 4 columns for i, j pixel coordinates,
 intensity value x and binary mask th and tibble with mask.threshold value.
 }
 \description{
-Calculates binarised pixel mask according to a given thereshold.
+Calculates binarised pixel mask according to a given threshold.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

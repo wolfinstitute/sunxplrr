@@ -14,7 +14,7 @@
 #'   
 #' @param sclv.method implemented are "Allen", "PS", "NL" and "fit".
 #'   
-#' @param sdo.image boolean switch for dummy use in the case of non sdo calcium
+#' @param sdo.image boolean switch for dummy use in the case of non SDO calcium
 #'   images.
 #'   
 #' @param clv.coeff vector with 6 coefficients from the fitted clv function.
@@ -23,11 +23,13 @@
 #'         function and the cf vector with coefficients of the standardized clv
 #'         function.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2020-01-09 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-11-25 / Frt
 # - `Last test`  : 2020-01-09 / Frt
 #

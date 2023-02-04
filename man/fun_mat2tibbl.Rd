@@ -20,5 +20,5 @@ i and j and values x.
 Transforms a matrix to a tibble or a data.frame.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

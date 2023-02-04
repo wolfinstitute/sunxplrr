@@ -17,5 +17,5 @@ Parses FITS header. COMMENT, HISTORY, empty and some preserved
 keywords are omitted.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

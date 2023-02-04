@@ -2,19 +2,21 @@
 #'
 #' @description Extracts a single row of image frame.
 #'
-#' @param x tibble containing 3 columns wih pixel coordinates i and j and pixel
+#' @param x tibble containing 3 columns with pixel coordinates i and j and pixel
 #'   intensity values x.
 #'
 #' @param row int index of row to be extracted.
 #'
-#' @return tibble containing 2 columns wih column numbers i and pixel
+#' @return tibble containing 2 columns with column numbers i and pixel
 #'   intensity values x.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-11-17 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-11-17 / Frt
 # - `Last test`  : 2019-11-17 / Frt
 #

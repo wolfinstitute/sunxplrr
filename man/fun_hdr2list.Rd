@@ -17,5 +17,5 @@ Extracts the image header to a list of keywords with values.
 COMMENT and HISTORY lines are omitted.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

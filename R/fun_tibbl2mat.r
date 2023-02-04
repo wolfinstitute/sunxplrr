@@ -7,18 +7,20 @@
 #'
 #' @return matrix with i columns and j rows.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-11-15 / Frt
+# - `Last change`: 2020-02-04 / Frt
 # - `Created`    : 2019-11-15 / Frt
 # - `Last test`  : 2019-11-15 / Frt
 #
 fun_tibbl2mat <- function(x){
   
   y <- x %>% 
-    spread(key = "j", value = "x") %>% 
+    tidyr::spread(key = "j", value = "x") %>% 
     select(-i)
   
   y <- as.matrix(y)

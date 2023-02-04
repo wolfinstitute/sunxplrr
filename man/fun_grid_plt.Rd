@@ -11,10 +11,6 @@ fun_grid_plt(x, hdrlst)
 values x from the image and a binarised mask with the matching grid.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
-
-\item{theta}{angle measured in degrees from the disc center to the limb.}
-
-\item{num.rings}{number of rings counted from limb to disc center.}
 }
 \value{
 tibble with additional column containing the image with ring borders.
@@ -23,5 +19,5 @@ tibble with additional column containing the image with ring borders.
 Adds grid to an image, both provided by the same tibble.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

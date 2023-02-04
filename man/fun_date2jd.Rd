@@ -17,5 +17,5 @@ Calculates Julian Date from a vector containing date with time
 objects. Does not work for negative years. Requires 4 digits for year.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

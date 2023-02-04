@@ -20,7 +20,7 @@ values x, pixel coordinates xi, yj and angle theta from an image disc.}
 
 \item{sclv.method}{implemented are "Allen", "PS", "NL" and "fit".}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
+\item{sdo.image}{boolean switch for dummy use in the case of non SDO calcium
 images.}
 
 \item{clv.coeff}{vector with 6 coefficients from the fitted clv function.}
@@ -39,5 +39,5 @@ for SDO images, since near the temperature minimum, a near flat clv is
 expected but the SDO images show a clear limb darkening.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

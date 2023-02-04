@@ -7,17 +7,15 @@
 #'   
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
-#' @param theta angle measured in degrees from the disc center to the limb.
-#'
-#' @param num.rings number of rings counted from limb to disc center.
-#'
 #' @return tibble with additional column containing the image with ring borders.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-12-31 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-31 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #

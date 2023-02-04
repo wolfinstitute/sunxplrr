@@ -1,31 +1,33 @@
 #' @title Implements mathematical image manipulations.
 #'
 #' @description Implements three mathematical image manipulations, including 
-#'   multiplication, substraction and summation.
+#'   multiplication, subtraction and summation.
 #'
-#' @param im1 tibble containing at least 3 columns wih pixel coordinates i and j
+#' @param im1 tibble containing at least 3 columns with pixel coordinates i and j
 #'   and pixel values of first image.
 #'
 #' @param values_1 name of variable in im1 containing the pixel values.
 #' 
-#' @param im2 tibble containing at least 3 columns wih pixel coordinates i and j
+#' @param im2 tibble containing at least 3 columns with pixel coordinates i and j
 #'   and pixel values of second image.
 #'
 #' @param values_2 name of variable in im2 containing the pixel values.
 #' 
-#' @param method calculation method. Implemented are thre methods: "mult" for
-#'   image multiplication, "diff" for image substraction and "summ" for image 
+#' @param method calculation method. Implemented are three methods: "mult" for
+#'   image multiplication, "diff" for image subtraction and "summ" for image 
 #'   summation.
 #'   
 #' @param values.name name of variable containing the calculated pixel values.
 #' 
 #' @return a tibble with additional column containing the resulting image.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2019-12-15 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-11-24 / Frt
 # - `Last test`  : 2019-12-15 / Frt
 #

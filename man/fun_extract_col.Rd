@@ -7,18 +7,18 @@
 fun_extract_col(x, col = NULL)
 }
 \arguments{
-\item{x}{tibble containing 3 columns wih pixel coordinates i and j and pixel
+\item{x}{tibble containing 3 columns with pixel coordinates i and j and pixel
 intensity values x.}
 
-\item{row}{int index of column to be extracted.}
+\item{col}{int index of column to be extracted.}
 }
 \value{
-tibble containing 2 columns wih row numbers j and pixel
+tibble containing 2 columns with row numbers j and pixel
 intensity values x.
 }
 \description{
 Extracts a single column of image frame.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

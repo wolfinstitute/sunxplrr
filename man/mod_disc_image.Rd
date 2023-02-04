@@ -20,7 +20,7 @@ mod_disc_image(
 )
 }
 \arguments{
-\item{x}{tibble containing 3 columns wih pixel coordinates i and j and pixel
+\item{x}{tibble containing 3 columns with pixel coordinates i and j and pixel
 intensity values x.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
@@ -29,14 +29,14 @@ intensity values x.}
 
 \item{threshold}{cutoff threshold in absolute or relative units.}
 
-\item{method}{If method = 'absolute' then the cutoff thereshold value is in
+\item{method}{If method = 'absolute' then the cutoff threshold value is in
 ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
 value given by 2^bitpix.}
 
 \item{cut.threshold}{cutoff threshold for images with text in the corners
 in absolute or relative units.}
 
-\item{cut.method}{If cut.method = 'absolute' then the cutoff thereshold value
+\item{cut.method}{If cut.method = 'absolute' then the cutoff threshold value
 for images with text in the corners is in ADU units. Otherwise it is the
 cut.threshold / 100 fraction of the maximal ADU value given by 2^bitpix.}
 
@@ -66,5 +66,5 @@ The size of the image and the number of bits per pixel are taken from the
 FITS header provided by hdrlst.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -14,18 +14,18 @@ fun_disc_math(
 )
 }
 \arguments{
-\item{im1}{tibble containing at least 3 columns wih pixel coordinates i and j
+\item{im1}{tibble containing at least 3 columns with pixel coordinates i and j
 and pixel values of first image.}
 
 \item{values_1}{name of variable in im1 containing the pixel values.}
 
-\item{im2}{tibble containing at least 3 columns wih pixel coordinates i and j
+\item{im2}{tibble containing at least 3 columns with pixel coordinates i and j
 and pixel values of second image.}
 
 \item{values_2}{name of variable in im2 containing the pixel values.}
 
-\item{method}{calculation method. Implemented are thre methods: "mult" for
-image multiplication, "diff" for image substraction and "summ" for image
+\item{method}{calculation method. Implemented are three methods: "mult" for
+image multiplication, "diff" for image subtraction and "summ" for image
 summation.}
 
 \item{values.name}{name of variable containing the calculated pixel values.}
@@ -35,8 +35,8 @@ a tibble with additional column containing the resulting image.
 }
 \description{
 Implements three mathematical image manipulations, including
-multiplication, substraction and summation.
+multiplication, subtraction and summation.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

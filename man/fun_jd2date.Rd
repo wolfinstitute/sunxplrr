@@ -17,5 +17,5 @@ Calculates date and time vector from vector containing Julian
 Dates objects. Does not work for negative years.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

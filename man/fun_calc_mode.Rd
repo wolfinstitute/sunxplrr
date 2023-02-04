@@ -17,5 +17,5 @@ Calculates the mode (most frequent value) of the provided data
 vector.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

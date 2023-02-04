@@ -1,6 +1,6 @@
 #' @title Fits an up to eight-parameter center-to-limb-variation function
 #'
-#' @description Fits a six parameter polynom to the clv function. On request,
+#' @description Fits a six parameter polynomial to the clv function. On request,
 #'   a 2 parameter plane may be fitted trough the center of the image disc. 
 #'   Dark sunspots and bright faculae may be eliminated by up to two elimination 
 #'   runs, where with the first iteration run all 99% outliers and with the 
@@ -9,7 +9,7 @@
 #' @param x tibble containing columns with pixel coordinates i and j, pixel
 #'   values x from the original image, border and fill from the disc mask, 
 #'   image from the extracted image disc, pixel coordinates xi and yj measured
-#'   from the estimated disc center and the heliographic coordinates theta, phi,
+#'   from the estimated disc center and the heliografic coordinates theta, phi,
 #'   L and B.
 #'
 #' @param hdrlst list containing image FITS header keywords and values.
@@ -21,8 +21,7 @@
 #'   6 coefficients, an additional 2 parameter plane and a nonparametric surface
 #'   fit in a gam structure.
 #'   
-#' @param clip.resid.out if "TRUE" the clipped residuals from the last fit 
-#'   iteration are returned. In batch mode this output is not needed.
+#' @param run implemented are maximal 3 runs for residual clipping. 
 #' 
 #' @param clip.resid.out if "TRUE" the clipped residuals from the fit iterations 
 #'   are returned. In batch mode this output is not needed.
@@ -35,11 +34,13 @@
 #'   two values with the stdev of the fit and the clip value for low and high 
 #'   signals, if applied.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2020-01-15 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-11-25 / Frt
 # - `Last test`  : 2020-01-15 / Frt
 #

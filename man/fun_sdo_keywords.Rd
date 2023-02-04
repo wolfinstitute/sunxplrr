@@ -25,5 +25,5 @@ from the provided sdo file name. Updates the header and hdrlst with some
 other missing keywords.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

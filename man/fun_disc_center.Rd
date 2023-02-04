@@ -7,7 +7,7 @@
 fun_disc_center(x, disc = "fill")
 }
 \arguments{
-\item{x}{tibble containing at least 3 columns wih pixel coordinates i and j
+\item{x}{tibble containing at least 3 columns with pixel coordinates i and j
 and disc indicator values disk.}
 
 \item{disc}{name of variable in x with disc indicator values.}
@@ -21,5 +21,5 @@ Calculates disc center coordinates and the radius for a given
 disc indicator.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

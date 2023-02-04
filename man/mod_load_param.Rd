@@ -44,5 +44,5 @@ add.border.pix and contrast thresholds are set following the recommendation
 of Jannine Meier from 13.01.2020.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

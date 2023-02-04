@@ -17,5 +17,5 @@ matrix with i columns and j rows.
 Transforms a tibble or a data.frame to a matrix.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

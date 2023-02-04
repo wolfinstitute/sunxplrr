@@ -25,5 +25,5 @@ heliografic longitude l and L as the Carrington rotation number for each
 pixel.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

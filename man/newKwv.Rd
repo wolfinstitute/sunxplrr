@@ -6,6 +6,13 @@
 \usage{
 newKwv(keyw, val, note = "")
 }
+\arguments{
+\item{keyw}{FITS keyword name.}
+
+\item{val}{FITS keyword value.}
+
+\item{note}{FITS keyword description.}
+}
 \value{
 string vector with modified header.
 }
@@ -13,5 +20,5 @@ string vector with modified header.
 Utilities for modifying FITS header entries.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

@@ -7,7 +7,7 @@
 #'   The size of the image and the number of bits per pixel are taken from the 
 #'   FITS header provided by hdrlst. 
 #'
-#' @param x tibble containing 3 columns wih pixel coordinates i and j and pixel
+#' @param x tibble containing 3 columns with pixel coordinates i and j and pixel
 #'   intensity values x.
 #'
 #' @param hdrlst list containing image FITS header keywords and values.
@@ -16,14 +16,14 @@
 #'
 #' @param threshold cutoff threshold in absolute or relative units.
 #'
-#' @param method If method = 'absolute' then the cutoff thereshold value is in
+#' @param method If method = 'absolute' then the cutoff threshold value is in
 #'   ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
 #'   value given by 2^bitpix.
 #'
 #' @param cut.threshold cutoff threshold for images with text in the corners 
 #'   in absolute or relative units.
 #'
-#' @param cut.method If cut.method = 'absolute' then the cutoff thereshold value
+#' @param cut.method If cut.method = 'absolute' then the cutoff threshold value
 #'   for images with text in the corners is in ADU units. Otherwise it is the
 #'   cut.threshold / 100 fraction of the maximal ADU value given by 2^bitpix.
 #'   
@@ -43,11 +43,13 @@
 #'
 #' @return list with disc.image, hdrlst and header.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2020-01-20 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-03 / Frt
 # - `Last test`  : 2020-01-20 / Frt
 #

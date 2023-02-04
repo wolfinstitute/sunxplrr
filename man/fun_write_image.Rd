@@ -23,5 +23,5 @@ nothing.
 Writes 16 bit or 8 bit FITS image to disc.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

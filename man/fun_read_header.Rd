@@ -19,5 +19,5 @@ Character vector with FITS header card images.
 Reads FITS ASCII header from disc.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

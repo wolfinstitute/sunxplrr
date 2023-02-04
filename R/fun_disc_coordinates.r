@@ -15,11 +15,13 @@
 #' @return z tibble with additional columns to x containing the heliografic 
 #'   coordinate information.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#'
+#' @import dplyr
 #'
 #' @export
 
-# - `Last change`: 2020-01-06 / Frt
+# - `Last change`: 2023-02-04 / Frt
 # - `Created`    : 2019-12-21 / Frt
 # - `Last test`  : 2020-01-06 / Frt
 #

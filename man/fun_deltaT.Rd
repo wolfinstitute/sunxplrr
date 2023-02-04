@@ -19,5 +19,5 @@ are from the Five Millennium Canon of Solar Eclipses: -1999 to +3000.
 Source: http://www.eclipsewise.com/help/deltatpoly2014.html
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }

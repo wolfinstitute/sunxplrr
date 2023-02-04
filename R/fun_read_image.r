@@ -9,11 +9,11 @@
 #'
 #' @return list with image matrix, parsed header and full header vectors.
 #'
-#' @author [Thomas K. Friedli](mailto:thomas.friedli@bluewin.ch)
-#'
+#' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
+#' 
 #' @export
 
-# - `Last change`: 2019-12-26 / Frt
+# - `Last change`: 2020-02-04 / Frt
 # - `Created`    : 2019-12-25 / Frt
 # - `Last test`  : 2019-12-26 / Frt
 #

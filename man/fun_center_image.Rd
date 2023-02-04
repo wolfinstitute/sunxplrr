@@ -12,7 +12,9 @@ Additional columns are ignored and will be not returned.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
+\item{header}{list containing image FITS header.}
+
+\item{sdo.image}{boolean switch for dummy use in the case of non SDO calcium
 images.}
 }
 \value{
@@ -20,11 +22,11 @@ tibble with centered image.
 }
 \description{
 Centers the provided image by shifting the x-axis and the
-y-axis of the image appropriately. Do not center sdo images, since they
+y-axis of the image appropriately. Do not center SDO images, since they
 are centered already. The algorithm is slightly adapted from
 Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
 2nd edition 2005, p. 323.
 }
 \author{
-\href{mailto:thomas.friedli@bluewin.ch}{Thomas K. Friedli}
+\href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
 }
