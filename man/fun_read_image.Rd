@@ -7,7 +7,7 @@
 fun_read_image(filename = "sunxplrr.fits", maxLines = 5000)
 }
 \arguments{
-\item{filename}{output path and file name.}
+\item{filename}{input path and file name.}
 
 \item{maxLines}{maximal number of header lines to search for END statement.
 May be increased for very large headers.}

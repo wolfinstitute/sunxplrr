@@ -109,7 +109,7 @@ mod_index_calculation <- function(x, hdrlst, header){
               ehncntrst_hem = 1E6*sum(ehncntrst_hem)/total.indices$full_hem,
               atncntrst_hem = 1E6*sum(atncntrst_hem)/total.indices$full_hem)
   
-  chart.frame <- tibble(longitude=rep(seq(-90,90, by = 1), each = 181), 
+  chart.frame <- tibble::tibble(longitude=rep(seq(-90,90, by = 1), each = 181), 
                         latitude=rep(seq(-90,90, by = 1), 181))
   
   charts <- chart.frame %>% 
@@ -154,7 +154,7 @@ mod_index_calculation <- function(x, hdrlst, header){
               ehncntrst_hem = 1E6*sum(ehncntrst_hem)/total.indices$full_hem,
               atncntrst_hem = 1E6*sum(atncntrst_hem)/total.indices$full_hem)
   
-  synopsis.frame <- tibble(
+  synopsis.frame <- tibble::tibble(
     rotation=sort(rep(unique(synopsis.indices$rotation), 65341)),
     Longitude=rep(rep(seq(0,360, by = 1), each = 181), 
                   length(unique(synopsis.indices$rotation))), 

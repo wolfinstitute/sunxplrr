@@ -2,7 +2,7 @@
 #'
 #' @description Reads 16 bit or 8 bit FITS image from disc. 
 #'
-#' @param filename output path and file name.
+#' @param filename input path and file name.
 #'
 #' @param maxLines maximal number of header lines to search for END statement.
 #'   May be increased for very large headers.
