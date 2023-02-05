@@ -2,7 +2,7 @@
 #'
 #' @description Calculates the center-to-limb-variation function according to
 #'   formulae published by different authors, including Allen in Cox (2000), 
-#'   Pierce & Slaughter (1977) and Neckel & Labs (1994). Furthermore, a customly
+#'   Pierce & Slaughter (1977) and Neckel & Labs (1994). Furthermore, a custom
 #'   fitted clv may be calculated. Note, that this is the only available option 
 #'   for SDO images, since near the temperature minimum, a near flat clv is 
 #'   expected but the SDO images show a clear limb darkening.  

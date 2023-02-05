@@ -29,7 +29,8 @@ L and B.}
 6 coefficients, an additional 2 parameter plane and a nonparametric surface
 fit in a gam structure.}
 
-\item{run}{implemented are maximal 3 runs for residual clipping.}
+\item{run}{indicates how many iterations for spot and faculae elimination
+should be run. No more than 3 iterations are implemented.}
 
 \item{clip.resid.out}{if "TRUE" the clipped residuals from the fit iterations
 are returned. In batch mode this output is not needed.}
