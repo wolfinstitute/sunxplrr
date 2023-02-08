@@ -17,7 +17,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-05 / Frt
+# - `Last change`: 2023-02-07 / Frt
 # - `Created`    : 2019-12-22 / Frt
 # - `Last test`  : 2019-12-23 / Frt
 #
@@ -95,7 +95,7 @@ fun_date_grid <- function(start_date, end_date, granularity = "day"){
     }
     
     date_grid <- date_grid[2:nrow(date_grid),] %>% 
-      select(date, year, month)
+      select("date", "year", "month")
     
   }
   
@@ -127,7 +127,7 @@ fun_date_grid <- function(start_date, end_date, granularity = "day"){
     }
     
     date_grid <- date_grid[2:nrow(date_grid),] %>% 
-      select(date, year)
+      select("date", "year")
     
   }
   

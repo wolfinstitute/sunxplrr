@@ -18,7 +18,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-05 / Frt
+# - `Last change`: 2023-02-07 / Frt
 # - `Created`    : 2019-12-16 / Frt
 # - `Last test`  : 2020-01-07 / Frt
 #
@@ -28,22 +28,22 @@ fun_clv_calibrate <- function(x, sdo.image = "FALSE"){
   
   if (sdo.image){
     y <- x %>%
-    filter(fill > 0) %>%
-    mutate(calib = clv + resid) %>% 
-    select(i,j,calib)
+    filter(.data$fill > 0) %>%
+    mutate(calib = .data$clv + .data$resid) %>% 
+    select("i","j","calib")
   } else {
     y <- x %>%
-      filter(fill > 0) %>%
-      mutate(calib = sclv + resid) %>% 
-      select(i,j,calib)
+      filter(.data$fill > 0) %>%
+      mutate(calib = .data$sclv + .data$resid) %>% 
+      select("i","j","calib")
   }
   
   # join with original image
     
   z <-  x %>% 
     left_join(y, by=c("i","j")) %>% 
-    mutate(calib = if_else(is.na(calib),0,calib)) %>% 
-    mutate(calib = if_else(calib < 0,0,calib))
+    mutate(calib = if_else(is.na(.data$calib),0,.data$calib)) %>% 
+    mutate(calib = if_else(.data$calib < 0,0,.data$calib))
   
   # return
   

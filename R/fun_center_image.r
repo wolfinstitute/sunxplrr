@@ -24,7 +24,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-02-07 / Frt
 # - `Created`    : 2019-12-30 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #
@@ -53,19 +53,19 @@ fun_center_image <- function (image, hdrlst, header, sdo.image = "FALSE"){
     ymax <- max(image$j) + 1
       
     centered_image <- image %>%
-      mutate(xi = as.integer(i - xt)) %>%
-      mutate(yj = as.integer(j - yt)) %>%
-      filter(xi > 0) %>% 
-      filter(xi < xmax) %>% 
-      filter(yj > 0) %>% 
-      filter(yj < ymax) %>% 
-      select(-i, -j, xi, yj, x) %>% 
-      select(i=xi, j=yj, x)
+      mutate(xi = as.integer(.data$i - .data$xt)) %>%
+      mutate(yj = as.integer(.data$j - .data$yt)) %>%
+      filter(.data$xi > 0) %>% 
+      filter(.data$xi < xmax) %>% 
+      filter(.data$yj > 0) %>% 
+      filter(.data$yj < ymax) %>% 
+      select(-"i", -"j", "xi", "yj", "x") %>% 
+      select(i="xi", j="yj", "x")
       
     z <-  image %>% 
-      select(i,j) %>% 
+      select("i","j") %>% 
       left_join(centered_image, by=c("i","j")) %>% 
-      mutate(x = if_else(is.na(x),0,x))
+      mutate(x = if_else(is.na(.data$x),0,.data$x))
     
     return(z)
       

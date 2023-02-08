@@ -17,21 +17,21 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-05 / Frt
+# - `Last change`: 2023-02-07 / Frt
 # - `Created`    : 2019-11-25 / Frt
 # - `Last test`  : 2020-01-01 / Frt
 #
 fun_clv_correct <- function(x, name.image = "calib", name.clv = "sclv"){
   
   y <- x %>% 
-    filter(fill > 0) %>% 
-    select(i, j, image = eval(name.image), clv = eval(name.clv)) %>% 
-    mutate(flat = image / clv) %>%
-    select(i, j, flat)
+    filter(.data$fill > 0) %>% 
+    select("i", "j", image = .data[[name.image]], clv = .data[[name.clv]]) %>% 
+    mutate(flat = .data$image / .data$clv) %>%
+    select("i", "j", "flat")
     
   z <-  x %>% 
     left_join(y, by=c("i","j")) %>% 
-    mutate(flat = if_else(is.na(flat),0,flat))
+    mutate(flat = if_else(is.na(.data$flat),0,.data$flat))
     
   return(z)
   

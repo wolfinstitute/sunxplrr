@@ -41,7 +41,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-02-07 / Frt
 # - `Created`    : 2019-11-25 / Frt
 # - `Last test`  : 2020-01-15 / Frt
 #
@@ -56,13 +56,13 @@ fun_clv_fitting <- function(x, hdrlst, model = "poly_with_plane",
     }
     
     y <- x %>%
-      filter(fill > 0) %>%
-      mutate(theta = theta * pi /180) %>% 
-      mutate(theta1 = cos(theta)) %>% 
-      mutate(theta2 = cos(theta)^2) %>% 
-      mutate(theta3 = cos(theta)^3) %>% 
-      mutate(theta4 = cos(theta)^4) %>% 
-      mutate(theta5 = cos(theta)^5)
+      filter(.data$fill > 0) %>%
+      mutate(theta = .data$theta * pi /180) %>% 
+      mutate(theta1 = cos(.data$theta)) %>% 
+      mutate(theta2 = cos(.data$theta)^2) %>% 
+      mutate(theta3 = cos(.data$theta)^3) %>% 
+      mutate(theta4 = cos(.data$theta)^4) %>% 
+      mutate(theta5 = cos(.data$theta)^5)
     
     if (run > 0) {
       
@@ -86,30 +86,32 @@ fun_clv_fitting <- function(x, hdrlst, model = "poly_with_plane",
       if (light.save){
         
        y1 <- cbind(y,resid1) %>% 
-         mutate(clv = a + b*cos(theta) + c*(cos(theta)^2) +  
-                      d*(cos(theta)^3) + e*(cos(theta)^4) + f*(cos(theta)^5)) %>% 
-         mutate(fit = a + b*cos(theta) + c*(cos(theta)^2) +  
-                d*(cos(theta)^3) + e*(cos(theta)^4) + f*(cos(theta)^5)) %>% 
-         mutate(resid = image - fit)
+         mutate(clv = a + b*cos(.data$theta) + c*(cos(.data$theta)^2) +  
+                      d*(cos(.data$theta)^3) + e*(cos(.data$theta)^4) + 
+                      f*(cos(.data$theta)^5)) %>% 
+         mutate(fit = a + b*cos(.data$theta) + c*(cos(.data$theta)^2) +  
+                      d*(cos(.data$theta)^3) + e*(cos(.data$theta)^4) + 
+                      f*(cos(.data$theta)^5)) %>% 
+         mutate(resid = .data$image - .data$fit)
        
        z1 <- y1 %>% 
-         select(i, j, clv, resid, resid1)
+         select("i", "j", "clv", "resid", "resid1")
        
        if (clip.resid.out){
           
          z1 <-  x %>% 
            left_join(z1, by=c("i","j")) %>% 
-           mutate(clv = if_else(is.na(clv),0,clv)) %>% 
-           mutate(resid = if_else(is.na(resid),0,resid)) %>% 
-           mutate(resid1 = if_else(is.na(resid1),0,resid1))
+           mutate(clv = if_else(is.na(.data$clv),0,.data$clv)) %>% 
+           mutate(resid = if_else(is.na(.data$resid),0,.data$resid)) %>% 
+           mutate(resid1 = if_else(is.na(.data$resid1),0,.data$resid1))
        
        } else {
         
          z1 <-  x %>% 
            left_join(z1, by=c("i","j")) %>% 
-           mutate(clv = if_else(is.na(clv),0,clv)) %>% 
-           mutate(resid = if_else(is.na(resid),0,resid)) %>% 
-           select(-resid1)
+           mutate(clv = if_else(is.na(.data$clv),0,.data$clv)) %>% 
+           mutate(resid = if_else(is.na(.data$resid),0,.data$resid)) %>% 
+           select(-"resid1")
         
        }
       
