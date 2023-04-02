@@ -1,17 +1,25 @@
-#' @title Updates the header and hdrlst with sdo-specific keywords
+#' @title Updates the header and hdrlst with instrument specific keywords
 #'
-#' @description Reconstructs the FITS keywords DATE-OBS, NAXISn and WAVELNTH 
-#'   from the provided sdo file name. Updates the header and hdrlst with some 
-#'   other missing keywords.
+#' @description Reconstructs the FITS keywords DATE-OBS and WAVELNTH from the 
+#'   provided file name. Defaults for the FITS keywords TELESCOP, OBJECT, 
+#'   INSTRUME and WAVEUNIT are set to sdo aia 3 images. Updates the header
+#'   and hdrlst.
 #'
-#' @param file.name original file name of sdo image.
+#' @param file.name string original image file name.
 #'
 #' @param header list containing image FITS header.
 #'
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
-#' @param sdo.image boolean switch for dummy use in the case of non sdo calcium
-#'   images.
+#' @param telescope string name of telescope.
+#'
+#' @param object string name of object.
+#'
+#' @param instrument string name of instrument or camera.
+#'
+#' @param waveunit string name of wave unit.
+#'
+#' @param sdo.image boolean switch for dummy use in the case of non sdo images.
 #'
 #' @return list with updated header and hdrlst.
 #'
@@ -19,11 +27,16 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-02 / Frt
 # - `Created`    : 2019-12-26 / Frt
 # - `Last test`  : 2019-12-27 / Frt
 #
-fun_sdo_keywords <- function (file.name, header, hdrlst, sdo.image = "FALSE"){
+fun_sdo_keywords <- function (file.name, header, hdrlst, 
+                          telescope = "SDO/AIA", 
+                          object = "Solar photosphere at temperature minimum",
+                          instrument = "AIA_3",
+                          waveunit = "Angstrom",
+                          sdo.image = "FALSE"){
   
   # dummy use for non sdo calcium images allowed
   
@@ -50,29 +63,22 @@ fun_sdo_keywords <- function (file.name, header, hdrlst, sdo.image = "FALSE"){
   naxisn      <- key.words[3]  # not used as already provided
   wavelnth    <- key.words[4]                     
 
-  # missing keywords for sdo calcium images
-  
-  telescop <- "SDO/AIA"
-  object   <- "Solar photosphere at temperature minimum"
-  instrume <- "AIA_3"
-  waveunit <- "Angstrom"  # this is conforming to FITS standard
-  
   # update hdrlst
   
-  hdrlst$TELESCOP   <- telescop
+  hdrlst$TELESCOP   <- telescope
   hdrlst$OBJECT     <- object
-  hdrlst$INSTRUME   <- instrume
+  hdrlst$INSTRUME   <- instrument
   hdrlst$WAVELNTH   <- wavelnth
   hdrlst$WAVEUNIT   <- waveunit
   hdrlst$`DATE-OBS` <- date.obs
   
   # update header
   
-  cimages <- addKwv("TELESCOP", telescop, "Telescope",
+  cimages <- addKwv("TELESCOP", telescope, "Telescope",
                     header)
   cimages <- addKwv("OBJECT", object, "Object",
                     cimages)
-  cimages <- addKwv("INSTRUME", instrume, "Instrument",
+  cimages <- addKwv("INSTRUME", instrument, "Instrument",
                     cimages)
   cimages <- addKwv("WAVELNTH", wavelnth, "Wavelength",
                     cimages)

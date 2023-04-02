@@ -2,27 +2,44 @@
 % Please edit documentation in R/fun_sdo_keywords.r
 \name{fun_sdo_keywords}
 \alias{fun_sdo_keywords}
-\title{Updates the header and hdrlst with sdo-specific keywords}
+\title{Updates the header and hdrlst with instrument specific keywords}
 \usage{
-fun_sdo_keywords(file.name, header, hdrlst, sdo.image = "FALSE")
+fun_sdo_keywords(
+  file.name,
+  header,
+  hdrlst,
+  telescope = "SDO/AIA",
+  object = "Solar photosphere at temperature minimum",
+  instrument = "AIA_3",
+  waveunit = "Angstrom",
+  sdo.image = "FALSE"
+)
 }
 \arguments{
-\item{file.name}{original file name of sdo image.}
+\item{file.name}{string original image file name.}
 
 \item{header}{list containing image FITS header.}
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
-images.}
+\item{telescope}{string name of telescope.}
+
+\item{object}{string name of object.}
+
+\item{instrument}{string name of instrument or camera.}
+
+\item{waveunit}{string name of wave unit.}
+
+\item{sdo.image}{boolean switch for dummy use in the case of non sdo images.}
 }
 \value{
 list with updated header and hdrlst.
 }
 \description{
-Reconstructs the FITS keywords DATE-OBS, NAXISn and WAVELNTH
-from the provided sdo file name. Updates the header and hdrlst with some
-other missing keywords.
+Reconstructs the FITS keywords DATE-OBS and WAVELNTH from the
+provided file name. Defaults for the FITS keywords TELESCOP, OBJECT,
+INSTRUME and WAVEUNIT are set to sdo aia 3 images. Updates the header
+and hdrlst.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
