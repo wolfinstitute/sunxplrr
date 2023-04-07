@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 .Rbuildignore
-/work
-/data
+/work/
+
 
