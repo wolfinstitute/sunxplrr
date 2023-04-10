@@ -4,7 +4,7 @@
 #'   disc indicator.
 #'
 #' @param x tibble containing at least 3 columns with pixel coordinates i and j
-#'   and disc indicator values disk.
+#'   and disc indicator values.
 #'
 #' @param disc name of variable in x with disc indicator values.
 #' 
@@ -17,7 +17,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-09 / Frt
 # - `Created`    : 2019-11-17 / Frt
 # - `Last test`  : 2019-11-24 / Frt
 #
@@ -31,9 +31,9 @@ fun_disc_center <- function(x, disc = "fill"){
     summarize(sum_i_th = sum(i_th), sum_j_th = sum(j_th), sum_th = sum(th))
   
   disc_center <- z %>% 
-    mutate(x_i = z$sum_i_th / z$sum_th) %>%   # Column sum
-    mutate(y_j = z$sum_j_th / z$sum_th) %>%   # Row sum
-    mutate(r = sqrt(z$sum_th / pi)) %>%       # Column sum
+    mutate(x_i = z$sum_i_th / z$sum_th) %>%   # Column sum / total area
+    mutate(y_j = z$sum_j_th / z$sum_th) %>%   # Row sum / total area
+    mutate(r = sqrt(z$sum_th / pi)) %>%       # Total area
     select(x_i, y_j, r)
   
   return(disc_center)

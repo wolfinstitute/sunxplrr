@@ -23,7 +23,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-09 / Frt
 # - `Created`    : 2019-12-30 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #
@@ -49,7 +49,7 @@ fun_flop_image <- function (image, hdrlst, header, sdo.image = "FALSE"){
         select(i=xi, j, x)
       
       hdrlst$GEOTRANS <- "flopped"
-      cimages <- addHistory("  Image flopped with sunviewr::fun_flop_image",
+      cimages <- addHistory("  Image flopped with sunxplrr::fun_flop_image",
                             header)
       header <- cimages
       

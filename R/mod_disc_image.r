@@ -49,7 +49,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-10 / Frt
 # - `Created`    : 2019-12-03 / Frt
 # - `Last test`  : 2020-01-20 / Frt
 #
@@ -107,7 +107,7 @@ mod_disc_image <- function(x, hdrlst, header,
     x <- cut.x %>% 
       mutate(i = as.integer(i)) %>% 
       mutate(j = as.integer(j)) %>% 
-      select(i, j, x=image)
+      select(i, j, x = image)
   
   }
   
@@ -125,7 +125,7 @@ mod_disc_image <- function(x, hdrlst, header,
   
   # fill final mask
   
-  image.disc <- fun_mask_fill(image.border, mask = "th")
+  image.disc <- fun_mask_fill(image.border, mask = "border")
   
   # calculate final mask center coordinates and radius
   
@@ -152,6 +152,12 @@ mod_disc_image <- function(x, hdrlst, header,
                               values_2 = "fill", method = "mult", 
                               values.name = image.values.name)
   
+  # asses image quality
+  
+  disc.quality <- fun_disc_quality(disc.image, hdrlst = hdrlst, 
+                                   disc.center = disc.center, 
+                                   border = "border")
+  
   # update hdrlst and header
   
   hdrlst$CENTER_X <- disc.center$x_i
@@ -160,6 +166,8 @@ mod_disc_image <- function(x, hdrlst, header,
   hdrlst$DSKTHRSH <- image.mask.threshold
   hdrlst$BORDRPIX <- add.border.pix
   hdrlst$PIXSCALE <- hdrlst$SOLAR_R / (2 * disc.center$r)
+  hdrlst$IMQTYPIX <- disc.quality$sigma.border$sd.pix
+  hdrlst$IMQTYARC <- disc.quality$sigma.border$sd.arcsec
     
   cimages <- addKwv("CENTER_X", disc.center$x_i, "Sun center in X dim (pix)",
                     header)
@@ -178,10 +186,16 @@ mod_disc_image <- function(x, hdrlst, header,
                     "Number of pixels added to solar radius (pix)",
                     cimages)
   cimages <- addKwv("PIXSCALE", hdrlst$PIXSCALE,
-                    "Image scale in arcsec per pixel (arcsec/pix)",
+                    "Image scale (arcsec/pix)",
                     cimages)
-  cimages <- addHistory("  Disc extraction with sunviewr::mod_disc_image",
-                        cimages)
+  cimages <- addKwv("IMQTYPIX", hdrlst$IMQTYPIX,
+                    "Image quality (pix)",
+                    cimages)
+  cimages <- addKwv("IMQTYARC", hdrlst$IMQTYARC,
+                    "Image quality (arcsec/pix)",
+                    cimages)
+  cimages <- addHistory("  Disc extraction with sunxplrr::mod_disc_image",
+                    cimages)
 
   header <- cimages
 

@@ -17,7 +17,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-09 / Frt
 # - `Created`    : 2019-12-22 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #
@@ -92,7 +92,7 @@ mod_fits_import <- function(inp_data_path, inp_file_name, sdo.image = "FALSE",
   
   # updates header
   
-  cimages <- addHistory("  FITS file import with sunviewr::mod_fits_import",
+  cimages <- addHistory("  FITS file import with sunxplrr::mod_fits_import",
                         header)
   
   header <- cimages

@@ -22,7 +22,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-04-09 / Frt
 # - `Created`    : 2019-12-30 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #
@@ -48,7 +48,7 @@ fun_flip_image <- function (image, hdrlst, header, sdo.image = "FALSE"){
         select(i, j=yj, x)
       
       hdrlst$GEOTRANS <- "flipped"
-      cimages <- addHistory("  Image flipped with sunviewr::fun_flip_image",
+      cimages <- addHistory("  Image flipped with sunxplrr::fun_flip_image",
                               header)
       header <- cimages
       
