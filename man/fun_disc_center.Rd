@@ -8,7 +8,7 @@ fun_disc_center(x, disc = "fill")
 }
 \arguments{
 \item{x}{tibble containing at least 3 columns with pixel coordinates i and j
-and disc indicator values disk.}
+and disc indicator values.}
 
 \item{disc}{name of variable in x with disc indicator values.}
 }
