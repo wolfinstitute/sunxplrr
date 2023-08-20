@@ -17,7 +17,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-08-19 / Frt
 # - `Created`    : 2019-12-10 / Frt
 # - `Last test`  : 2019-12-26 / Frt
 #
@@ -25,7 +25,8 @@ fun_write_image <- function(x, file, hdrlst, header){
     
   if (hdrlst$BITPIX != "8" & hdrlst$BITPIX != "16"){
     
-    stop(paste0("Bitdepth ", hdrlst$BITPIX, " is not implemented"))
+    stop(paste0("Bitdepth ", hdrlst$BITPIX, " is not implemented 
+                in sunxplrr::fun_write_image"))
     
   }
   
@@ -77,13 +78,15 @@ fun_write_image <- function(x, file, hdrlst, header){
       size <- 1
     }, s = {
       size <- 2
-    }, stop("Unrecognized data type: not byte or single"))
+    }, stop("Unrecognized data type in 
+            sunxplrr::fun_write_image: not byte or single"))
     
   } else {
     
     switch(type, s = {
       size <- 4
-    }, stop("Unrecognized data type: not single"))
+    }, stop("Unrecognized data type in 
+            sunxplrr::fun_write_image: not single"))
     
   }
     

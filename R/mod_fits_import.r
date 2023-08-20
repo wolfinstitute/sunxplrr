@@ -1,11 +1,17 @@
 #' @title Imports a single FITS file
 #'
 #' @description Imports single FITS file given the file path and name. Returns 
-#'   tibble with image, tibble with hdrlst and character vector header. 
+#'   tibble with image, tibble with hdrlst and character vector header. Changes 
+#'   image header, if requested.
 #'
 #' @param inp_data_path string with input data path.
 #'
 #' @param inp_file_name string with input file name.
+#'
+#' @param exchange.header boolean if TRUE the header of the original image will
+#'   be changed.
+#'   
+#' @param inp_hfile_name string with input file name of the new header file.
 #'
 #' @param sdo.image if TRUE the image is originally an imported sdo jpg-file.
 #'   
@@ -17,16 +23,26 @@
 #'
 #' @export
 
-# - `Last change`: 2023-04-09 / Frt
+# - `Last change`: 2023-08-20 / Frt
 # - `Created`    : 2019-12-22 / Frt
-# - `Last test`  : 2019-12-31 / Frt
+# - `Last test`  : 2023-08-20 / Frt
 #
-mod_fits_import <- function(inp_data_path, inp_file_name, sdo.image = "FALSE",
+mod_fits_import <- function(inp_data_path, inp_file_name, 
+                            exchange.header = "FALSE", 
+                            inp_hfile_name = inp_file_name,
+                            sdo.image = "FALSE", 
                             cut.image = "FALSE"){
   
-  # reads FITS frame and header 
+  # reads FITS frame 
   
   im <- fun_read_image(paste0(inp_data_path,inp_file_name))
+  
+  # reads FITS header 
+  
+  im <- fun_exchange_header(im = im, 
+                            exchange.header = exchange.header,
+                            inp_data_path = inp_data_path,
+                            inp_hfile_name = inp_hfile_name)
   
   header <- im$header
   

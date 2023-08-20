@@ -11,9 +11,9 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-08-20 / Frt
 # - `Created`    : 2019-12-25 / Frt
-# - `Last test`  : 2019-12-31 / Frt
+# - `Last test`  : 2023-08-20 / Frt
 #
 fun_parse_header <- function (headerName){
 
@@ -46,6 +46,13 @@ fun_parse_header <- function (headerName){
     idx <- grep(string, hdr, ignore.case = TRUE)
     if (length(idx) > 0)
       hdr <- hdr[-idx]
+  }
+  
+  reserved2 <- c("^ *Astronomy")
+  for (string in reserved2) {
+    idx <- grep(string, hdr, ignore.case = TRUE)
+    if (length(idx) > 0)
+      hdr<- hdr[-c(idx,idx+1)]
   }
   
   # return

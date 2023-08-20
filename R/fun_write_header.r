@@ -19,7 +19,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-08-19 / Frt
 # - `Created`    : 2019-12-10 / Frt
 # - `Last test`  : 2019-12-26 / Frt
 #
@@ -35,7 +35,8 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
     bitpix <- 8
   }, s = {
     bitpix <- 16
-  }, stop("Unrecognized data type: not byte or single"))
+  }, stop("Unrecognized data type in 
+          sunxplrr:fun_write_header: not byte or single"))
 
   cimages <- sprintf("%-80s", 
     "SIMPLE  = T                      / File conforms to FITS standard")
@@ -57,7 +58,7 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
   cimages <- addKwv("BSCALE", bscale, "overall scaling", cimages)
   cimages <- addKwv("BZERO", bzero, "overall offset", cimages)
   
-  cimages <- addComment("  Written by the R language sunviewr package", 
+  cimages <- addComment("  Written by the R language sunxplrr package", 
                         cimages)
   cimages <- addComment("  FITS (Flexible Image Transport System) format is defined in", 
                         cimages)
@@ -68,7 +69,7 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
                   "^ *BZERO ", "^ *END ", 
-                  "^ *COMMENT   Written by the R language sunviewr package", 
+                  "^ *COMMENT   Written by the R language sunxplrr package", 
                   "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in", 
                   "^ *COMMENT   Astronomy and Astrophysics, volume 376, page 359 (2001)")
     

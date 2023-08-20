@@ -11,6 +11,11 @@
 #'
 #' @param out_data_path full path to output directory.
 #' 
+#' @param exchange.header boolean if TRUE the header of the original image will
+#'   be changed.
+#'   
+#' @param inp_hfile_name string with input file name of the new header file.
+#'
 #' @param rds.output if TRUE all results are saved as R data file.
 #'
 #' @param full.output if TRUE the full image data table is saved as csv file.
@@ -27,12 +32,14 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-05 / Frt
+# - `Last change`: 2023-08-20 / Frt
 # - `Created`    : 2019-12-28 / Frt
-# - `Last test`  : 2020-01-20 / Frt
+# - `Last test`  : 2023-08-20 / Frt
 #
 wrap_mod_calcium <- function(inp_file_name, sdo.image, 
                              inp_data_path, out_data_path,
+                             exchange.header = exchange.header, 
+                             inp_hfile_name = inp_hfile_name,
                              rds.output = "FALSE", 
                              full.output = "FALSE",
                              light.save = "FALSE",
@@ -62,9 +69,11 @@ elapsed1 <- system.time(
 
   mod.fits.import <- mod_fits_import(inp_data_path = param.lst$inp_data_path, 
                                    inp_file_name = param.lst$inp_file_name,
+                                   exchange.header = exchange.header, 
+                                   inp_hfile_name = inp_hfile_name,
                                    sdo.image = param.lst$sdo.image,
                                    cut.image = param.lst$cut.image)
-  
+
 )[1]
 
 fitsim     <- mod.fits.import$fitsim
@@ -97,7 +106,7 @@ disc.image  <- mod.disc.image$disc.image
 hdrlst      <- mod.disc.image$hdrlst
 header      <- mod.disc.image$header
 
-message("  sunviewr::mod_disc_image ... finished. Elapsed time ", 
+message("  sunxplrr::mod_disc_image ... finished. Elapsed time ", 
         elapsed2, " seconds")
 
 # Modul Randabschattungskorrektur ----------------------------------------------

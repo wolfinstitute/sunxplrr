@@ -13,7 +13,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2023-08-19 / Frt
 # - `Created`    : 2019-12-25 / Frt
 # - `Last test`  : 2019-12-31 / Frt
 #
@@ -46,5 +46,6 @@ fun_read_header <- function (zz, maxLines = 5000){
       header <- c(header, image)
     }
   }
-  stop("Haven't found END in header after ", maxLines, " header lines")
+  stop("Haven't found END in header after ", maxLines, " header lines in
+       sunxplrr::fun_read_header")
 }

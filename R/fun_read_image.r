@@ -13,16 +13,21 @@
 #' 
 #' @export
 
-# - `Last change`: 2020-02-04 / Frt
+# - `Last change`: 2023-08-19 / Frt
 # - `Created`    : 2019-12-25 / Frt
 # - `Last test`  : 2019-12-26 / Frt
 #
 fun_read_image <- function(filename = "sunxplrr.fits", maxLines = 5000){
-  zz <- file(filename, "rb")
-  header <- fun_read_header(zz, maxLines = maxLines)
-  hdr <- fun_parse_header(headerName = header)
-  D <- fun_readFITSarray(zz, hdr)
-  close(zz)
+  
+  con <- file(filename, "rb")
+  
+    header <- fun_read_header(con, maxLines = maxLines)
+    hdr <- fun_parse_header(headerName = header)
+    D <- fun_readFITSarray(con, hdr)
+    
+  close(con)
+  
   D$header <- header
+  
   return(D)
 }
