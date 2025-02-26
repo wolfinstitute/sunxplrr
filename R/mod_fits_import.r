@@ -23,7 +23,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-08-20 / Frt
+# - `Last change`: 2025-02-26 / Frt
 # - `Created`    : 2019-12-22 / Frt
 # - `Last test`  : 2023-08-20 / Frt
 #
@@ -68,6 +68,12 @@ mod_fits_import <- function(inp_data_path, inp_file_name,
   
   fitsim <- fun_mat2tibbl(im$imDat)
   
+  # updates header
+  
+  cimages <- addHistory("  Modifyed by the R language sunxplrr package", 
+                        header)
+  header <- cimages
+  
   # updates hdrlst and header
   
   hdrlst$FILENAME <- inp_file_name
@@ -75,7 +81,7 @@ mod_fits_import <- function(inp_data_path, inp_file_name,
   hdrlst$SOLAR_P0 <- sun.ephem$P0
   hdrlst$SOLAR_B0 <- sun.ephem$B0
   hdrlst$SOLAR_L0 <- sun.ephem$L0
-  hdrlst$SOLAR_R  <- sun.ephem$SD
+  hdrlst$SOLAR_D  <- sun.ephem$SD
   hdrlst$CAR_ROT  <- sun.ephem$CAR_ROT
   
   cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
@@ -88,7 +94,7 @@ mod_fits_import <- function(inp_data_path, inp_file_name,
                     cimages)
   cimages <- addKwv("SOLAR_L0", sun.ephem$L0, "L0 angle (degrees)",
                     cimages)
-  cimages <- addKwv("SOLAR_R", sun.ephem$SD, "Diameter of solar disc (arcsec)",
+  cimages <- addKwv("SOLAR_D", sun.ephem$SD, "Diameter of solar disc (arcsec)",
                     cimages)
   cimages <- addKwv("CAR_ROT", sun.ephem$CAR_ROT,
                     "Carrington solar rotation number",

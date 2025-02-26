@@ -58,20 +58,17 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
   cimages <- addKwv("BSCALE", bscale, "overall scaling", cimages)
   cimages <- addKwv("BZERO", bzero, "overall offset", cimages)
   
-  cimages <- addComment("  Written by the R language sunxplrr package", 
+  cimages <- addComment("  FITS (Flexible Image Transport System) format is defined in Astronomy", 
                         cimages)
-  cimages <- addComment("  FITS (Flexible Image Transport System) format is defined in", 
+  cimages <- addComment("  and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H", 
                         cimages)
-  cimages <- addComment("  Astronomy and Astrophysics, volume 376, page 359 (2001)", 
-                        cimages)
- 
+  
   if (length(header) > 0) {
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
                   "^ *BZERO ", "^ *END ", 
-                  "^ *COMMENT   Written by the R language sunxplrr package", 
-                  "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in", 
-                  "^ *COMMENT   Astronomy and Astrophysics, volume 376, page 359 (2001)")
+                  "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in Astronomy", 
+                  "^ *COMMENT   and Astrophysics, volume 376, page 359; bibcode: 2001A&A...376..359H")
     
     for (string in reserved) {
       idx <- grep(string, header, ignore.case = TRUE)
