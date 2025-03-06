@@ -19,9 +19,9 @@
 #'
 #' @export
 
-# - `Last change`: 2023-08-19 / Frt
+# - `Last change`: 2025-03-02 / Frt
 # - `Created`    : 2019-12-10 / Frt
-# - `Last test`  : 2019-12-26 / Frt
+# - `Last test`  : 2025-03-02 / Frt
 #
 fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0, 
                               header = ""){
@@ -58,7 +58,7 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
   cimages <- addKwv("BSCALE", bscale, "overall scaling", cimages)
   cimages <- addKwv("BZERO", bzero, "overall offset", cimages)
   
-  cimages <- addComment("  FITS (Flexible Image Transport System) format is defined in Astronomy", 
+  cimages <- addComment("  FITS (Flexible Image Transport System) format is defined in 'Astronomy", 
                         cimages)
   cimages <- addComment("  and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H", 
                         cimages)
@@ -67,8 +67,8 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
                   "^ *BZERO ", "^ *END ", 
-                  "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in Astronomy", 
-                  "^ *COMMENT   and Astrophysics, volume 376, page 359; bibcode: 2001A&A...376..359H")
+                  "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in 'Astronomy", 
+                  "^ *COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H")
     
     for (string in reserved) {
       idx <- grep(string, header, ignore.case = TRUE)

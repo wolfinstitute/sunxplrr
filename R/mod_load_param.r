@@ -33,7 +33,11 @@
 # - `Last test`  : 2020-01-20 / Frt
 #
 mod_load_param <- function(inp_file_name, sdo.image, 
-                           inp_data_path, out_data_path, 
+                           inp_data_path, out_data_path,
+                           exchange.header = "FALSE",
+                           inp_hdata_path = inp_data_path,
+                           inp_hfile_name = inp_file_name,
+                           
                            rds.output = "FALSE", 
                            full.output = "FALSE",
                            light.save = "FALSE",
@@ -46,14 +50,18 @@ mod_load_param <- function(inp_file_name, sdo.image,
       #
       # mod_fits_import
       #
-      inp_data_path = inp_data_path,
-      sdo.image = "TRUE",
-      cut.image = "TRUE",
+      inp_data_path = inp_data_path, 
       inp_file_name = inp_file_name,
-      light.save = light.save,
+      exchange.header = "FALSE", 
+      inp_hdata_path = inp_data_path,
+      inp_hfile_name = inp_file_name,
+      sdo.image = "TRUE", 
+      flip.image = "FALSE",
+      flop.image = "FALSE",
       #
       # mod_disc_image
       #
+      cut.image = "TRUE",
       threshold = 10, 
       method = "relative",
       cut.threshold = 20, 
@@ -79,6 +87,7 @@ mod_load_param <- function(inp_file_name, sdo.image,
       #
       # mod_output
       #
+      light.save = light.save,
       rds.output = rds.output,
       full.output = full.output,
       fits.save = fits.save,
@@ -94,12 +103,11 @@ mod_load_param <- function(inp_file_name, sdo.image,
       #
       inp_data_path = inp_data_path,
       sdo.image = "FALSE",
-      cut.image = "FALSE",
       inp_file_name = inp_file_name,
-      light.save = light.save,
       #
       # mod_disc_image
       #
+      cut.image = "FALSE",
       threshold = 10, 
       method = "relative",
       cut.threshold = 20, 
@@ -125,6 +133,7 @@ mod_load_param <- function(inp_file_name, sdo.image,
       #
       # mod_output
       #
+      light.save = light.save,
       rds.output = rds.output,
       full.output = full.output,
       fits.save = fits.save,

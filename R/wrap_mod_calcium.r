@@ -39,6 +39,7 @@
 wrap_mod_calcium <- function(inp_file_name, sdo.image, 
                              inp_data_path, out_data_path,
                              exchange.header = exchange.header, 
+                             inp_hdata_path,
                              inp_hfile_name = inp_hfile_name,
                              rds.output = "FALSE", 
                              full.output = "FALSE",
@@ -52,6 +53,8 @@ elapsed0 <- system.time(
 
   param.lst <- mod_load_param(inp_file_name, sdo.image, 
                               inp_data_path, out_data_path,
+                              inp_hdata_path, inp_hfile_name,
+                              exchange.header = exchange.header,
                               rds.output = rds.output,
                               full.output = full.output,
                               light.save = light.save,
@@ -70,10 +73,12 @@ elapsed1 <- system.time(
   mod.fits.import <- mod_fits_import(inp_data_path = param.lst$inp_data_path, 
                                    inp_file_name = param.lst$inp_file_name,
                                    exchange.header = exchange.header, 
+                                   inp_hdata_path = inp_data_path,
                                    inp_hfile_name = inp_hfile_name,
                                    sdo.image = param.lst$sdo.image,
-                                   cut.image = param.lst$cut.image)
-
+                                   flip.image = param.lst$flip.image,
+                                   flop.image = param.lst$flop.image)
+  
 )[1]
 
 fitsim     <- mod.fits.import$fitsim
