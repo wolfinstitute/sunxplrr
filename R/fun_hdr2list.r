@@ -1,7 +1,7 @@
-#' @title Extracts image header to list
+#' @title Converts FITS image header to list
 #'
-#' @description Extracts the image header to a list of keywords with values.
-#'  COMMENT and HISTORY lines are omitted.
+#' @description Converts the FITS image header to a list of keywords with
+#'  values. COMMENT and HISTORY lines are omitted.
 #'
 #' @param hdr FITS hdr
 #'
@@ -11,7 +11,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-08-20 / Frt
+# - `Last change`: 2025-03-16 / Frt
 # - `Created`    : 2019-11-22 / Frt
 # - `Last test`  : 2023-08-20 / Frt
 #
@@ -34,13 +34,13 @@ fun_hdr2list = function(hdr) {
       hdr<- hdr[-c(idx,idx+1)]
   }
   
-  myL = list() 
+  hdrlst = list() 
   i = 1 
   while (i < length(hdr)) { 
-    myL[[hdr[i]]] = hdr[i+1] 
+    hdrlst[[hdr[i]]] = hdr[i+1] 
     i = i + 2 
   }
   
-  return(myL)
+  return(hdrlst)
   
 } 
