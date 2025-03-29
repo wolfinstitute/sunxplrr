@@ -12,11 +12,11 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2025-03-29 / Frt
 # - `Created`    : 2019-12-25 / Frt
-# - `Last test`  : 2019-12-26 / Frt
+# - `Last test`  : 2025-03-29 / Frt
 #
-fun_readFITSarray <- function (zz, hdr){
+fun_read_array <- function (zz, hdr){
   naxis <- as.numeric(hdr[which(hdr == "NAXIS") + 1])
   switch(hdr[which(hdr == "BITPIX") + 1], `16` = {
     bsize <- 2

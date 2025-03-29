@@ -13,14 +13,14 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-03-17 / Frt
-# - `Created`    : 2025-03-17 / Frt
-# - `Last test`  : 2025-03-16 / Frt
+# - `Last change`: 2025-03-27 / Frt
+# - `Created`    : 2025-03-16 / Frt
+# - `Last test`  : 2025-03-17 / Frt
 #
-fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 0.56, bitpix = 16){
+fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 16){
   
   # Imports image as matrix
-  imjpg <- readJPEG(filename)
+  imjpg <- jpeg::readJPEG(filename)
   
   # Chooses green channel if more than one color dimension is present
   if (length(dim(imjpg)) > 2){
@@ -28,7 +28,7 @@ fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 0.56, bitpix =
   }
   
   # Rotates image about -90 degrees
-  fitsim <- fun_mat2tibbl(imjpg) |> 
+  fitsim <- fun_mat2tibbl(imjpg2) |> 
     select(i=j, j=i, x)
   
   ymax <- max(fitsim$j) + 1

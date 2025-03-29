@@ -3,7 +3,7 @@
 #' @description Parses FITS header. COMMENT, HISTORY, empty and some preserved 
 #'   keywords are omitted.
 #'
-#' @param headerName list containing image FITS header.
+#' @param header list containing image FITS header.
 #'
 #' @return Character vector with parsed FITS header entries.
 #'
@@ -11,21 +11,21 @@
 #'
 #' @export
 
-# - `Last change`: 2023-08-20 / Frt
+# - `Last change`: 2025-03-29 / Frt
 # - `Created`    : 2019-12-25 / Frt
-# - `Last test`  : 2023-08-20 / Frt
+# - `Last test`  : 2025-03-29 / Frt
 #
-fun_parse_header <- function (headerName){
+fun_parse_header <- function (header){
 
   # remove comments from numeric value entries
-  idx <- setdiff(1:length(headerName), grep("'", headerName))
+  idx <- setdiff(1:length(header), grep("'", header))
   for (i in idx) {
-    headerName[i] <- strsplit(headerName[i], "/")[[1]][1]
+    header[i] <- strsplit(header[i], "/")[[1]][1]
   }
   
   # split header in keywords and values
-  idx <- 1:length(headerName)
-  hdr <- unlist(strsplit(headerName[idx], "="))
+  idx <- 1:length(header)
+  hdr <- unlist(strsplit(header[idx], "="))
   
   # remove comments from character value entries 
   idx <- grep("'", hdr)

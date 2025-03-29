@@ -36,7 +36,7 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
   }, s = {
     bitpix <- 16
   }, stop("Unrecognized data type in 
-          sunxplrr:fun_write_header: not byte or single"))
+          sunxplrr:fun_write_header: type not byte or single"))
 
   cimages <- sprintf("%-80s", 
     "SIMPLE  = T                      / File conforms to FITS standard")
@@ -66,9 +66,10 @@ fun_write_header <- function (x, type = "single", bscale = 1, bzero = 0,
   if (length(header) > 0) {
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
-                  "^ *BZERO ", "^ *END ", 
+                  "^ *BZERO ",  
                   "^ *COMMENT   FITS \\(Flexible Image Transport System\\) format is defined in 'Astronomy", 
-                  "^ *COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H")
+                  "^ *COMMENT   and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H",
+                  "^ *END ")
     
     for (string in reserved) {
       idx <- grep(string, header, ignore.case = TRUE)
