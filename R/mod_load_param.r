@@ -28,7 +28,7 @@
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2025-04-02 / Frt
 # - `Created`    : 2020-01-13 / Frt
 # - `Last test`  : 2020-01-20 / Frt
 #
@@ -58,6 +58,7 @@ mod_load_param <- function(inp_file_name, sdo.image,
       sdo.image = "TRUE", 
       flip.image = "FALSE",
       flop.image = "FALSE",
+      delta.p = 0,
       #
       # mod_disc_image
       #
@@ -104,6 +105,7 @@ mod_load_param <- function(inp_file_name, sdo.image,
       inp_data_path = inp_data_path,
       sdo.image = "FALSE",
       inp_file_name = inp_file_name,
+      delta.p = 0,
       #
       # mod_disc_image
       #

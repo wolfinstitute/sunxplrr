@@ -4,10 +4,10 @@
 \alias{fun_parse_header}
 \title{Parses FITS header}
 \usage{
-fun_parse_header(headerName)
+fun_parse_header(header)
 }
 \arguments{
-\item{headerName}{list containing image FITS header.}
+\item{header}{list containing image FITS header.}
 }
 \value{
 Character vector with parsed FITS header entries.

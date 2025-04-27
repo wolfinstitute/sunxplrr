@@ -2,19 +2,19 @@
 % Please edit documentation in R/fun_hdr2list.r
 \name{fun_hdr2list}
 \alias{fun_hdr2list}
-\title{Extracts image header to list}
+\title{Converts FITS image header to list}
 \usage{
-fun_hdr2list(h)
+fun_hdr2list(hdr)
 }
 \arguments{
-\item{h}{FITS hdr from FITSio::readFITS(image)}
+\item{hdr}{FITS hdr}
 }
 \value{
 list containing FITS header keywords and corresponding values.
 }
 \description{
-Extracts the image header to a list of keywords with values.
-COMMENT and HISTORY lines are omitted.
+Converts the FITS image header to a list of keywords with
+values. COMMENT and HISTORY lines are omitted.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

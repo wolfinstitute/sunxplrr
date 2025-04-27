@@ -9,6 +9,9 @@ wrap_mod_calcium(
   sdo.image,
   inp_data_path,
   out_data_path,
+  exchange.header = exchange.header,
+  inp_hdata_path,
+  inp_hfile_name = inp_hfile_name,
   rds.output = "FALSE",
   full.output = "FALSE",
   light.save = "FALSE",
@@ -24,6 +27,11 @@ wrap_mod_calcium(
 \item{inp_data_path}{full path to input directory.}
 
 \item{out_data_path}{full path to output directory.}
+
+\item{exchange.header}{boolean if TRUE the header of the original image will
+be changed.}
+
+\item{inp_hfile_name}{string with input file name of the new header file.}
 
 \item{rds.output}{if TRUE all results are saved as R data file.}
 

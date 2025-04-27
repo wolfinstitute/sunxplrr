@@ -4,7 +4,7 @@
 \alias{fun_flip_image}
 \title{Flips the provided image}
 \usage{
-fun_flip_image(image, hdrlst, header, sdo.image = "FALSE")
+fun_flip_image(image, hdrlst, header, flip.image = "FALSE")
 }
 \arguments{
 \item{image}{tibble image with i and j pixel coordinates and pixel values x.}
@@ -13,15 +13,14 @@ fun_flip_image(image, hdrlst, header, sdo.image = "FALSE")
 
 \item{header}{list containing image FITS header.}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
-images.}
+\item{flip.image}{boolean if TRUE the image will be flipped.}
 }
 \value{
 tibble with flipped image, updated hdrlst and header.
 }
 \description{
 Flips the provided image by reversing the y-axis of the image
-(interchanging up and down). Do not flip for sdo images. Algorithm from
+(interchanging up and down). Do not flip if flag is set. Algorithm from
 Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
 2nd edition 2005, p. 331f.
 }

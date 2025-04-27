@@ -7,8 +7,12 @@
 mod_fits_import(
   inp_data_path,
   inp_file_name,
+  exchange.header = "FALSE",
+  inp_hdata_path = inp_data_path,
+  inp_hfile_name = inp_file_name,
   sdo.image = "FALSE",
-  cut.image = "FALSE"
+  flip.image = "FALSE",
+  flop.image = "FALSE"
 )
 }
 \arguments{
@@ -16,16 +20,26 @@ mod_fits_import(
 
 \item{inp_file_name}{string with input file name.}
 
-\item{sdo.image}{if TRUE the image is originally an imported sdo jpg-file.}
+\item{exchange.header}{boolean if TRUE the header of the original image will
+be changed.}
 
-\item{cut.image}{if TRUE the image contains additional text in the corners.}
+\item{inp_hdata_path}{string with input data path for new header file.}
+
+\item{inp_hfile_name}{string with input file name of the new header file.}
+
+\item{sdo.image}{boolean if TRUE the image is an imported sdo jpg-file.}
+
+\item{flip.image}{boolean if TRUE the image will be flipped.}
+
+\item{flop.image}{boolean if TRUE the image will be flopped.}
 }
 \value{
 list with fitsim, hdrlst and header.
 }
 \description{
 Imports single FITS file given the file path and name. Returns
-tibble with image, tibble with hdrlst and character vector header.
+tibble with image, tibble with hdrlst and character vector header. Changes
+image header, flips and flops the image, if requested.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

@@ -27,9 +27,9 @@
 #'
 #' @export
 
-# - `Last change`: 2023-04-02 / Frt
+# - `Last change`: 2025-04-02 / Frt
 # - `Created`    : 2019-12-26 / Frt
-# - `Last test`  : 2019-12-27 / Frt
+# - `Last test`  : 2025-04-02 / Frt
 #
 fun_sdo_keywords <- function (file.name, header, hdrlst, 
                           telescope = "SDO/AIA", 
@@ -42,28 +42,17 @@ fun_sdo_keywords <- function (file.name, header, hdrlst,
   
   if (sdo.image){
     
-  # parse file name
+  # parses file name
   
-  key.words <- strsplit(strsplit(file.name, "[.]")[[1]][1], "_")[[1]]
+  key.words <- fun_parse_filename(file.name)
   
-  yr <- stringr::str_sub(key.words[1],1,4)              
-  mt <- stringr::str_sub(key.words[1],5,6)         
-  dy <- stringr::str_sub(key.words[1],7,8)       
+  # provides keywords
   
-  date <- paste(yr,mt,dy, sep = "-")
-  
-  hr <- stringr::str_sub(key.words[2],1,2)              
-  mn <- stringr::str_sub(key.words[2],3,4)         
-  sc <- stringr::str_sub(key.words[2],5,6)
-  
-  time <- paste(hr,mn,sc, sep = ":")
+  date.obs    <- key.words$date.obs
+  naxisn      <- key.words$naxisn       # not used as already provided
+  wavelnth    <- key.words$wavelnth                     
 
-  date.obs    <- paste(date,time, sep = "T")
-  
-  naxisn      <- key.words[3]  # not used as already provided
-  wavelnth    <- key.words[4]                     
-
-  # update hdrlst
+  # updates hdrlst
   
   hdrlst$TELESCOP   <- telescope
   hdrlst$OBJECT     <- object
@@ -72,7 +61,7 @@ fun_sdo_keywords <- function (file.name, header, hdrlst,
   hdrlst$WAVEUNIT   <- waveunit
   hdrlst$`DATE-OBS` <- date.obs
   
-  # update header
+  # updates header
   
   cimages <- addKwv("TELESCOP", telescope, "Telescope",
                     header)

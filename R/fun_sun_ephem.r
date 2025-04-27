@@ -2,25 +2,32 @@
 #'
 #' @description Calculates ephemeris for physical coordinates of the Sun, 
 #'   including P0, B0, L0, the Sun's apparent diameter in arcsecs and the 
-#'   Carrington rotation number. 
+#'   Carrington rotation number. Considers offsets or a priori settings of the
+#'   image axes against the heliographic coordinate system.
 #'   Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 #' 
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
-#' @param sdo.image boolean switch for case of sdo image.
+#' @param sdo.image boolean if TRUE P0 is set to zero indicating, that the 
+#'   heliographic aequator lies parallel to the image x-axis.
 #'
+#' @param delta.p num angle in degrees between image x-axes and true RA-axis
+#'   as measured counterclockwise from image axes. Not considered in the case
+#'   where sdo.image = T.
+#' 
 #' @return tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
-#'   the Carrington rotation number.
+#'   the Carrington rotation number according to the a priori orientation of
+#'   the heliographic coordinate system of the image.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2025-04-02 / Frt
 # - `Created`    : 2019-12-20 / Frt
-# - `Last test`  : 2019-12-28 / Frt
+# - `Last test`  : 2025-04-02 / Frt
 #
-fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE"){
+fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE", delta.p = 0){
   
   date_time <- hdrlst$`DATE-OBS`
   
@@ -117,8 +124,8 @@ fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE"){
     y <- (y + 180) 
   }
   
-  # Position angle of the Sun's northern axes
-  P0 <- x + y
+  # Position angle of the Sun's northern axes including offset
+  P0 <- x + y + delta.p
   
   # heliografic latitude of the center of the solar disk
   B0 <- asin(sin((SL - K) * pi / 180) * sin(I * pi / 180)) * (180 / pi)

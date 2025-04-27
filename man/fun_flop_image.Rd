@@ -4,7 +4,7 @@
 \alias{fun_flop_image}
 \title{Flops the provided image}
 \usage{
-fun_flop_image(image, hdrlst, header, sdo.image = "FALSE")
+fun_flop_image(image, hdrlst, header, flop.image = "FALSE")
 }
 \arguments{
 \item{image}{tibble image with i and j pixel coordinates and pixel values x.}
@@ -13,18 +13,16 @@ fun_flop_image(image, hdrlst, header, sdo.image = "FALSE")
 
 \item{header}{list containing image FITS header.}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo calcium
-images.}
+\item{flop.image}{boolean if TRUE the image will be flopped.}
 }
 \value{
 tibble with flopped image, updated hdrlst and header.
 }
 \description{
 Flops the provided image by reversing the x-axis of the image
-(interchanging left and right side). Do not flop for sdo images, which are
-oriented east to the left and north to the top. The algorithm is from
-Berry, R. and Burnell, J.: The Handbook of Astronomical Image Processing,
-2nd edition 2005, p. 332.
+(interchanging left and right side). Do not flop if flag is set. The
+algorithm is from Berry, R. and Burnell, J.: The Handbook of Astronomical
+Image Processing, 2nd edition 2005, p. 332.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

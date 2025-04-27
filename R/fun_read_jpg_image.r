@@ -1,7 +1,8 @@
 #' @title Reads JPG image from disc
 #'
 #' @description Reads monochrome or three color JPG image from disc. Constructs
-#'  minimal FITS header and returns image with the provided bit depth.
+#'  minimal FITS header, corrects gamma and returns image with the provided 
+#'  bit depth.
 #'
 #' @param filename input path and file name.
 #'
@@ -13,11 +14,12 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-03-27 / Frt
+# - `Last change`: 2025-04-02 / Frt
 # - `Created`    : 2025-03-16 / Frt
 # - `Last test`  : 2025-03-17 / Frt
 #
-fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 16){
+fun_read_jpg_image <- function(filename = "sunxplrr.jpg", 
+                               gamma = 1.5, bitpix = 16){
   
   # Imports image as matrix
   imjpg <- jpeg::readJPEG(filename)
@@ -28,7 +30,7 @@ fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 
   }
   
   # Rotates image about -90 degrees
-  fitsim <- fun_mat2tibbl(imjpg2) |> 
+  fitsim <- fun_mat2tibbl(imjpg) |> 
     select(i=j, j=i, x)
   
   ymax <- max(fitsim$j) + 1
@@ -45,17 +47,22 @@ fun_read_jpg_image <- function(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 
   # Scales image intensity values
   fitsim <- fitsim |> 
     mutate(x = as.integer(x * (2^bitpix - 1)))
+ 
   
+   
+  hdr0 <- fun_minimal_header(x = fun_tibbl2mat(fitsim), 
+                             bitpix = bitpix, bscale = bscale, 
+                             bzero = bzero, header = "")
+  # 
+  # 
+  # 
+  #   header <- fun_read_header(con, maxLines = maxLines)
+  #   hdr <- fun_parse_header(headerName = header)
+  #   D <- fun_readFITSarray(con, hdr)
+  #   
+  # 
+  # 
+  # D$header <- header
   
-  con <- file(filename, "rb")
-  
-    header <- fun_read_header(con, maxLines = maxLines)
-    hdr <- fun_parse_header(headerName = header)
-    D <- fun_readFITSarray(con, hdr)
-    
-  close(con)
-  
-  D$header <- header
-  
-  return(D)
+  # return(D)
 }
