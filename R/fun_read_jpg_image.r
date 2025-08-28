@@ -1,8 +1,7 @@
 #' @title Reads JPG image from disc
 #'
 #' @description Reads monochrome or three color JPG image from disc. Constructs
-#'  minimal FITS header, corrects gamma and returns image with the provided 
-#'  bit depth.
+#'  minimal FITS header and returns image with the provided bit depth.
 #'
 #' @param filename input path and file name.
 #'
@@ -14,55 +13,29 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-04-02 / Frt
-# - `Created`    : 2025-03-16 / Frt
-# - `Last test`  : 2025-03-17 / Frt
+# - `Last change`: 2025-05-21 / Frt
+# - `Created`    : 2025-05-20 / Frt
+# - `Last test`  : 2025-05-21 / Frt
 #
-fun_read_jpg_image <- function(filename = "sunxplrr.jpg", 
-                               gamma = 1.5, bitpix = 16){
+fun_read_jpg_image <- function(filename = "sun_logo.jpg", bitpix = 16){
   
   # Imports image as matrix
-  imjpg <- jpeg::readJPEG(filename)
+  imDat <- jpeg::readJPEG(filename)
   
   # Chooses green channel if more than one color dimension is present
-  if (length(dim(imjpg)) > 2){
-    imjpg <- imjpg[,,2]
+  if (length(dim(imDat)) > 2){
+    imDat <- imDat[,,2]
   }
   
-  # Rotates image about -90 degrees
-  fitsim <- fun_mat2tibbl(imjpg) |> 
-    select(i=j, j=i, x)
+  # Constructs minimal header
+  header <- fun_minimal_header(x = imDat, bitpix = bitpix, header = "")
   
-  ymax <- max(fitsim$j) + 1
+  # Strips unused information from header
+  hdr <- fun_parse_header(header)
   
-  fitsim <- fitsim |>  
-    mutate(yj = as.integer(ymax - j)) |>   
-    select(-j, yj, i, x) |> 
-    select(i, j=yj, x)
+  # Return
+  z <- list(imDat = imDat, hdr = hdr, header = header)
   
-  # Corrects gamma
-  fitsim <- fitsim |>
-    mutate(x = x^(1/gamma))
+  return(z)
   
-  # Scales image intensity values
-  fitsim <- fitsim |> 
-    mutate(x = as.integer(x * (2^bitpix - 1)))
- 
-  
-   
-  hdr0 <- fun_minimal_header(x = fun_tibbl2mat(fitsim), 
-                             bitpix = bitpix, bscale = bscale, 
-                             bzero = bzero, header = "")
-  # 
-  # 
-  # 
-  #   header <- fun_read_header(con, maxLines = maxLines)
-  #   hdr <- fun_parse_header(headerName = header)
-  #   D <- fun_readFITSarray(con, hdr)
-  #   
-  # 
-  # 
-  # D$header <- header
-  
-  # return(D)
 }

@@ -1,35 +1,29 @@
-#' @title Writes image header
+#' @title Constructs minimal image header
 #'
-#' @description Writes and closes the image header.
+#' @description Constructs character vector with minimal FITS header keywords.
 #'
 #' @param x image data matrix.
 #'
-#' @param type implemented are "single" and "byte" for 16 bit and 8 bit images.
+#' @param bitpix equals to 16 or 8 corresponding to 16 bit or 8 bit images.
 #'
-#' @param bscale pixel_values = bzero + bscale * FITS_value.
+#' @param header string vector with card images of an existing header.
 #'
-#' @param bzero pixel_values = bzero + bscale * FITS_value.
-#'
-#' @param header string vector with card images of the existing header and of
-#'   new or modified card images.
-#'
-#' @return z tibble with additional column to x containing the flattened image.
+#' @return character vector with FITS header keywords.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2025-04-02 / Frt
+# - `Last change`: 2025-05-20 / Frt
 # - `Created`    : 2019-12-10 / Frt
-# - `Last test`  : 2025-03-02 / Frt
+# - `Last test`  : 2025-05-20 / Frt
 #
-fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0, 
-                              header = ""){
+fun_minimal_header <- function (x, bitpix = 16, header = ""){
   
   if (bitpix != "8" & bitpix != "16"){
     
     stop(paste0("Bitdepth ", bitpix, " is not implemented 
-                in sunxplrr::fun_minimal_image"))
+                in sunxplrr::fun_minimal_header"))
     
   }
   
@@ -40,10 +34,8 @@ fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0,
     } else {
       bscale <- (2^8 -1)/(max(x, na.rm = TRUE))
     }
-    x      <- x * bscale
     bzero  <- 0
-    type <- "byte"
-    
+
   }
   
   if (bitpix == "16"){
@@ -53,29 +45,15 @@ fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0,
     } else {
       bscale <- (2^16 -1)/(max(x, na.rm = TRUE))
     }
-    x      <- x * bscale
     bzero  <- 2^15
-    x      <- x - bzero
-    type <- "single"
-    
+
   }
   
-  x <- array(as.integer(x), dim = dim(x))
-  
-  # construct header
+  # Construct header
   
   naxisn <- dim(x)
   naxis  <- length(naxisn)
   
-  type   <- tolower(substr(type, 1, 1))
-
-  switch(type, b = {
-    bitpix <- 8
-  }, s = {
-    bitpix <- 16
-  }, stop("Unrecognized data type in 
-          sunxplrr:fun_write_header: type not byte or single"))
-
   cimages <- sprintf("%-80s", 
     "SIMPLE  = T                      / File conforms to FITS standard")
     
@@ -85,12 +63,13 @@ fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0,
                       cimages)
   
   tmp <- character(naxis)
-    
+  
   for (i in 1:naxis) {
     
     tmp[i] <- newKwv(sprintf("NAXIS%d", i), naxisn[i], "length of data axis")
     
   }
+  
   cimages <- c(cimages, tmp)
   
   cimages <- addKwv("BSCALE", bscale, "overall scaling", cimages)
@@ -101,7 +80,9 @@ fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0,
   cimages <- addComment("  and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H", 
                         cimages)
   
-  if (length(header) > 0) {
+  # Add provided header and strip in it the already set reserved keywords
+  
+  if (header != "") {
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
                   "^ *BZERO ",  
@@ -121,4 +102,7 @@ fun_minimal_header <- function (x, bitpix = 16, bscale = 1, bzero = 0,
   
   closeHdr(cimages)
 
+  # Return
+  
+  return(cimages)
 }
