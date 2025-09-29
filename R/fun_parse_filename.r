@@ -1,19 +1,19 @@
-#' @title Parses file names for mandatory keywords as DATE-OBS
+#' @title Parses file names for mandatory keyword DATE-OBS
 #'
-#' @description Reconstructs the FITS keywords DATE-OBS, NAXISN and WAVELNTH 
-#'   from the provided file name.
+#' @description Reconstructs the FITS keyword DATE-OBS from the provided file
+#'  name.
 #'
 #' @param file.name string original image file name.
 #'
-#' @return list with parsed date.obs, naxisn and wavelnth.
+#' @return list with parsed date.obs.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2025-04-02 / Frt
+# - `Last change`: 2025-09-29 / Frt
 # - `Created`    : 2025-04-02 / Frt
-# - `Last test`  : 2025-04-02 / Frt
+# - `Last test`  : 2025-09-29 / Frt
 #
 fun_parse_filename <- function (file.name){
   
@@ -35,12 +35,9 @@ fun_parse_filename <- function (file.name){
 
   date.obs    <- paste(date,time, sep = "T")
   
-  naxisn      <- key.words[3]  # not used as already provided
-  wavelnth    <- key.words[4]                     
-
   # return
   
-  z <- list(date.obs = date.obs, naxisn = naxisn, wavelnth = wavelnth)
+  z <- list(date.obs = date.obs)
   
   return(z)
   

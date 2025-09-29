@@ -8,13 +8,6 @@
 #'
 #' @param inp_file_name string with input file name.
 #'
-#' @param exchange.header boolean if TRUE the header of the original image will
-#'   be changed.
-#'   
-#' @param inp_hdata_path string with input data path for new header file.
-#'
-#' @param inp_hfile_name string with input file name of the new header file.
-#'
 #' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
 #'   
 #' @param flip.image boolean if TRUE the image will be flipped.
@@ -27,13 +20,12 @@
 #'
 #' @export
 
-# - `Last change`: 2025-05-20 / Frt
+# - `Last change`: 2025-09-29 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-05-20 / Frt
+# - `Last test`  : 2025-09-29 / Frt
 #
 mod_jpg_import <- function(inp_data_path,
-                           inp_file_name, 
-                           gamma = 1.5,
+                           inp_file_name,
                            sdo.image = "FALSE", 
                            flip.image = "FALSE",
                            flop.image = "FALSE"){
@@ -46,25 +38,6 @@ mod_jpg_import <- function(inp_data_path,
   
   # Converts image matrix to tibble
   fitsim <- fun_mat2tibbl(im$imDat)
-  
-  # Corrects gamma
-  fitsim <- fitsim |>
-    mutate(x = x^(1/gamma))
-  
-  # Rotates image about -90 degrees
-  fitsim <- fitsim |> 
-    select(i=j, j=i, x)
-  
-  ymax <- max(fitsim$j) + 1
-  
-  fitsim <- fitsim |>  
-    mutate(yj = as.integer(ymax - j)) |>   
-    select(-j, yj, i, x) |> 
-    select(i, j=yj, x)
-  
-  # Scales image intensity values
-  fitsim <- fitsim |> 
-    mutate(x = as.integer(x * (2^as.numeric(hdrlst$BITPIX) - 1)))
   
   # updates header
   

@@ -1,9 +1,12 @@
-#' @title Reads JPG image from disc
+#' @title Reads JPG image
 #'
-#' @description Reads monochrome or three color JPG image from disc. Constructs
-#'  minimal FITS header and returns image with the provided bit depth.
+#' @description Reads monochrome or three color JPG image. Gamma corrects, 
+#'  rotates and scales image. Constructs minimal FITS header and returns 
+#'  image with the provided bit depth.
 #'
 #' @param filename input path and file name.
+#'
+#' @param gamma gamma correction factor value.
 #'
 #' @param bitpix int image will be scaled to the provided bit depth.
 #'
@@ -13,11 +16,12 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-05-21 / Frt
+# - `Last change`: 2025-09-29 / Frt
 # - `Created`    : 2025-05-20 / Frt
 # - `Last test`  : 2025-05-21 / Frt
 #
-fun_read_jpg_image <- function(filename = "sun_logo.jpg", bitpix = 16){
+fun_read_jpg_image <- function(filename = "sun_logo.jpg", 
+                               gamma = 1.5, bitpix = 16){
   
   # Imports image as matrix
   imDat <- jpeg::readJPEG(filename)
@@ -26,7 +30,32 @@ fun_read_jpg_image <- function(filename = "sun_logo.jpg", bitpix = 16){
   if (length(dim(imDat)) > 2){
     imDat <- imDat[,,2]
   }
+
+  # Converts image matrix to tibble
+  fitsim <- fun_mat2tibbl(imDat)
   
+  # Corrects gamma
+  fitsim <- fitsim |>
+    mutate(x = x^(1/gamma))
+  
+  # Rotates image about -90 degrees
+  fitsim <- fitsim |> 
+    select(i=j, j=i, x)
+  
+  ymax <- max(fitsim$j) + 1
+  
+  fitsim <- fitsim |>  
+    mutate(yj = as.integer(ymax - j)) |>   
+    select(-j, yj, i, x) |> 
+    select(i, j=yj, x)
+  
+  # Scales image intensity values
+  fitsim <- fitsim |> 
+    mutate(x = as.integer(x * (2^bitpix - 1)))
+  
+  # Converts tibble to matrix
+  imDat <- fun_tibbl2mat(x = fitsim)
+
   # Constructs minimal header
   header <- fun_minimal_header(x = imDat, bitpix = bitpix, header = "")
   
