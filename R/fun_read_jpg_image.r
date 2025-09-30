@@ -18,7 +18,7 @@
 
 # - `Last change`: 2025-09-29 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-05-21 / Frt
+# - `Last test`  : 2025-09-29 / Frt
 #
 fun_read_jpg_image <- function(filename = "sun_logo.jpg", 
                                gamma = 1.5, bitpix = 16){

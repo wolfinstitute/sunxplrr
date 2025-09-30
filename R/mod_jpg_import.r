@@ -1,6 +1,6 @@
-#' @title Imports a single FITS file
+#' @title Imports a single JPG file
 #'
-#' @description Imports single FITS file given the file path and name. Returns 
+#' @description Imports single JPG file given the file path and name. Returns 
 #'   tibble with image, tibble with hdrlst and character vector header. Changes 
 #'   image header, flips and flops the image, if requested.
 #'
@@ -20,9 +20,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-09-29 / Frt
+# - `Last change`: 2025-09-30 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-09-29 / Frt
+# - `Last test`  : 2025-09-30 / Frt
 #
 mod_jpg_import <- function(inp_data_path,
                            inp_file_name,
@@ -38,6 +38,57 @@ mod_jpg_import <- function(inp_data_path,
   
   # Converts image matrix to tibble
   fitsim <- fun_mat2tibbl(im$imDat)
+  
+  # updates header
+  
+  cimages <- addHistory("  Modified by the R language sunxplrr package", 
+                        header)
+  header <- cimages
+  
+  # updates hdrlst and header
+  
+  hdrlst$FILENAME <- inp_file_name
+  hdrlst$SOLAR_P0 <- sun.ephem$P0
+  hdrlst$SOLAR_B0 <- sun.ephem$B0
+  hdrlst$SOLAR_L0 <- sun.ephem$L0
+  hdrlst$SOLAR_D  <- sun.ephem$SD
+  hdrlst$CAR_ROT  <- sun.ephem$CAR_ROT
+  
+  cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
+                    header)
+  cimages <- addKwv("SOLAR_P0", sun.ephem$P0, "P0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_B0", sun.ephem$B0, "B0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_L0", sun.ephem$L0, "L0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_D", sun.ephem$SD, "Diameter of solar disc (arcsec)",
+                    cimages)
+  cimages <- addKwv("CAR_ROT", sun.ephem$CAR_ROT, "Carrington rotation number",
+                    cimages)
+  header <- cimages
+  
+  # flips the image, if required
+  
+  im_flip <- fun_flip_image(image = fitsim, 
+                            hdrlst = hdrlst,
+                            header = header,
+                            flip.image = flip.image)
+  
+  fitsim <- im_flip$flipped_image
+  hdrlst <- im_flip$hdrlst
+  header <- im_flip$header
+  
+  # flops the image, if required
+  
+  im_flop <- fun_flop_image(image = fitsim, 
+                            hdrlst = hdrlst,
+                            header = header,
+                            flop.image = flop.image)
+  
+  fitsim <- im_flop$flopped_image
+  hdrlst <- im_flop$hdrlst
+  header <- im_flop$header
   
   # updates header
   
