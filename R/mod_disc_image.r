@@ -49,9 +49,9 @@
 #'
 #' @export
 
-# - `Last change`: 2023-04-10 / Frt
+# - `Last change`: 2025-09-30 / Frt
 # - `Created`    : 2019-12-03 / Frt
-# - `Last test`  : 2020-01-20 / Frt
+# - `Last test`  : 2025-09-30 / Frt
 #
 mod_disc_image <- function(x, hdrlst, header, 
                            threshold = 10, method = "relative",
@@ -60,56 +60,12 @@ mod_disc_image <- function(x, hdrlst, header,
                            image.values.name = "image", grid_each_deg = 10,
                            res_each_deg_on_grid = 0.01){
 
-  if (hdrlst$CUTIMAGE == "TRUE"){
-    
-    # extract middle row of original image
+  # cut image
   
-    cut.im.row <- fun_extract_row(x, row = round(as.numeric(hdrlst$NAXIS2) / 2))
-  
-    # find mask borders
-  
-    oversized.mask <- fun_mask_create(cut.im.row, hdrlst = hdrlst,
-                                      threshold = cut.threshold, 
-                                      method = cut.method)
-  
-    cut.im.mask <- oversized.mask$mask
-    
-    # find approximate disc center coordinates and radius
-  
-    cut.disc.center <- NULL
-  
-    cut.im.mask.stat <- cut.im.mask %>% 
-      filter(th == 1) %>% 
-      group_by(j) %>% 
-      summarize(min_i = min(i), max_i = max(i))
-  
-    cut.disc.center$x_i <- 
-      round((cut.im.mask.stat$min_i + cut.im.mask.stat$max_i) / 2)
-    cut.disc.center$y_j <- cut.im.mask.stat$j
-    cut.disc.center$r   <- 
-      round((cut.im.mask.stat$max_i - cut.im.mask.stat$min_i) / 2)
-  
-    # draw oversized circle with known center coordinates and radius
-  
-    cut.disc.border <- fun_mask_circle(x, disc.center = cut.disc.center, 
-                                       border.pix = cut.border.pix)
-  
-    # fill oversized circle
-  
-    cut.disc.mask <- fun_mask_fill(cut.disc.border, mask = "circle")
-  
-    # extract oversized disc from original image
-  
-    cut.x <- fun_disc_math(x, values_1 = "x", cut.disc.mask, 
-                              values_2 = "fill", method = "mult",
-                              values.name = "image")
-   
-    x <- cut.x %>% 
-      mutate(i = as.integer(i)) %>% 
-      mutate(j = as.integer(j)) %>% 
-      select(i, j, x = image)
-  
-  }
+  x <- fun_cut_image(x, hdrlst, header, 
+                     cut.threshold = cut.threshold, 
+                     cut.method = cut.method,
+                     cut.border.pix = cut.border.pix)
   
   # create final mask 
   

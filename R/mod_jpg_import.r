@@ -10,6 +10,8 @@
 #'
 #' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
 #'   
+#' @param cut.image if TRUE the image contains additional text in the corners.
+#'   
 #' @param flip.image boolean if TRUE the image will be flipped.
 #'   
 #' @param flop.image boolean if TRUE the image will be flopped.
@@ -26,17 +28,36 @@
 #
 mod_jpg_import <- function(inp_data_path,
                            inp_file_name,
-                           sdo.image = "FALSE", 
+                           sdo.image = "TRUE",
+                           cut.image = "TRUE",
                            flip.image = "FALSE",
                            flop.image = "FALSE"){
   
-  # Reads JPG image 
+  # reads JPG image 
   im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name))
   
   header <- im$header
+
+  # parses tibble with header keyword values
+  
   hdrlst <- fun_hdr2list(im$hdr) 
   
-  # Converts image matrix to tibble
+  # constructs sdo-specific keywords, if necessary
+  
+  sdo.keywords <- fun_sdo_keywords(file.name = inp_file_name,
+                                   header = header, 
+                                   hdrlst = hdrlst,
+                                   sdo.image = sdo.image)
+  
+  header <- sdo.keywords$header
+  hdrlst <- sdo.keywords$hdrlst
+  
+  # calculates ephemeris for physical coordinates of the Sun
+  
+  sun.ephem <- fun_sun_ephem(hdrlst = hdrlst, sdo.image = sdo.image) 
+  
+  # converts matrix containing FITS frame in a tibble 
+  
   fitsim <- fun_mat2tibbl(im$imDat)
   
   # updates header
@@ -48,6 +69,7 @@ mod_jpg_import <- function(inp_data_path,
   # updates hdrlst and header
   
   hdrlst$FILENAME <- inp_file_name
+  hdrlst$CUTIMAGE <- cut.image
   hdrlst$SOLAR_P0 <- sun.ephem$P0
   hdrlst$SOLAR_B0 <- sun.ephem$B0
   hdrlst$SOLAR_L0 <- sun.ephem$L0
@@ -56,6 +78,8 @@ mod_jpg_import <- function(inp_data_path,
   
   cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
                     header)
+  cimages <- addKwv("CUTIMAGE", cut.image, "Input file has text in the corners",
+                    cimages)
   cimages <- addKwv("SOLAR_P0", sun.ephem$P0, "P0 angle (degrees)",
                     cimages)
   cimages <- addKwv("SOLAR_B0", sun.ephem$B0, "B0 angle (degrees)",
@@ -92,7 +116,7 @@ mod_jpg_import <- function(inp_data_path,
   
   # updates header
   
-  cimages <- addHistory("  FITS file import with sunxplrr::mod_jpg_import",
+  cimages <- addHistory("  JPG file import with sunxplrr::mod_jpg_import",
                         header)
   
   header <- cimages

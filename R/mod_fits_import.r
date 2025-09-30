@@ -17,6 +17,8 @@
 #'
 #' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
 #'   
+#' @param cut.image if TRUE the image contains additional text in the corners.
+#'   
 #' @param flip.image boolean if TRUE the image will be flipped.
 #'   
 #' @param flop.image boolean if TRUE the image will be flopped.
@@ -27,16 +29,17 @@
 #'
 #' @export
 
-# - `Last change`: 2025-03-02 / Frt
+# - `Last change`: 2025-09-30 / Frt
 # - `Created`    : 2019-12-22 / Frt
-# - `Last test`  : 2025-03-02 / Frt
+# - `Last test`  : 2025-09-30 / Frt
 #
 mod_fits_import <- function(inp_data_path,
                             inp_file_name, 
                             exchange.header = "FALSE", 
                             inp_hdata_path = inp_data_path,
                             inp_hfile_name = inp_file_name,
-                            sdo.image = "FALSE", 
+                            sdo.image = "FALSE",
+                            cut.image = "FALSE",
                             flip.image = "FALSE",
                             flop.image = "FALSE"){
   
@@ -84,6 +87,7 @@ mod_fits_import <- function(inp_data_path,
   # updates hdrlst and header
   
   hdrlst$FILENAME <- inp_file_name
+  hdrlst$CUTIMAGE <- cut.image
   hdrlst$SOLAR_P0 <- sun.ephem$P0
   hdrlst$SOLAR_B0 <- sun.ephem$B0
   hdrlst$SOLAR_L0 <- sun.ephem$L0
@@ -92,6 +96,8 @@ mod_fits_import <- function(inp_data_path,
   
   cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
                     header)
+  cimages <- addKwv("CUTIMAGE", cut.image, "Input file has text in the corners",
+                    cimages)
   cimages <- addKwv("SOLAR_P0", sun.ephem$P0, "P0 angle (degrees)",
                     cimages)
   cimages <- addKwv("SOLAR_B0", sun.ephem$B0, "B0 angle (degrees)",
