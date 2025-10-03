@@ -24,7 +24,7 @@
 fun_sdo_keywords <- function (file.name, header, hdrlst, 
                               sdo.image = "FALSE"){
   
-  # dummy use for non sdo calcium images allowed
+  # dummy use for non sdo jpg images allowed
   
   if (sdo.image){
     

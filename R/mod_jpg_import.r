@@ -10,8 +10,6 @@
 #'
 #' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
 #'   
-#' @param cut.image if TRUE the image contains additional text in the corners.
-#'   
 #' @param flip.image boolean if TRUE the image will be flipped.
 #'   
 #' @param flop.image boolean if TRUE the image will be flopped.
@@ -22,14 +20,13 @@
 #'
 #' @export
 
-# - `Last change`: 2025-09-30 / Frt
+# - `Last change`: 2025-10-03 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-09-30 / Frt
+# - `Last test`  : 2025-10-03 / Frt
 #
 mod_jpg_import <- function(inp_data_path,
                            inp_file_name,
                            sdo.image = "TRUE",
-                           cut.image = "TRUE",
                            flip.image = "FALSE",
                            flop.image = "FALSE"){
   
@@ -54,7 +51,12 @@ mod_jpg_import <- function(inp_data_path,
   
   # calculates ephemeris for physical coordinates of the Sun
   
-  sun.ephem <- fun_sun_ephem(hdrlst = hdrlst, sdo.image = sdo.image) 
+  sun.ephem <- fun_sun_ephem(header = header,
+                             hdrlst = hdrlst, 
+                             sdo.image = sdo.image) 
+  
+  header <- sun.ephem$header
+  hdrlst <- sun.ephem$hdrlst
   
   # converts matrix containing FITS frame in a tibble 
   
@@ -69,27 +71,9 @@ mod_jpg_import <- function(inp_data_path,
   # updates hdrlst and header
   
   hdrlst$FILENAME <- inp_file_name
-  hdrlst$CUTIMAGE <- cut.image
-  hdrlst$SOLAR_P0 <- sun.ephem$P0
-  hdrlst$SOLAR_B0 <- sun.ephem$B0
-  hdrlst$SOLAR_L0 <- sun.ephem$L0
-  hdrlst$SOLAR_D  <- sun.ephem$SD
-  hdrlst$CAR_ROT  <- sun.ephem$CAR_ROT
-  
+
   cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
                     header)
-  cimages <- addKwv("CUTIMAGE", cut.image, "Input file has text in the corners",
-                    cimages)
-  cimages <- addKwv("SOLAR_P0", sun.ephem$P0, "P0 angle (degrees)",
-                    cimages)
-  cimages <- addKwv("SOLAR_B0", sun.ephem$B0, "B0 angle (degrees)",
-                    cimages)
-  cimages <- addKwv("SOLAR_L0", sun.ephem$L0, "L0 angle (degrees)",
-                    cimages)
-  cimages <- addKwv("SOLAR_D", sun.ephem$SD, "Diameter of solar disc (arcsec)",
-                    cimages)
-  cimages <- addKwv("CAR_ROT", sun.ephem$CAR_ROT, "Carrington rotation number",
-                    cimages)
   header <- cimages
   
   # flips the image, if required

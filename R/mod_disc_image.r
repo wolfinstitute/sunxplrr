@@ -14,6 +14,8 @@
 #'
 #' @param header list containing image FITS header.
 #'
+#' @param cut.image if TRUE, image contains text in the corners.
+#'
 #' @param threshold cutoff threshold in absolute or relative units.
 #'
 #' @param method If method = 'absolute' then the cutoff threshold value is in
@@ -49,11 +51,11 @@
 #'
 #' @export
 
-# - `Last change`: 2025-09-30 / Frt
+# - `Last change`: 2025-10-03 / Frt
 # - `Created`    : 2019-12-03 / Frt
-# - `Last test`  : 2025-09-30 / Frt
+# - `Last test`  : 2025-10-03 / Frt
 #
-mod_disc_image <- function(x, hdrlst, header, 
+mod_disc_image <- function(x, hdrlst, header, cut.image,
                            threshold = 10, method = "relative",
                            cut.threshold = 20, cut.method = "relative",
                            cut.border.pix = 100, add.border.pix = 0,
@@ -62,7 +64,7 @@ mod_disc_image <- function(x, hdrlst, header,
 
   # cut image
   
-  x <- fun_cut_image(x, hdrlst, header, 
+  x <- fun_cut_image(x, hdrlst, header, cut.image,
                      cut.threshold = cut.threshold, 
                      cut.method = cut.method,
                      cut.border.pix = cut.border.pix)
@@ -165,9 +167,13 @@ mod_disc_image <- function(x, hdrlst, header,
                              grid_each_deg = grid_each_deg, 
                              res_each_deg_on_grid = res_each_deg_on_grid)
   
+  # add image with disc.grid on disc.image
+  
+  disc.grid.image <- fun_grid_plt(disc.grid, hdrlst = hdrlst)
+  
   # return
   
-  z <- list(disc.image = disc.grid, hdrlst = hdrlst, header = header)
+  z <- list(disc.image = disc.grid.image, hdrlst = hdrlst, header = header)
   
   return(z)
   

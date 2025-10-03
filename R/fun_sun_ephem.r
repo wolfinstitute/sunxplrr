@@ -6,6 +6,8 @@
 #'   image axes against the heliographic coordinate system.
 #'   Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 #' 
+#' @param header list containing image FITS header.
+#'
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
 #' @param sdo.image boolean if TRUE P0 is set to zero indicating, that the 
@@ -13,7 +15,7 @@
 #'
 #' @param delta.p num angle in degrees between image x-axes and true RA-axis
 #'   as measured counterclockwise from image axes. Not considered in the case
-#'   where sdo.image = T.
+#'   where sdo.image is TRUE.
 #' 
 #' @return tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
 #'   the Carrington rotation number according to the a priori orientation of
@@ -23,11 +25,11 @@
 #'
 #' @export
 
-# - `Last change`: 2025-04-02 / Frt
+# - `Last change`: 2025-10-03 / Frt
 # - `Created`    : 2019-12-20 / Frt
-# - `Last test`  : 2025-04-02 / Frt
+# - `Last test`  : 2025-10-03 / Frt
 #
-fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE", delta.p = 0){
+fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
   
   date_time <- hdrlst$`DATE-OBS`
   
@@ -158,6 +160,30 @@ fun_sun_ephem <- function(hdrlst, sdo.image = "FALSE", delta.p = 0){
   
   z <- tibble::tibble(P0 = P0, B0 = B0, L0 = L0, SD = SD, CAR_ROT = CAR_ROT)
 
+  # updates hdrlst and header
+  
+  hdrlst$SOLAR_P0 <- P0
+  hdrlst$SOLAR_B0 <- B0
+  hdrlst$SOLAR_L0 <- L0
+  hdrlst$SOLAR_D  <- SD
+  hdrlst$CAR_ROT  <- CAR_ROT
+  
+  cimages <- addKwv("SOLAR_P0", P0, "P0 angle (degrees)",
+                    header)
+  cimages <- addKwv("SOLAR_B0", B0, "B0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_L0", L0, "L0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_D", SD, "Diameter of solar disc (arcsec)",
+                    cimages)
+  cimages <- addKwv("CAR_ROT", CAR_ROT, "Carrington rotation number",
+                    cimages)
+  header <- cimages
+  
+  # return
+  
+  z <- list(z, hdrlst = hdrlst, header = header)
+  
   return(z)
-
+  
 }

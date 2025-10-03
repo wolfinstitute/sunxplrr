@@ -13,6 +13,8 @@
 #'
 #' @param header list containing image FITS header.
 #'
+#' @param cut.image image contains text in the corners.
+#'
 #' @param cut.threshold cutoff threshold for images with text in the corners 
 #'   in absolute or relative units.
 #'
@@ -31,15 +33,16 @@
 #'
 #' @export
 
-# - `Last change`: 2025-09-30 / Frt
+# - `Last change`: 2025-10-03 / Frt
 # - `Created`    : 2019-12-03 / Frt
-# - `Last test`  : 2025-09-30 / Frt
+# - `Last test`  : 2025-10-03 / Frt
 #
-fun_cut_image <- function(x, hdrlst, header, 
-                          cut.threshold = 20, cut.method = "relative",
+fun_cut_image <- function(x, hdrlst, header, cut.image,
+                          cut.threshold = 20, 
+                          cut.method = "relative",
                           cut.border.pix = 100){
 
-  if (hdrlst$CUTIMAGE == "TRUE"){
+  if (cut.image){
     
     # extract middle row of original image
   
