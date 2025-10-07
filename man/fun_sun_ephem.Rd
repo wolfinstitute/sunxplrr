@@ -4,21 +4,30 @@
 \alias{fun_sun_ephem}
 \title{Calculates ephemeris for physical coordinates of the Sun}
 \usage{
-fun_sun_ephem(hdrlst, sdo.image = "FALSE")
+fun_sun_ephem(header, hdrlst, sdo.image = "FALSE", delta.p = 0)
 }
 \arguments{
+\item{header}{list containing image FITS header.}
+
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
-\item{sdo.image}{boolean switch for case of sdo image.}
+\item{sdo.image}{boolean if TRUE P0 is set to zero indicating, that the
+heliographic aequator lies parallel to the image x-axis.}
+
+\item{delta.p}{num angle in degrees between image x-axes and true RA-axis
+as measured counterclockwise from image axes. Not considered in the case
+where sdo.image is TRUE.}
 }
 \value{
-tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
-the Carrington rotation number.
+tibble with P0, B0, L0, the Sun's apparent diameter and radius in
+arcsecs as the Carrington rotation number according to the a priori
+orientation of the heliographic coordinate system of the image.
 }
 \description{
 Calculates ephemeris for physical coordinates of the Sun,
 including P0, B0, L0, the Sun's apparent diameter in arcsecs and the
-Carrington rotation number.
+Carrington rotation number. Considers offsets or a priori settings of the
+image axes against the heliographic coordinate system.
 Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 }
 \author{

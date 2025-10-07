@@ -2,12 +2,14 @@
 % Please edit documentation in R/fun_read_jpg_image.r
 \name{fun_read_jpg_image}
 \alias{fun_read_jpg_image}
-\title{Reads JPG image from disc}
+\title{Reads JPG image}
 \usage{
-fun_read_jpg_image(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 16)
+fun_read_jpg_image(filename = "sun_logo.jpg", gamma = 1.5, bitpix = 16)
 }
 \arguments{
 \item{filename}{input path and file name.}
+
+\item{gamma}{gamma correction factor value.}
 
 \item{bitpix}{int image will be scaled to the provided bit depth.}
 }
@@ -15,8 +17,9 @@ fun_read_jpg_image(filename = "sunxplrr.jpg", gamma = 1.5, bitpix = 16)
 list with image matrix, parsed header and full header vectors.
 }
 \description{
-Reads monochrome or three color JPG image from disc. Constructs
-minimal FITS header and returns image with the provided bit depth.
+Reads monochrome or three color JPG image. Gamma corrects,
+rotates and scales image. Constructs minimal FITS header and returns
+image with the provided bit depth.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

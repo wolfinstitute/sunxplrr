@@ -8,6 +8,7 @@ mod_disc_image(
   x,
   hdrlst,
   header,
+  cut.image,
   threshold = 10,
   method = "relative",
   cut.threshold = 20,
@@ -26,6 +27,8 @@ intensity values x.}
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
 \item{header}{list containing image FITS header.}
+
+\item{cut.image}{if TRUE, image contains text in the corners.}
 
 \item{threshold}{cutoff threshold in absolute or relative units.}
 
