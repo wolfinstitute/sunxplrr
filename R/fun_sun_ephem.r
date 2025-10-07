@@ -17,17 +17,17 @@
 #'   as measured counterclockwise from image axes. Not considered in the case
 #'   where sdo.image is TRUE.
 #' 
-#' @return tibble with P0, B0, L0, the Sun's apparent diameter in arcsecs and
-#'   the Carrington rotation number according to the a priori orientation of
-#'   the heliographic coordinate system of the image.
+#' @return tibble with P0, B0, L0, the Sun's apparent diameter and radius in 
+#'   arcsecs as the Carrington rotation number according to the a priori 
+#'   orientation of the heliographic coordinate system of the image.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2025-10-03 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2019-12-20 / Frt
-# - `Last test`  : 2025-10-03 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
 fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
   
@@ -165,6 +165,7 @@ fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
   hdrlst$SOLAR_P0 <- P0
   hdrlst$SOLAR_B0 <- B0
   hdrlst$SOLAR_L0 <- L0
+  hdrlst$SOLAR_R  <- SD / 2
   hdrlst$SOLAR_D  <- SD
   hdrlst$CAR_ROT  <- CAR_ROT
   
@@ -173,6 +174,8 @@ fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
   cimages <- addKwv("SOLAR_B0", B0, "B0 angle (degrees)",
                     cimages)
   cimages <- addKwv("SOLAR_L0", L0, "L0 angle (degrees)",
+                    cimages)
+  cimages <- addKwv("SOLAR_R", SD / 2, "Radius of solar disc (arcsec)",
                     cimages)
   cimages <- addKwv("SOLAR_D", SD, "Diameter of solar disc (arcsec)",
                     cimages)

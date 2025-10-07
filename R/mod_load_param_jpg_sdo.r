@@ -31,7 +31,7 @@
 # - `Last test`  : 2025-10-03 / Frt
 #
 mod_load_param_jpg_sdo <- function(inp_file_name, 
-                           sdo.image,
+                           sdo.image = "TRUE",
                            cut.image,
                            inp_data_path, 
                            out_data_path,
@@ -46,11 +46,12 @@ mod_load_param_jpg_sdo <- function(inp_file_name,
   
     param.lst <- list(
       #
-      # mod_jpg_import
+      # mod_frame_import
       #
       inp_data_path = inp_data_path, 
       inp_file_name = inp_file_name,
       sdo.image = "TRUE",
+      parse.method = "SDO/HMI",
       flip.image = "FALSE",
       flop.image = "FALSE",
       #
@@ -67,12 +68,9 @@ mod_load_param_jpg_sdo <- function(inp_file_name,
       grid_each_deg = 10,
       res_each_deg_on_grid = 0.01,
       #
-      # mod_clv_correction
+      # mod_disc_flat
       #
-      model = "poly_with_plane",
-      run = 3,
-      clip.resid.out = "FALSE",
-      sclv.method = "NL",
+      mean.method = "median",
       #
       # mod_feature_extraction
       #

@@ -25,9 +25,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-01 / Frt
+# - `Last change`: 2025-10-05 / Frt
 # - `Created`    : 2019-12-13 / Frt
-# - `Last test`  : 2025-10-01 / Frt
+# - `Last test`  : 2025-10-05 / Frt
 #
 mod_disc_flat <- function(x, 
                           hdrlst, 

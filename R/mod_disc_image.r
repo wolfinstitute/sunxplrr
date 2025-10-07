@@ -123,7 +123,7 @@ mod_disc_image <- function(x, hdrlst, header, cut.image,
   hdrlst$RADIUS   <- disc.center$r
   hdrlst$DSKTHRSH <- image.mask.threshold
   hdrlst$BORDRPIX <- add.border.pix
-  hdrlst$PIXSCALE <- hdrlst$SOLAR_R / (2 * disc.center$r)
+  hdrlst$PIXSCALE <- hdrlst$SOLAR_D / (2 * disc.center$r)
   hdrlst$IMQTYPIX <- disc.quality$sigma.border$sd.pix
   hdrlst$IMQTYARC <- disc.quality$sigma.border$sd.arcsec
     
@@ -143,7 +143,7 @@ mod_disc_image <- function(x, hdrlst, header, cut.image,
   cimages <- addKwv("BORDRPIX", add.border.pix,
                     "Number of pixels added to solar radius (pix)",
                     cimages)
-  cimages <- addKwv("PIXSCALE", hdrlst$PIXSCALE,
+  cimages <- addKwv("PIXSCALE", hdrlst$SOLAR_D / (2 * disc.center$r),
                     "Image scale (arcsec/pix)",
                     cimages)
   cimages <- addKwv("IMQTYPIX", hdrlst$IMQTYPIX,

@@ -1,6 +1,7 @@
 #' @title Constructs minimal image header
 #'
-#' @description Constructs character vector with minimal FITS header keywords.
+#' @description Constructs character vector with minimal FITS header keywords. 
+#'  Adds keywords as provided by card images of an existing header.
 #'
 #' @param x image data matrix.
 #'
@@ -14,9 +15,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-05-20 / Frt
+# - `Last change`: 2025-10-06 / Frt
 # - `Created`    : 2019-12-10 / Frt
-# - `Last test`  : 2025-05-20 / Frt
+# - `Last test`  : 2025-10-06 / Frt
 #
 fun_minimal_header <- function (x, bitpix = 16, header = ""){
   
@@ -79,6 +80,11 @@ fun_minimal_header <- function (x, bitpix = 16, header = ""){
                         cimages)
   cimages <- addComment("  and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H", 
                         cimages)
+  
+  cimages <- addHistory("  Modified by the R language sunxplrr package", 
+                        cimages)
+  header <- cimages
+  
   
   # Add provided header and strip in it the already set reserved keywords
   

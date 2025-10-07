@@ -1,6 +1,6 @@
-#' @title Imports a single JPG file
+#' @title Imports a single image file
 #'
-#' @description Imports single JPG file given the file path and name. Returns 
+#' @description Imports single image file given the file path and name. Returns 
 #'   tibble with image, tibble with hdrlst and character vector header. Changes 
 #'   image header, flips and flops the image, if requested.
 #'
@@ -10,6 +10,8 @@
 #'
 #' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
 #'   
+#' @param parse.method string method for parsing the provided file.name.
+#'
 #' @param flip.image boolean if TRUE the image will be flipped.
 #'   
 #' @param flop.image boolean if TRUE the image will be flopped.
@@ -20,34 +22,37 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-03 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-10-03 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
-mod_jpg_import <- function(inp_data_path,
+mod_frame_import <- function(inp_data_path,
                            inp_file_name,
-                           sdo.image = "TRUE",
+                           sdo.image,
+                           parse.method = "SDO/HMI",
                            flip.image = "FALSE",
                            flop.image = "FALSE"){
   
   # reads JPG image 
+  
   im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name))
   
   header <- im$header
-
-  # parses tibble with header keyword values
+  
+  # parses header list
   
   hdrlst <- fun_hdr2list(im$hdr) 
   
-  # constructs sdo-specific keywords, if necessary
+  # constructs file-specific keywords, if necessary
   
-  sdo.keywords <- fun_sdo_keywords(file.name = inp_file_name,
-                                   header = header, 
-                                   hdrlst = hdrlst,
-                                   sdo.image = sdo.image)
+  parsed.keywords <- fun_parse_keywords(file.name = inp_file_name,
+                                        header = header, 
+                                        hdrlst = hdrlst,
+                                        sdo.image = sdo.image,
+                                        parse.method = parse.method)
   
-  header <- sdo.keywords$header
-  hdrlst <- sdo.keywords$hdrlst
+  header <- parsed.keywords$header
+  hdrlst <- parsed.keywords$hdrlst
   
   # calculates ephemeris for physical coordinates of the Sun
   
@@ -58,15 +63,9 @@ mod_jpg_import <- function(inp_data_path,
   header <- sun.ephem$header
   hdrlst <- sun.ephem$hdrlst
   
-  # converts matrix containing FITS frame in a tibble 
+  # converts matrix containing image frame in a tibble 
   
   fitsim <- fun_mat2tibbl(im$imDat)
-  
-  # updates header
-  
-  cimages <- addHistory("  Modified by the R language sunxplrr package", 
-                        header)
-  header <- cimages
   
   # updates hdrlst and header
   
@@ -100,7 +99,7 @@ mod_jpg_import <- function(inp_data_path,
   
   # updates header
   
-  cimages <- addHistory("  JPG file import with sunxplrr::mod_jpg_import",
+  cimages <- addHistory("  image file import with sunxplrr::mod_frame_import",
                         header)
   
   header <- cimages

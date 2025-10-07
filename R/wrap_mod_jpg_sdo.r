@@ -32,9 +32,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-03 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2019-12-28 / Frt
-# - `Last test`  : 2025-10-03 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
 wrap_mod_jpg_sdo <- function(inp_file_name, sdo.image, 
                              inp_data_path, out_data_path,
@@ -58,26 +58,27 @@ elapsed0 <- system.time(
       
 )[1]
   
-message("  sunxplrr::mod_load_param for file ", param.lst$inp_file_name,
+message("  sunxplrr::mod_load_param_jpg_sdo for file ", param.lst$inp_file_name,
         " finished. Elapsed time ", elapsed0, " seconds")
 
-# Modul Importieren FITS Datei -------------------------------------------------
+# Modul Importieren Bilddatei --------------------------------------------------
 
 elapsed1 <- system.time(
 
-  mod.jpg.import <- mod_jpg_import(inp_data_path = param.lst$inp_data_path,
-                                   inp_file_name = param.lst$inp_file_name,
-                                   sdo.image = param.lst$sdo.image,
-                                   flip.image = param.lst$flip.image,
-                                   flop.image = param.lst$flop.image)
+  mod.frame.import <- mod_frame_import(inp_data_path = param.lst$inp_data_path,
+                                       inp_file_name = param.lst$inp_file_name,
+                                       sdo.image = param.lst$sdo.image,
+                                       parse.method = param.lst$parse.method,
+                                       flip.image = param.lst$flip.image,
+                                       flop.image = param.lst$flop.image)
     
 )[1]
 
-fitsim     <- mod.jpg.import$fitsim
-hdrlst     <- mod.jpg.import$hdrlst
-header     <- mod.jpg.import$header
+fitsim     <- mod.frame.import$fitsim
+hdrlst     <- mod.frame.import$hdrlst
+header     <- mod.frame.import$header
 
-message("  sunxplrr::mod_jpg_import ", param.lst$inp_file_name,
+message("  sunxplrr::mod_frame_import ", param.lst$inp_file_name,
         " finished. Elapsed time ", elapsed1, " seconds")
 
 # Modul Identifizieren der Sonnenscheibe ---------------------------------------
@@ -107,27 +108,23 @@ header      <- mod.disc.image$header
 message("  sunxplrr::mod_disc_image ... finished. Elapsed time ", 
         elapsed2, " seconds")
 
-# Modul Randabschattungskorrektur ----------------------------------------------
+# Modul Flatkorrektur ----------------------------------------------------------
 
 elapsed3 <- system.time(
 
-  mod.clv.correction <- mod_clv_correction(disc.image,
-                                    hdrlst = hdrlst,
-                                    header = header,
-                                    model = param.lst$model,
-                                    run = param.lst$run,
-                                    clip.resid.out = param.lst$clip.resid.out,
-                                    sclv.method = param.lst$sclv.method,
-                                    sdo.image = param.lst$sdo.image,
-                                    light.save = param.lst$light.save)
+  mod.disc.flat <- mod_disc_flat(disc.image,
+                                 hdrlst = hdrlst,
+                                 header = header,
+                                 mean.method = param.lst$mean.method,
+                                 sdo.image = sdo.image)
 
 )[1]
 
-disc.flat     <- mod.clv.correction$disc.flat
-hdrlst        <- mod.clv.correction$hdrlst
-header        <- mod.clv.correction$header
+disc.flat     <- mod.disc.flat$disc.flat
+hdrlst        <- mod.disc.flat$hdrlst
+header        <- mod.disc.flat$header
 
-message("  sunxplrr::mod_clv_correction ... finished. Elapsed time ", 
+message("  sunxplrr::mod_disc_flat ... finished. Elapsed time ", 
         elapsed3, " seconds")
 
 # Modul Plage und Network Extraktion -------------------------------------------
