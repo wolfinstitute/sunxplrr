@@ -48,13 +48,13 @@ wrap_mod_jpg_sdo <- function(inp_file_name, sdo.image,
   
 elapsed0 <- system.time(
 
-  param.lst <- mod_load_param_jpg_sdo(inp_file_name, sdo.image, 
-                                      inp_data_path, out_data_path,
-                                      rds.output = rds.output,
-                                      full.output = full.output,
-                                      light.save = light.save,
-                                      fits.save = fits.save,
-                                      jpg.save = jpg.save)
+  param.lst <- mod_load_param(inp_file_name, sdo.image, 
+                              inp_data_path, out_data_path,
+                              rds.output = rds.output,
+                              full.output = full.output,
+                              light.save = light.save,
+                              fits.save = fits.save,
+                              jpg.save = jpg.save)
       
 )[1]
   
@@ -127,24 +127,23 @@ header        <- mod.disc.flat$header
 message("  sunxplrr::mod_disc_flat ... finished. Elapsed time ", 
         elapsed3, " seconds")
 
-# Modul Plage und Network Extraktion -------------------------------------------
+# Modul Spot, Penumbra und Umbra Extraktion ------------------------------------
 
 elapsed4 <- system.time(
 
-  mod_feature_extraction <- mod_feature_extraction(disc.flat,
+  mod.spot.extraction <- mod_spot_extraction(disc.flat, 
                                     hdrlst = hdrlst,
-                                    header = header,
-                                    plage.contrast = param.lst$plage.contrast, 
-                                    en.contrast = param.lst$en.contrast, 
-                                    qn.contrast = param.lst$qn.contrast)
-
+                                    header = header, 
+                                    spot.contrast = param.lst$spot.contrast, 
+                                    umbra.contrast = param.lst$umbra.contrast)
+  
 )[1]
 
-disc.features <- mod_feature_extraction$disc.features
-hdrlst        <- mod_feature_extraction$hdrlst
-header        <- mod_feature_extraction$header
+disc.features <- mod.spot.extraction$disc.features
+hdrlst        <- mod.spot.extraction$hdrlst
+header        <- mod.spot.extraction$header
 
-message("  sunxplrr::mod_feature_extraction ... finished. Elapsed time ",
+message("  sunxplrr::mod_spot_extraction ... finished. Elapsed time ",
         elapsed4, " seconds")
 
 # Modul Index Berechnung -------------------------------------------------------

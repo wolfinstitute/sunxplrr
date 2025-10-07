@@ -2,9 +2,9 @@
 % Please edit documentation in R/mod_disc_flat.r
 \name{mod_disc_flat}
 \alias{mod_disc_flat}
-\title{Fits the clv function, calibrate it and flattens the image}
+\title{Recalibrates flat image}
 \usage{
-mod_disc_flat(x, hdrlst, header, mean.method = "mean", sdo.image = "FALSE")
+mod_disc_flat(x, hdrlst, header, mean.method = "median", sdo.image = "FALSE")
 }
 \arguments{
 \item{x}{tibble containing columns wih pixel coordinates i and j and all
@@ -14,21 +14,19 @@ the calculated image information as provided by the disc extraction module.}
 
 \item{header}{list containing image FITS header.}
 
-\item{mean.method}{implemented are "mean" and "median", with "mean" as
-default.}
+\item{mean.method}{string implemented methods are "mean", "mode" and
+"median", with "median" as default.}
 
 \item{sdo.image}{boolean switch for dummy use in the case of non SDO images.}
 }
 \value{
-tibble containing clv function, calib image and flat image.
+list containing rescaled flat image, hdrlst and header.
 }
 \description{
-Fits a six parameter polynom to the limb-variation-function.
-Additionnally, a plane may be fitted trough the center of the image disc.
-Removes all fitted non clv variation from the image and flattens it to
-intensity contrasts. Be aware, that the resulting intensity contrast values
-should be multiplied with some appropriate factor before converting them
-back to FITS, since in the FITS image all values are treated as integers.
+Recalibrates the flat image to \link{0,1} interval. Be aware, that
+the resulting intensity contrast values should be multiplied by some
+appropriate factor before converting them back to FITS, since in the FITS
+image all values are treated as integers.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

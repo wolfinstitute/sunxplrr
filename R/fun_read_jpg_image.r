@@ -16,9 +16,9 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-09-29 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-09-29 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
 fun_read_jpg_image <- function(filename = "sun_logo.jpg", 
                                gamma = 1.5, bitpix = 16){
@@ -57,7 +57,7 @@ fun_read_jpg_image <- function(filename = "sun_logo.jpg",
   imDat <- fun_tibbl2mat(x = fitsim)
 
   # Constructs minimal header
-  header <- fun_minimal_header(x = imDat, bitpix = bitpix, header = "")
+  header <- fun_minimal_header(x = imDat, bitpix = bitpix, add.header = "")
   
   # Strips unused information from header
   hdr <- fun_parse_header(header)

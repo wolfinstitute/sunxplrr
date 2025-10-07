@@ -7,7 +7,7 @@
 #'
 #' @param bitpix equals to 16 or 8 corresponding to 16 bit or 8 bit images.
 #'
-#' @param header string vector with card images of an existing header.
+#' @param add.header string vector with card images of an existing header.
 #'
 #' @return character vector with FITS header keywords.
 #'
@@ -15,11 +15,11 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-06 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2019-12-10 / Frt
-# - `Last test`  : 2025-10-06 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
-fun_minimal_header <- function (x, bitpix = 16, header = ""){
+fun_minimal_header <- function (x, bitpix = 16, add.header = ""){
   
   if (bitpix != "8" & bitpix != "16"){
     
@@ -88,7 +88,7 @@ fun_minimal_header <- function (x, bitpix = 16, header = ""){
   
   # Add provided header and strip in it the already set reserved keywords
   
-  if (header != "") {
+  if (add.header != "") {
     
     reserved <- c("^ *SIMPLE ", "^ *BITPIX ", "^ *NAXIS", "^ *BSCALE ", 
                   "^ *BZERO ",  

@@ -44,7 +44,6 @@ mod_spot_extraction <- function(x, hdrlst, header,
                             method = "absolute")
   
   y.spot <- y.spot$mask %>% 
-    filter(th > 0) %>% 
     select(i, j, spcntrst = x, spot = th)
   
   # extract penumbra

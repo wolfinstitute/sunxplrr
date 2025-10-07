@@ -1,8 +1,6 @@
-#' @title Sets the parameter list for STU and SDO image analysis
+#' @title Sets the parameter list for solar image analysis
 #'
-#' @description Sets the parameter list for STU and SDO image analysis. The 
-#'   add.border.pix and contrast thresholds are set following the recommendation
-#'   of Jannine Meier from 13.01.2020.
+#' @description Sets the parameter list for SDO jpg image analysis.
 #'
 #' @param inp_file_name input file name with extension.
 #'
@@ -28,16 +26,14 @@
 #'
 #' @export
 
-# - `Last change`: 2025-04-02 / Frt
+# - `Last change`: 2025-10-07 / Frt
 # - `Created`    : 2020-01-13 / Frt
-# - `Last test`  : 2020-01-20 / Frt
+# - `Last test`  : 2025-10-07 / Frt
 #
-mod_load_param <- function(inp_file_name, sdo.image, 
-                           inp_data_path, out_data_path,
-                           exchange.header = "FALSE",
-                           inp_hdata_path = inp_data_path,
-                           inp_hfile_name = inp_file_name,
-                           
+mod_load_param <- function(inp_file_name, 
+                           sdo.image = "TRUE",
+                           inp_data_path, 
+                           out_data_path,
                            rds.output = "FALSE", 
                            full.output = "FALSE",
                            light.save = "FALSE",
@@ -48,17 +44,14 @@ mod_load_param <- function(inp_file_name, sdo.image,
   
     param.lst <- list(
       #
-      # mod_fits_import
+      # mod_frame_import
       #
       inp_data_path = inp_data_path, 
       inp_file_name = inp_file_name,
-      exchange.header = "FALSE", 
-      inp_hdata_path = inp_data_path,
-      inp_hfile_name = inp_file_name,
-      sdo.image = "TRUE", 
+      sdo.image = "TRUE",
+      parse.method = "SDO/HMI",
       flip.image = "FALSE",
       flop.image = "FALSE",
-      delta.p = 0,
       #
       # mod_disc_image
       #
@@ -73,15 +66,14 @@ mod_load_param <- function(inp_file_name, sdo.image,
       grid_each_deg = 10,
       res_each_deg_on_grid = 0.01,
       #
-      # mod_clv_correction
+      # mod_disc_flat
       #
-      model = "poly_with_plane",
-      run = 3,
-      clip.resid.out = "FALSE",
-      sclv.method = "NL",
+      mean.method = "mode",
       #
       # mod_feature_extraction
       #
+      spot.contrast = 0.85,
+      umbra.contrast = 0.70,
       plage.contrast = 1.50, 
       en.contrast = 1.35, 
       qn.contrast = 1.15,

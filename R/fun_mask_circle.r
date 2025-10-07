@@ -33,7 +33,7 @@ fun_mask_circle <- function(x, disc.center, border.pix = 0){
   y_c <- disc.center$y_j
   r   <- disc.center$r + border.pix 
 
-  numbr.val <- 8 * r
+  numbr.val <- 16 * r
   angle.inc <- 2 * pi / numbr.val
   angles    <- seq(0, 2 * pi - angle.inc, by = angle.inc)
   

@@ -2,16 +2,13 @@
 % Please edit documentation in R/mod_load_param.r
 \name{mod_load_param}
 \alias{mod_load_param}
-\title{Sets the parameter list for STU and SDO image analysis}
+\title{Sets the parameter list for solar image analysis}
 \usage{
 mod_load_param(
   inp_file_name,
-  sdo.image,
+  sdo.image = "TRUE",
   inp_data_path,
   out_data_path,
-  exchange.header = "FALSE",
-  inp_hdata_path = inp_data_path,
-  inp_hfile_name = inp_file_name,
   rds.output = "FALSE",
   full.output = "FALSE",
   light.save = "FALSE",
@@ -42,9 +39,7 @@ mod_load_param(
 list containing param.lst.
 }
 \description{
-Sets the parameter list for STU and SDO image analysis. The
-add.border.pix and contrast thresholds are set following the recommendation
-of Jannine Meier from 13.01.2020.
+Sets the parameter list for SDO jpg image analysis.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

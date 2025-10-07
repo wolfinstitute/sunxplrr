@@ -4,14 +4,14 @@
 \alias{fun_minimal_header}
 \title{Constructs minimal image header}
 \usage{
-fun_minimal_header(x, bitpix = 16, header = "")
+fun_minimal_header(x, bitpix = 16, add.header = "")
 }
 \arguments{
 \item{x}{image data matrix.}
 
 \item{bitpix}{equals to 16 or 8 corresponding to 16 bit or 8 bit images.}
 
-\item{header}{string vector with card images of an existing header.}
+\item{add.header}{string vector with card images of an existing header.}
 }
 \value{
 character vector with FITS header keywords.
