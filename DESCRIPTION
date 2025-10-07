@@ -1,7 +1,7 @@
 Type: Package
 Package: sunxplrr
 Title: Tools for exploring Digital Images of the Sun
-Version: 0.1.0600
+Version: 0.1.0700
 Date: 2025-10-07
 Authors@R: 
     person("Thomas K.", "Friedli", , "thomas.k.friedli@bluewin.ch", role = c("cre", "aut", "cph"),
