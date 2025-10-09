@@ -45,10 +45,10 @@ wrap_mod_jpg_sdo <- function(inp_file_name,
   
 elapsed0 <- system.time(
 
-  param.lst <- mod_load_param(inp_file_name, 
-                              sdo.image, 
-                              inp_data_path, 
-                              out_data_path,
+  param.lst <- mod_load_param(inp_file_name = inp_file_name, 
+                              sdo.image = sdo.image, 
+                              inp_data_path = inp_data_path, 
+                              out_data_path = out_data_path,
                               rds.output = rds.output,
                               full.output = full.output,
                               light.save = light.save,
@@ -175,7 +175,7 @@ message("  sunxplrr::mod_spot_indices ... finished. Elapsed time ",
 
 elapsed6 <- system.time(
   
-  mod_output <- mod_output(images = images,
+  mod_output <- mod_output(images,
                            hdrlst = hdrlst,
                            header = header,
                            total.indices = total.indices, 
@@ -190,8 +190,7 @@ elapsed6 <- system.time(
                            full.output = param.lst$full.output,
                            light.save = param.lst$light.save,
                            fits.save = param.lst$fits.save,
-                           jpg.save = param.lst$jpg.save,
-                           out_data_path = param.lst$out_data_path)
+                           jpg.save = param.lst$jpg.save)
 
 )[1]
 
@@ -204,16 +203,6 @@ message("  sunxplrr::wrap_mod_jpg_sdo of file ", param.lst$inp_file_name,
         " finished.")
 
 z <- "done"
-
-# if (param.lst$light.save){
-#
-#  z <- "done"
-#  
-# } else {
-# 
-#   z <- mod_output
-# 
-# }
 
 return(z)
 

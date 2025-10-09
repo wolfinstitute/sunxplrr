@@ -34,11 +34,6 @@ wrap_mod_jpg_sdo(
 \item{fits.save}{if TRUE some fits images are saved.}
 
 \item{jpg.save}{if TRUE some daily charts are saved as jpg files.}
-
-\item{exchange.header}{boolean if TRUE the header of the original image will
-be changed.}
-
-\item{inp_hfile_name}{string with input file name of the new header file.}
 }
 \value{
 list with resulting image and header.

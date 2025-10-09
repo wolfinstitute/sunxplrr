@@ -76,7 +76,7 @@ mod_load_param <- function(inp_file_name,
       # mod_spot_extraction
       #
       spot.threshold = 0.85,
-      umbra.threshold = 0.70,
+      umbra.threshold = 0.55,
       #
       # mod_output
       #
@@ -84,8 +84,7 @@ mod_load_param <- function(inp_file_name,
       rds.output = rds.output,
       full.output = full.output,
       fits.save = fits.save,
-      jpg.save = jpg.save,
-      out_data_path = out_data_path
+      jpg.save = jpg.save
     )
 
   } else {

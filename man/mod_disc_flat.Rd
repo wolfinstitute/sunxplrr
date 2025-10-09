@@ -4,7 +4,7 @@
 \alias{mod_disc_flat}
 \title{Recalibrates flat image}
 \usage{
-mod_disc_flat(x, hdrlst, header, mean.method = "median", sdo.image = "FALSE")
+mod_disc_flat(x, hdrlst, header, mean.method = "mode", sdo.image = "FALSE")
 }
 \arguments{
 \item{x}{tibble containing columns wih pixel coordinates i and j and all
@@ -14,8 +14,8 @@ the calculated image information as provided by the disc extraction module.}
 
 \item{header}{list containing image FITS header.}
 
-\item{mean.method}{string implemented methods are "mean", "mode" and
-"median", with "median" as default.}
+\item{mean.method}{string implemented methods are "mean", "median" and
+"mode", with "mode" as default.}
 
 \item{sdo.image}{boolean switch for dummy use in the case of non SDO images.}
 }

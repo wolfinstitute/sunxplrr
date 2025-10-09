@@ -8,7 +8,7 @@ fun_parse_keywords(
   file.name,
   header,
   hdrlst,
-  sdo.image = "FALSE",
+  parse.filename = "FALSE",
   parse.method = "SDO/HMI"
 )
 }
@@ -19,7 +19,8 @@ fun_parse_keywords(
 
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
-\item{sdo.image}{boolean switch for dummy use in the case of non sdo images.}
+\item{parse.filename}{boolean switch for dummy use for frames with
+existing fits keywords.}
 
 \item{parse.method}{string method for parsing the provided file.name.}
 }

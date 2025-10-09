@@ -2,14 +2,14 @@
 % Please edit documentation in R/mod_spot_extraction.r
 \name{mod_spot_extraction}
 \alias{mod_spot_extraction}
-\title{Extracts the spot, penumbra and umbra features}
+\title{Extracts the spot, penumbra and umbra features, their masks and areas}
 \usage{
 mod_spot_extraction(
   x,
   hdrlst,
   header,
-  spot.contrast = 0.85,
-  umbra.contrast = 0.7
+  spot.threshold = 0.85,
+  umbra.threshold = 0.7
 )
 }
 \arguments{
@@ -20,17 +20,17 @@ image pixel values.}
 
 \item{header}{list containing image FITS header.}
 
-\item{spot.contrast}{cutoff threshold for spots.}
+\item{spot.threshold}{cutoff threshold for spots.}
 
-\item{umbra.contrast}{cutoff threshold for umbrae.}
+\item{umbra.threshold}{cutoff threshold for umbrae.}
 }
 \value{
-tibble with mask of the extracted features and their contrast values.
+tibble with mask of the extracted features and their area marks.
 }
 \description{
 Extracts the spot, penumbra and umbra features by applying
-cutoff thresholds. Calculates also the hemispheric corrected values for
-the extracted feature areas and contrasts.
+cutoff thresholds. Provides quantised feature masks. Calculates the total
+and the hemispheric corrected values for the extracted feature areas.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}

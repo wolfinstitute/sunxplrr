@@ -7,8 +7,10 @@
 mod_frame_import(
   inp_data_path,
   inp_file_name,
-  sdo.image,
+  parse.filename = "TRUE",
   parse.method = "SDO/HMI",
+  zero.pos.angle = "TRUE",
+  delta.p = 0,
   flip.image = "FALSE",
   flop.image = "FALSE"
 )
@@ -18,9 +20,17 @@ mod_frame_import(
 
 \item{inp_file_name}{string with input file name.}
 
-\item{sdo.image}{boolean if TRUE the image is an imported sdo jpg-file.}
+\item{parse.filename}{boolean switch for dummy use for frames with
+existing fits keywords.}
 
 \item{parse.method}{string method for parsing the provided file.name.}
+
+\item{zero.pos.angle}{boolean if TRUE P0 is set to zero indicating, that the
+heliographic aequator lies parallel to the image x-axis.}
+
+\item{delta.p}{num angle in degrees between image x-axes and true RA-axis
+as measured counterclockwise from image axes. Not considered in the case
+where zero.pos.angle is TRUE.}
 
 \item{flip.image}{boolean if TRUE the image will be flipped.}
 

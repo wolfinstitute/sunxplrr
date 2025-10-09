@@ -34,39 +34,41 @@
 #'
 #' @param jpg.save if TRUE some daily charts are saved as jpg files.
 #'
-#' @param out_data_path full path to output directory.
-#' 
 #' @return list containing images, hdrlst, header, indices and charts.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
-#' @import dplyr
-#'
 #' @export
 
-# - `Last change`: 2023-02-05 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2020-01-05 / Frt
-# - `Last test`  : 2020-01-19 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
-mod_output <- function(images, hdrlst, header,
-                       total.indices, hemisphere.indices,
-                       latitude.indices, chart.indices, 
-                       charts, synopsis.indices,
-                       synopsis, inp_file_name,
+mod_output <- function(x, hdrlst, header,
+                       total.indices, 
+                       hemisphere.indices,
+                       latitude.indices, 
+                       chart.indices, 
+                       charts, 
+                       synopsis.indices,
+                       synopsis,
                        rds.output = "FALSE",
                        full.output = "FALSE",
                        light.save = "FALSE",
                        fits.save = "FALSE",
-                       jpg.save = "FALSE",
-                       out_data_path){
+                       jpg.save = "FALSE"){
   
   # strip file name
   
-  name <- strsplit(inp_file_name, "[.]")[[1]][1]
+  name <- strsplit(hdrlst$inp_file_name, "[.]")[[1]][1]
+  
+  # out data path
+  
+  out_data_path = hdrlst$out_data_path
   
   # construct full data
   
-  z <- list(images = images, hdrlst = hdrlst, header = header,
+  z <- list(images = x, hdrlst = hdrlst, header = header,
             total.indices = total.indices, 
             hemisphere.indices = hemisphere.indices,
             latitude.indices = latitude.indices,
@@ -79,7 +81,7 @@ mod_output <- function(images, hdrlst, header,
     
   if (rds.output){  
   
-    # filename <- paste0(out_data_path,name,"_results.rds") 
+    # filename <- paste0(hdrlst$out_data_path,name,"_results.rds") 
     # readr::write_rds(z, filename)
     
   }
@@ -87,7 +89,7 @@ mod_output <- function(images, hdrlst, header,
   if (full.output){  
     
     # filename.images <- paste0(out_data_path,name,"_images.csv")
-    # readr::write_csv2(images, filename.images)
+    # readr::write_csv2(x, filename.images)
     
   }
   

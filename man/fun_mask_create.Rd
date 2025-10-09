@@ -4,7 +4,13 @@
 \alias{fun_mask_create}
 \title{Marks all pixels above or equal a given threshold}
 \usage{
-fun_mask_create(x, hdrlst, threshold = 10, method = "relative")
+fun_mask_create(
+  x,
+  hdrlst,
+  threshold = 10,
+  min.mask.value = 0,
+  method = "relative"
+)
 }
 \arguments{
 \item{x}{tibble containing 3 columns with pixel coordinates i and j and pixel
@@ -12,18 +18,24 @@ intensity values x.}
 
 \item{hdrlst}{tibble containing image FITS header keywords and values.}
 
-\item{threshold}{cutoff threshold in absolute or relative units.}
+\item{threshold}{num cutoff threshold in absolute or relative units.}
 
-\item{method}{If method = 'absolute' then the cutoff threshold value is in
-ADU units. Otherwise it is the threshold / 100 fraction of the maximal ADU
-value given by 2^bitpix.}
+\item{min.mask.value}{num minimal pixel value in the mask. Thus, specialized
+masks may be formulated for the thresholding of solar features on the disk.
+Binary masks used for convolutional purposes need min.mask.value = 0.}
+
+\item{method}{string if method = 'absolute' then the cutoff threshold value
+is in ADU units. Otherwise it is the threshold / 100 fraction of the
+maximal ADU value calculated as 2^bitpix.}
 }
 \value{
 list containing tibble with 4 columns for i, j pixel coordinates,
-intensity value x and binary mask th and tibble with mask.threshold value.
+intensity value x and binary mask th, a tibble with mask.threshold and a
+tibble with mask.value.
 }
 \description{
-Calculates binarised pixel mask according to a given threshold.
+Calculates binarised pixel mask according to a given threshold
+and a provided non mask pixel value.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
