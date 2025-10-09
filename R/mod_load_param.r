@@ -26,9 +26,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2020-01-13 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
 mod_load_param <- function(inp_file_name, 
                            sdo.image = "TRUE",
@@ -49,7 +49,10 @@ mod_load_param <- function(inp_file_name,
       inp_data_path = inp_data_path, 
       inp_file_name = inp_file_name,
       sdo.image = "TRUE",
+      parse.filename = "TRUE",
       parse.method = "SDO/HMI",
+      zero.pos.angle = "TRUE",
+      delta.p = 0,
       flip.image = "FALSE",
       flop.image = "FALSE",
       #
@@ -70,13 +73,10 @@ mod_load_param <- function(inp_file_name,
       #
       mean.method = "mode",
       #
-      # mod_feature_extraction
+      # mod_spot_extraction
       #
-      spot.contrast = 0.85,
-      umbra.contrast = 0.70,
-      plage.contrast = 1.50, 
-      en.contrast = 1.35, 
-      qn.contrast = 1.15,
+      spot.threshold = 0.85,
+      umbra.threshold = 0.70,
       #
       # mod_output
       #

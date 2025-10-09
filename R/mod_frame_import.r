@@ -8,10 +8,18 @@
 #'
 #' @param inp_file_name string with input file name.
 #'
-#' @param sdo.image boolean if TRUE the image is an imported sdo jpg-file.
-#'   
+#' @param parse.filename boolean switch for dummy use for frames with 
+#'   existing fits keywords.
+#' 
 #' @param parse.method string method for parsing the provided file.name.
 #'
+#' @param zero.pos.angle boolean if TRUE P0 is set to zero indicating, that the 
+#'   heliographic aequator lies parallel to the image x-axis.
+#'
+#' @param delta.p num angle in degrees between image x-axes and true RA-axis
+#'   as measured counterclockwise from image axes. Not considered in the case
+#'   where zero.pos.angle is TRUE.
+#'   
 #' @param flip.image boolean if TRUE the image will be flipped.
 #'   
 #' @param flop.image boolean if TRUE the image will be flopped.
@@ -22,20 +30,36 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
 mod_frame_import <- function(inp_data_path,
-                           inp_file_name,
-                           sdo.image,
-                           parse.method = "SDO/HMI",
-                           flip.image = "FALSE",
-                           flop.image = "FALSE"){
+                             inp_file_name,
+                             parse.filename = "TRUE",
+                             parse.method = "SDO/HMI",
+                             zero.pos.angle = "TRUE",
+                             delta.p = 0,
+                             flip.image = "FALSE",
+                             flop.image = "FALSE"){
   
-  # reads JPG image 
+  # parses file extension of input file name
   
-  im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name))
+  file.ext <- fun_parse_file_ext(inp_file_name)
+  
+  if (file.ext %in% c("jpg", "jpeg", "JPG", "JPEG")){
+    
+    # reads JPG image 
+    
+    im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name))
+    
+  } else {
+    
+    stop(c("Image file extension is not supported"))
+    
+  }
+  
+  # image header
   
   header <- im$header
   
@@ -48,7 +72,7 @@ mod_frame_import <- function(inp_data_path,
   parsed.keywords <- fun_parse_keywords(file.name = inp_file_name,
                                         header = header, 
                                         hdrlst = hdrlst,
-                                        sdo.image = sdo.image,
+                                        parse.filename = parse.filename,
                                         parse.method = parse.method)
   
   header <- parsed.keywords$header
@@ -58,7 +82,8 @@ mod_frame_import <- function(inp_data_path,
   
   sun.ephem <- fun_sun_ephem(header = header,
                              hdrlst = hdrlst, 
-                             sdo.image = sdo.image) 
+                             zero.pos.angle = zero.pos.angle,
+                             delta.p = delta.p) 
   
   header <- sun.ephem$header
   hdrlst <- sun.ephem$hdrlst
@@ -66,14 +91,6 @@ mod_frame_import <- function(inp_data_path,
   # converts matrix containing image frame in a tibble 
   
   fitsim <- fun_mat2tibbl(im$imDat)
-  
-  # updates hdrlst and header
-  
-  hdrlst$FILENAME <- inp_file_name
-
-  cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
-                    header)
-  header <- cimages
   
   # flips the image, if required
   
@@ -97,10 +114,14 @@ mod_frame_import <- function(inp_data_path,
   hdrlst <- im_flop$hdrlst
   header <- im_flop$header
   
-  # updates header
+  # updates hdrlst and header
   
+  hdrlst$FILENAME <- inp_file_name
+  
+  cimages <- addKwv("FILENAME", inp_file_name, "Original input file name",
+                    header)
   cimages <- addHistory("  image file import with sunxplrr::mod_frame_import",
-                        header)
+                        cimages)
   
   header <- cimages
   

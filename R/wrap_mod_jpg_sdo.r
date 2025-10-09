@@ -11,11 +11,6 @@
 #'
 #' @param out_data_path full path to output directory.
 #' 
-#' @param exchange.header boolean if TRUE the header of the original image will
-#'   be changed.
-#'   
-#' @param inp_hfile_name string with input file name of the new header file.
-#'
 #' @param rds.output if TRUE all results are saved as R data file.
 #'
 #' @param full.output if TRUE the full image data table is saved as csv file.
@@ -32,12 +27,14 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2019-12-28 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
-wrap_mod_jpg_sdo <- function(inp_file_name, sdo.image, 
-                             inp_data_path, out_data_path,
+wrap_mod_jpg_sdo <- function(inp_file_name, 
+                             sdo.image, 
+                             inp_data_path, 
+                             out_data_path,
                              rds.output = "FALSE", 
                              full.output = "FALSE",
                              light.save = "FALSE",
@@ -48,8 +45,10 @@ wrap_mod_jpg_sdo <- function(inp_file_name, sdo.image,
   
 elapsed0 <- system.time(
 
-  param.lst <- mod_load_param(inp_file_name, sdo.image, 
-                              inp_data_path, out_data_path,
+  param.lst <- mod_load_param(inp_file_name, 
+                              sdo.image, 
+                              inp_data_path, 
+                              out_data_path,
                               rds.output = rds.output,
                               full.output = full.output,
                               light.save = light.save,
@@ -66,11 +65,13 @@ message("  sunxplrr::mod_load_param_jpg_sdo for file ", param.lst$inp_file_name,
 elapsed1 <- system.time(
 
   mod.frame.import <- mod_frame_import(inp_data_path = param.lst$inp_data_path,
-                                       inp_file_name = param.lst$inp_file_name,
-                                       sdo.image = param.lst$sdo.image,
-                                       parse.method = param.lst$parse.method,
-                                       flip.image = param.lst$flip.image,
-                                       flop.image = param.lst$flop.image)
+                                    inp_file_name    = param.lst$inp_file_name,
+                                    parse.filename   = param.lst$parse.filename,
+                                    parse.method     = param.lst$parse.method,
+                                    zero.pos.angle   = param.lst$zero.pos.angle,
+                                    delta.p          = param.lst$delta.p,
+                                    flip.image       = param.lst$flip.image,
+                                    flop.image       = param.lst$flop.image)
     
 )[1]
 
@@ -85,7 +86,7 @@ message("  sunxplrr::mod_frame_import ", param.lst$inp_file_name,
 
 elapsed2 <- system.time(
   
-  mod.disc.image <- mod_disc_image(fitsim = fitsim,
+  mod.disc.image <- mod_disc_image(fitsim,
                           hdrlst = hdrlst,
                           header = header,
                           cut.image = param.lst$cut.image,
@@ -134,8 +135,8 @@ elapsed4 <- system.time(
   mod.spot.extraction <- mod_spot_extraction(disc.flat, 
                                     hdrlst = hdrlst,
                                     header = header, 
-                                    spot.contrast = param.lst$spot.contrast, 
-                                    umbra.contrast = param.lst$umbra.contrast)
+                                    spot.threshold = param.lst$spot.threshold, 
+                                    umbra.threshold = param.lst$umbra.threshold)
   
 )[1]
 
@@ -146,28 +147,28 @@ header        <- mod.spot.extraction$header
 message("  sunxplrr::mod_spot_extraction ... finished. Elapsed time ",
         elapsed4, " seconds")
 
-# Modul Index Berechnung -------------------------------------------------------
+# Modul Spot Indices -----------------------------------------------------------
 
 elapsed5 <- system.time(
 
-  mod_index_calculation <- mod_index_calculation(disc.features,
-                                    hdrlst = hdrlst,
-                                    header = header)
+  mod_spot_indices <- mod_spot_indices(disc.features,
+                                       hdrlst = hdrlst,
+                                       header = header)
 
 )[1]
 
-images             <- mod_index_calculation$images
-hdrlst             <- mod_index_calculation$hdrlst
-header             <- mod_index_calculation$header
-total.indices      <- mod_index_calculation$total.indices 
-hemisphere.indices <- mod_index_calculation$hemisphere.indices
-latitude.indices   <- mod_index_calculation$latitude.indices
-chart.indices      <- mod_index_calculation$chart.indices 
-charts             <- mod_index_calculation$charts
-synopsis.indices   <- mod_index_calculation$synopsis.indices 
-synopsis           <- mod_index_calculation$synopsis
+images             <- mod_spot_indices$images
+hdrlst             <- mod_spot_indices$hdrlst
+header             <- mod_spot_indices$header
+total.indices      <- mod_spot_indices$total.indices 
+hemisphere.indices <- mod_spot_indices$hemisphere.indices
+latitude.indices   <- mod_spot_indices$latitude.indices
+chart.indices      <- mod_spot_indices$chart.indices 
+charts             <- mod_spot_indices$charts
+synopsis.indices   <- mod_spot_indices$synopsis.indices 
+synopsis           <- mod_spot_indices$synopsis
 
-message("  sunxplrr::mod_index_calculation ... finished. Elapsed time ",
+message("  sunxplrr::mod_spot_indices ... finished. Elapsed time ",
         elapsed5, " seconds")
 
 # Modul Output -----------------------------------------------------------------
@@ -199,7 +200,7 @@ message("  sunxplrr::mod_output ... finished. Elapsed time ", elapsed6,
 
 # Return -----------------------------------------------------------------------
 
-message("  sunxplrr::wrap_mod_calcium of file ", param.lst$inp_file_name,
+message("  sunxplrr::wrap_mod_jpg_sdo of file ", param.lst$inp_file_name,
         " finished.")
 
 z <- "done"

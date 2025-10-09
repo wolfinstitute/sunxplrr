@@ -1,21 +1,21 @@
 #' @title Calculates ephemeris for physical coordinates of the Sun
 #'
 #' @description Calculates ephemeris for physical coordinates of the Sun, 
-#'   including P0, B0, L0, the Sun's apparent diameter in arcsecs and the 
-#'   Carrington rotation number. Considers offsets or a priori settings of the
-#'   image axes against the heliographic coordinate system.
+#'   including P0, B0, L0, the Sun's apparent diameter and radius in arcsecs 
+#'   and the Carrington rotation number. Considers offsets or a priori settings
+#'   of the tilt of the image axes against the heliographic coordinate system.
 #'   Formulae from: Meeus,J., Astronomical Algorithms, Willmann-Bell, 1991.
 #' 
 #' @param header list containing image FITS header.
 #'
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
-#' @param sdo.image boolean if TRUE P0 is set to zero indicating, that the 
+#' @param zero.pos.angle boolean if TRUE P0 is set to zero indicating, that the 
 #'   heliographic aequator lies parallel to the image x-axis.
 #'
 #' @param delta.p num angle in degrees between image x-axes and true RA-axis
 #'   as measured counterclockwise from image axes. Not considered in the case
-#'   where sdo.image is TRUE.
+#'   where zero.pos.angle is TRUE.
 #' 
 #' @return tibble with P0, B0, L0, the Sun's apparent diameter and radius in 
 #'   arcsecs as the Carrington rotation number according to the a priori 
@@ -25,11 +25,14 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2019-12-20 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
-fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
+fun_sun_ephem <- function(header, 
+                          hdrlst, 
+                          zero.pos.angle = "FALSE", 
+                          delta.p = 0){
   
   date_time <- hdrlst$`DATE-OBS`
   
@@ -141,6 +144,9 @@ fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
   # diameter of solar disc in arcsec
   SD <- (2 * 959.63) / R
   
+  # radius of solar disc in arcsec
+  SR <- SD / 2
+  
   # Carrington rotation number
   C0 <- (jde - 2398140.2270) / 27.2752316
   
@@ -154,19 +160,20 @@ fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
 
   # return
 
-  if (sdo.image){
+  if (zero.pos.angle){
     P0 <- 0
   }
   
-  z <- tibble::tibble(P0 = P0, B0 = B0, L0 = L0, SD = SD, CAR_ROT = CAR_ROT)
+  z <- tibble::tibble(P0 = P0, B0 = B0, L0 = L0, SD = SD, SR = SR, 
+                      CAR_ROT = CAR_ROT)
 
   # updates hdrlst and header
   
   hdrlst$SOLAR_P0 <- P0
   hdrlst$SOLAR_B0 <- B0
   hdrlst$SOLAR_L0 <- L0
-  hdrlst$SOLAR_R  <- SD / 2
   hdrlst$SOLAR_D  <- SD
+  hdrlst$SOLAR_R  <- SR
   hdrlst$CAR_ROT  <- CAR_ROT
   
   cimages <- addKwv("SOLAR_P0", P0, "P0 angle (degrees)",
@@ -175,9 +182,9 @@ fun_sun_ephem <- function(header, hdrlst, sdo.image = "FALSE", delta.p = 0){
                     cimages)
   cimages <- addKwv("SOLAR_L0", L0, "L0 angle (degrees)",
                     cimages)
-  cimages <- addKwv("SOLAR_R", SD / 2, "Radius of solar disc (arcsec)",
-                    cimages)
   cimages <- addKwv("SOLAR_D", SD, "Diameter of solar disc (arcsec)",
+                    cimages)
+  cimages <- addKwv("SOLAR_R", SR, "Radius of solar disc (arcsec)",
                     cimages)
   cimages <- addKwv("CAR_ROT", CAR_ROT, "Carrington rotation number",
                     cimages)

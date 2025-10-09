@@ -9,8 +9,9 @@
 #'
 #' @param hdrlst list containing image FITS header keywords and values.
 #'
-#' @param sdo.image boolean switch for dummy use in the case of non sdo images.
-#'
+#' @param parse.filename boolean switch for dummy use for frames with 
+#'   existing fits keywords.
+#' 
 #' @param parse.method string method for parsing the provided file.name.
 #'
 #' @return list with updated header and hdrlst.
@@ -19,21 +20,17 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-09 / Frt
 # - `Created`    : 2019-12-26 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-09 / Frt
 #
 fun_parse_keywords <- function (file.name, header, hdrlst, 
-                                sdo.image = "FALSE", 
+                                parse.filename = "FALSE", 
                                 parse.method = "SDO/HMI"){
   
-  # dummy use for non sdo jpg images is allowed
+  # dummy use for frames with existing fits keywords is allowed
   
-  if (sdo.image){
-    
-    # sets parse.method
-    
-    parse.method <- "SDO/HMI"
+  if (parse.filename){
     
     # parses file name
     
