@@ -23,9 +23,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-08 / Frt
+# - `Last change`: 2025-10-10 / Frt
 # - `Created`    : 2020-01-02 / Frt
-# - `Last test`  : 2025-10-08 / Frt
+# - `Last test`  : 2025-10-10 / Frt
 #
 mod_spot_extraction <- function(x, hdrlst, header, 
                                spot.threshold = 0.85, 
@@ -71,7 +71,7 @@ x <- disc.flat
   y.sparea <- fun_mask_diff(y.flat, hdrlst = hdrlst, 
                             lower.threshold = 0, 
                             upper.threshold = spot.threshold, 
-                            method = method)
+                            method = "absolute")
   
   y.sparea <- y.sparea$mask %>% 
     select(i, j, sparea = th)
@@ -81,7 +81,7 @@ x <- disc.flat
   y.umarea <- fun_mask_diff(y.flat, hdrlst = hdrlst, 
                             lower.threshold = 0, 
                             upper.threshold = umbra.threshold, 
-                            method = method)
+                            method = "absolute")
    
   y.umarea <- y.umarea$mask %>% 
     select(i, j, umarea = th)
@@ -91,7 +91,7 @@ x <- disc.flat
   y.penarea <- fun_mask_diff(y.flat, hdrlst = hdrlst, 
                              lower.threshold = umbra.threshold, 
                              upper.threshold = spot.threshold, 
-                             method = method)
+                             method = "absolute")
    
   y.penarea <- y.penarea$mask %>% 
     select(i, j, penarea = th)

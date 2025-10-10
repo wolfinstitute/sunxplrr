@@ -8,6 +8,8 @@
 #'
 #' @param inp_file_name string with input file name.
 #'
+#' @param gamma gamma correction factor value.
+#'
 #' @param parse.filename boolean switch for dummy use for frames with 
 #'   existing fits keywords.
 #' 
@@ -30,12 +32,13 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-09 / Frt
+# - `Last change`: 2025-10-10 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-10-09 / Frt
+# - `Last test`  : 2025-10-10 / Frt
 #
 mod_frame_import <- function(inp_data_path,
                              inp_file_name,
+                             gamma = 1.5,
                              parse.filename = "TRUE",
                              parse.method = "SDO/HMI",
                              zero.pos.angle = "TRUE",
@@ -51,7 +54,7 @@ mod_frame_import <- function(inp_data_path,
     
     # reads JPG image 
     
-    im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name))
+    im <- fun_read_jpg_image(paste0(inp_data_path,inp_file_name), gamma = gamma)
     
   } else {
     

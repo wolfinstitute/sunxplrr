@@ -16,9 +16,9 @@
 #' 
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-10 / Frt
 # - `Created`    : 2025-05-20 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-10 / Frt
 #
 fun_read_jpg_image <- function(filename = "sun_logo.jpg", 
                                gamma = 1.5, bitpix = 16){
@@ -35,19 +35,10 @@ fun_read_jpg_image <- function(filename = "sun_logo.jpg",
   fitsim <- fun_mat2tibbl(imDat)
   
   # Corrects gamma
-  fitsim <- fitsim |>
-    mutate(x = x^(1/gamma))
+  fitsim <- fun_correct_gamma(fitsim, gamma = gamma, correct.gamma = "TRUE")
   
   # Rotates image about -90 degrees
-  fitsim <- fitsim |> 
-    select(i=j, j=i, x)
-  
-  ymax <- max(fitsim$j) + 1
-  
-  fitsim <- fitsim |>  
-    mutate(yj = as.integer(ymax - j)) |>   
-    select(-j, yj, i, x) |> 
-    select(i, j=yj, x)
+  fitsim <- fun_rotate_jpg(fitsim, rotate.jpg = "TRUE")
   
   # Scales image intensity values
   fitsim <- fitsim |> 
