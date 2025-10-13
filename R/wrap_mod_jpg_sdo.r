@@ -29,9 +29,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-12 / Frt
+# - `Last change`: 2025-10-13 / Frt
 # - `Created`    : 2019-12-28 / Frt
-# - `Last test`  : 2025-10-12 / Frt
+# - `Last test`  : 2025-10-13 / Frt
 #
 wrap_mod_jpg_sdo <- function(inp_file_name, 
                              sdo.image,

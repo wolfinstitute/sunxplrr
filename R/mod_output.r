@@ -169,7 +169,7 @@ mod_output <- function(images, hdrlst, header,
                         coord_fixed(ratio = 1)
 
     out_file_name = "_disc_flat.jpg"
-    ggsave(paste0(out_data_path, name, out_file_name))
+    ggplot2::ggsave(paste0(out_data_path, name, out_file_name))
     
     # disc penandum
     
@@ -179,7 +179,7 @@ mod_output <- function(images, hdrlst, header,
                             coord_fixed(ratio = 1)
     
     out_file_name = "_disc_penandum.jpg"
-    ggsave(paste0(out_data_path, name, out_file_name))
+    ggplot2::ggsave(paste0(out_data_path, name, out_file_name))
     
     # chart flat
     
@@ -189,7 +189,7 @@ mod_output <- function(images, hdrlst, header,
                          coord_fixed(ratio = 1)
 
     out_file_name = "_chart_flat.jpg"
-    ggsave(paste0(out_data_path, name, out_file_name))
+    ggplot2::ggsave(paste0(out_data_path, name, out_file_name))
     
     # chart penandum
     
@@ -199,7 +199,7 @@ mod_output <- function(images, hdrlst, header,
                              coord_fixed(ratio = 1)
     
     out_file_name = "_chart_penandum.jpg"
-    ggsave(paste0(out_data_path, name, out_file_name))
+    ggplot2::ggsave(paste0(out_data_path, name, out_file_name))
     
   }
   
