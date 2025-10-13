@@ -163,7 +163,7 @@ mod_output <- function(images, hdrlst, header,
     
     # disc flat
     
-    plot.disc.flat <- ggplot(images, aes(i, j)) +
+    plot.disc.flat <- ggplot2::ggplot(images, aes(i, j)) +
                         geom_raster(aes(fill = 55000*flat)) +
                         scale_fill_gradient(low="black", high="white") +
                         coord_fixed(ratio = 1)
@@ -173,7 +173,7 @@ mod_output <- function(images, hdrlst, header,
     
     # disc penandum
     
-    plot.disc.penandum <- ggplot(images, aes(i, j)) +
+    plot.disc.penandum <- ggplot2::ggplot(images, aes(i, j)) +
                             geom_raster(aes(fill = 55000*penandum)) +
                             scale_fill_gradient(low="black", high="white") +
                             coord_fixed(ratio = 1)
@@ -183,7 +183,7 @@ mod_output <- function(images, hdrlst, header,
     
     # chart flat
     
-    plot.chart.flat <- ggplot(charts, aes(longitude, latitude)) +
+    plot.chart.flat <- ggplot2::ggplot(charts, aes(longitude, latitude)) +
                          geom_raster(aes(fill = 55000*flat)) +
                          scale_fill_gradient(low="black", high="white") +
                          coord_fixed(ratio = 1)
@@ -193,7 +193,7 @@ mod_output <- function(images, hdrlst, header,
     
     # chart penandum
     
-    plot.chart.penandum <- ggplot(charts, aes(longitude, latitude)) +
+    plot.chart.penandum <- ggplot2::ggplot(charts, aes(longitude, latitude)) +
                              geom_raster(aes(fill = 55000*penandum)) +
                              scale_fill_gradient(low="black", high="white") +
                              coord_fixed(ratio = 1)
