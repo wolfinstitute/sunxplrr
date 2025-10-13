@@ -23,14 +23,14 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-10 / Frt
+# - `Last change`: 2025-10-13 / Frt
 # - `Created`    : 2020-01-02 / Frt
-# - `Last test`  : 2025-10-10 / Frt
+# - `Last test`  : 2025-10-13 / Frt
 #
 mod_spot_extraction <- function(x, hdrlst, header, 
                                spot.threshold = 0.85, 
                                umbra.threshold = 0.70){
-x <- disc.flat
+
   # select flat image
   
   y.flat <- x %>% 

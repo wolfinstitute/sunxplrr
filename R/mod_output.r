@@ -8,6 +8,10 @@
 #'
 #' @param header list containing image FITS header.
 #'
+#' @param inp_file_name string with input file name.
+#'
+#' @param out_data_path full path to output directory.
+#'
 #' @param total.indices tibble containing total.indices.
 #'
 #' @param hemisphere.indices tibble containing hemisphere.indices.
@@ -32,11 +36,13 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-12 / Frt
+# - `Last change`: 2025-10-13 / Frt
 # - `Created`    : 2020-01-05 / Frt
-# - `Last test`  : 2025-10-12 / Frt
+# - `Last test`  : 2025-10-13 / Frt
 #
 mod_output <- function(images, hdrlst, header,
+                       inp_file_name,
+                       out_data_path,
                        total.indices, 
                        hemisphere.indices,
                        latitude.indices, 
@@ -49,11 +55,7 @@ mod_output <- function(images, hdrlst, header,
   
   # strip file name
   
-  name <- strsplit(hdrlst$inp_file_name, "[.]")[[1]][1]
-  
-  # out data path
-  
-  out_data_path = hdrlst$out_data_path
+  name <- strsplit(inp_file_name, "[.]")[[1]][1]
   
   # construct full data
  

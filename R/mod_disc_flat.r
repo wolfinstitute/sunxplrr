@@ -23,9 +23,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-07 / Frt
+# - `Last change`: 2025-10-13 / Frt
 # - `Created`    : 2019-12-13 / Frt
-# - `Last test`  : 2025-10-07 / Frt
+# - `Last test`  : 2025-10-13 / Frt
 #
 mod_disc_flat <- function(x, 
                           hdrlst, 
@@ -33,8 +33,6 @@ mod_disc_flat <- function(x,
                           mean.method = "mode",
                           sdo.image = "FALSE"){
 
-  x <- discim
-  
   # rescale sdo flat image
   
   if (sdo.image) {

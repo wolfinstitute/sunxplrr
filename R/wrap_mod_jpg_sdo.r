@@ -183,6 +183,8 @@ elapsed6 <- system.time(
   mod.output <- mod_output(images,
                            hdrlst = hdrlst,
                            header = header,
+                           inp_file_name = param.lst$inp_file_name,
+                           out_data_path = param.lst$out_data_path,
                            total.indices = total.indices, 
                            hemisphere.indices = hemisphere.indices,
                            latitude.indices = latitude.indices,
