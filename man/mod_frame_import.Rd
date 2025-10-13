@@ -7,6 +7,7 @@
 mod_frame_import(
   inp_data_path,
   inp_file_name,
+  gamma = 1.5,
   parse.filename = "TRUE",
   parse.method = "SDO/HMI",
   zero.pos.angle = "TRUE",
@@ -19,6 +20,8 @@ mod_frame_import(
 \item{inp_data_path}{string with input data path.}
 
 \item{inp_file_name}{string with input file name.}
+
+\item{gamma}{gamma correction factor value.}
 
 \item{parse.filename}{boolean switch for dummy use for frames with
 existing fits keywords.}

@@ -8,20 +8,17 @@ mod_output(
   images,
   hdrlst,
   header,
+  inp_file_name,
+  out_data_path,
   total.indices,
   hemisphere.indices,
   latitude.indices,
-  chart.indices,
   charts,
-  synopsis.indices,
-  synopsis,
-  inp_file_name,
   rds.output = "FALSE",
   full.output = "FALSE",
   light.save = "FALSE",
   fits.save = "FALSE",
-  jpg.save = "FALSE",
-  out_data_path
+  jpg.save = "FALSE"
 )
 }
 \arguments{
@@ -31,21 +28,17 @@ mod_output(
 
 \item{header}{list containing image FITS header.}
 
+\item{inp_file_name}{string with input file name.}
+
+\item{out_data_path}{full path to output directory.}
+
 \item{total.indices}{tibble containing total.indices.}
 
 \item{hemisphere.indices}{tibble containing hemisphere.indices.}
 
 \item{latitude.indices}{tibble containing latitude.indices.}
 
-\item{chart.indices}{tibble containing chart.indices.}
-
 \item{charts}{tibble containing charts data.}
-
-\item{synopsis.indices}{tibble containing synopsis.indices.}
-
-\item{synopsis}{tibble containing synopsis data.}
-
-\item{inp_file_name}{string with input file name.}
 
 \item{rds.output}{if TRUE all results are saved as R data file.}
 
@@ -56,8 +49,6 @@ mod_output(
 \item{fits.save}{if TRUE some fits images are saved.}
 
 \item{jpg.save}{if TRUE some daily charts are saved as jpg files.}
-
-\item{out_data_path}{full path to output directory.}
 }
 \value{
 list containing images, hdrlst, header, indices and charts.

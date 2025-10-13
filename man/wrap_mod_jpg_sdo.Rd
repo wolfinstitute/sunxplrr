@@ -7,6 +7,7 @@
 wrap_mod_jpg_sdo(
   inp_file_name,
   sdo.image,
+  batch.use = "False",
   inp_data_path,
   out_data_path,
   rds.output = "FALSE",
@@ -20,6 +21,8 @@ wrap_mod_jpg_sdo(
 \item{inp_file_name}{input file name with extension.}
 
 \item{sdo.image}{if TRUE, param.lst for SDO image analysis is chosen.}
+
+\item{batch.use}{if TRUE, wrap will return a simple status report.}
 
 \item{inp_data_path}{full path to input directory.}
 

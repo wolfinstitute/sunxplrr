@@ -4,7 +4,16 @@
 \alias{mod_spot_indices}
 \title{Calculates activity indices and provides data for images and charts}
 \usage{
-mod_spot_indices(x, hdrlst, header)
+mod_spot_indices(
+  x,
+  hdrlst,
+  header,
+  xmin = -90,
+  xmax = 90,
+  ymin = -90,
+  ymax = 90,
+  resolution = 0.05
+)
 }
 \arguments{
 \item{x}{tibble containing the previously calculated images.}
@@ -12,6 +21,17 @@ mod_spot_indices(x, hdrlst, header)
 \item{hdrlst}{list containing image FITS header keywords and values.}
 
 \item{header}{list containing image FITS header.}
+
+\item{xmin}{num minimal value of the chart's x coordinates.}
+
+\item{xmax}{num maximal value of the chart's x coordinates.}
+
+\item{ymin}{num minimal value of the chart's y coordinates.}
+
+\item{ymax}{num maximal value of the chart's y coordinates.}
+
+\item{resolution}{num indicates the resolution of one degree along the
+grid lines. Default is 0.05, e.g. 20 points per degree.}
 }
 \value{
 list with images, hdrlst, header, indices, charts and syopsis.

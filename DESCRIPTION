@@ -2,7 +2,7 @@ Type: Package
 Package: sunxplrr
 Title: Tools for exploring Digital Images of the Sun
 Version: 0.1.0700
-Date: 2025-10-07
+Date: 2025-10-13
 Authors@R: 
     person("Thomas K.", "Friedli", , "thomas.k.friedli@bluewin.ch", role = c("cre", "aut", "cph"),
            comment = c(ORCID = "0000-0002-2086-7192"))
@@ -12,6 +12,6 @@ License: MIT + file LICENSE
 URL: https://github.com/wolfinstitute/sunxplrr
 BugReports: https://github.com/wolfinstitute/sunxplrr/issues
 Encoding: UTF-8
-Imports: dplyr, lubridate, readr, stringr, tibble, tidyr, jpeg
+Imports: dplyr, lubridate, readr, stringr, tibble, tidyr, jpeg, ggplot2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

@@ -4,14 +4,10 @@
 \alias{fun_correct_gamma}
 \title{Corrects gamma of an image}
 \usage{
-fun_correct_gamma(image, hdrlst, header, gamma = 1.5, correct.gamma = "FALSE")
+fun_correct_gamma(image, gamma = 1.5, correct.gamma = "FALSE")
 }
 \arguments{
 \item{image}{tibble image with i and j pixel coordinates and pixel values x.}
-
-\item{hdrlst}{list containing image FITS header keywords and values.}
-
-\item{header}{list containing image FITS header.}
 
 \item{gamma}{num gamma correction factor. For flat SDO images a gamma of 1.5
 is recommended.}
@@ -19,11 +15,10 @@ is recommended.}
 \item{correct.gamma}{boolean if TRUE the image will be gamma corrected.}
 }
 \value{
-list with image tibble, parsed header and full header vectors.
+tibble image tibble.
 }
 \description{
-Corrects gamma and returns an image with the provided
-bit depth.
+Corrects gamma of the provided image.
 }
 \author{
 \href{mailto:thomas.k.friedli@bluewin.ch}{Thomas K. Friedli}
