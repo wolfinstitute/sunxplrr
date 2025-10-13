@@ -197,8 +197,6 @@ elapsed6 <- system.time(
   
 )[1]
 
-output <- mod.output$z
-
 message("  sunxplrr::mod_output ... finished. Elapsed time ", elapsed6,
         " seconds")
 
@@ -213,7 +211,7 @@ if (batch.use){
   
 } else {
   
-  z <- output
+  z <- mod.output
   
 }
 
