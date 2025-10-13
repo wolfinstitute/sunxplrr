@@ -7,6 +7,8 @@
 #'
 #' @param sdo.image if TRUE, param.lst for SDO image analysis is chosen.
 #'
+#' @param batch.use if TRUE, wrap will return a simple status report.
+#'
 #' @param inp_data_path full path to input directory.
 #'
 #' @param out_data_path full path to output directory.
@@ -27,12 +29,13 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-09 / Frt
+# - `Last change`: 2025-10-12 / Frt
 # - `Created`    : 2019-12-28 / Frt
-# - `Last test`  : 2025-10-09 / Frt
+# - `Last test`  : 2025-10-12 / Frt
 #
 wrap_mod_jpg_sdo <- function(inp_file_name, 
-                             sdo.image, 
+                             sdo.image,
+                             batch.use = "False",
                              inp_data_path, 
                              out_data_path,
                              rds.output = "FALSE", 
@@ -117,7 +120,7 @@ elapsed3 <- system.time(
                                  hdrlst = hdrlst,
                                  header = header,
                                  mean.method = param.lst$mean.method,
-                                 sdo.image = sdo.image)
+                                 sdo.image = param.lst$sdo.image)
 
 )[1]
 
@@ -151,22 +154,24 @@ message("  sunxplrr::mod_spot_extraction ... finished. Elapsed time ",
 
 elapsed5 <- system.time(
 
-  mod_spot_indices <- mod_spot_indices(disc.features,
+  mod.spot.indices <- mod_spot_indices(disc.features,
                                        hdrlst = hdrlst,
-                                       header = header)
+                                       header = header,
+                                       xmin = param.lst$xmin, 
+                                       xmax = param.lst$xmax, 
+                                       ymin = param.lst$ymin, 
+                                       ymax = param.lst$ymax, 
+                                       resolution = param.lst$resolution)
 
 )[1]
 
-images             <- mod_spot_indices$images
-hdrlst             <- mod_spot_indices$hdrlst
-header             <- mod_spot_indices$header
-total.indices      <- mod_spot_indices$total.indices 
-hemisphere.indices <- mod_spot_indices$hemisphere.indices
-latitude.indices   <- mod_spot_indices$latitude.indices
-chart.indices      <- mod_spot_indices$chart.indices 
-charts             <- mod_spot_indices$charts
-synopsis.indices   <- mod_spot_indices$synopsis.indices 
-synopsis           <- mod_spot_indices$synopsis
+images             <- mod.spot.indices$images
+hdrlst             <- mod.spot.indices$hdrlst
+header             <- mod.spot.indices$header
+total.indices      <- mod.spot.indices$total.indices 
+hemisphere.indices <- mod.spot.indices$hemisphere.indices
+latitude.indices   <- mod.spot.indices$latitude.indices
+charts             <- mod.spot.indices$charts
 
 message("  sunxplrr::mod_spot_indices ... finished. Elapsed time ",
         elapsed5, " seconds")
@@ -175,24 +180,22 @@ message("  sunxplrr::mod_spot_indices ... finished. Elapsed time ",
 
 elapsed6 <- system.time(
   
-  mod_output <- mod_output(images,
+  mod.output <- mod_output(images,
                            hdrlst = hdrlst,
                            header = header,
                            total.indices = total.indices, 
                            hemisphere.indices = hemisphere.indices,
                            latitude.indices = latitude.indices,
-                           chart.indices = chart.indices, 
                            charts = charts,
-                           synopsis.indices = synopsis.indices,
-                           synopsis = synopsis,
-                           inp_file_name = param.lst$inp_file_name,
                            rds.output = param.lst$rds.output,
                            full.output = param.lst$full.output,
                            light.save = param.lst$light.save,
                            fits.save = param.lst$fits.save,
                            jpg.save = param.lst$jpg.save)
-
+  
 )[1]
+
+output <- mod.output$z
 
 message("  sunxplrr::mod_output ... finished. Elapsed time ", elapsed6,
         " seconds")
@@ -202,7 +205,15 @@ message("  sunxplrr::mod_output ... finished. Elapsed time ", elapsed6,
 message("  sunxplrr::wrap_mod_jpg_sdo of file ", param.lst$inp_file_name,
         " finished.")
 
-z <- "done"
+if (batch.use){
+  
+  z <- c(param.lst$inp_file_name, "done")
+  
+} else {
+  
+  z <- output
+  
+}
 
 return(z)
 

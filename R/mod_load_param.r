@@ -26,9 +26,9 @@
 #'
 #' @export
 
-# - `Last change`: 2025-10-09 / Frt
+# - `Last change`: 2025-10-12 / Frt
 # - `Created`    : 2020-01-13 / Frt
-# - `Last test`  : 2025-10-09 / Frt
+# - `Last test`  : 2025-10-12 / Frt
 #
 mod_load_param <- function(inp_file_name, 
                            sdo.image = "TRUE",
@@ -78,6 +78,14 @@ mod_load_param <- function(inp_file_name,
       #
       spot.threshold = 0.85,
       umbra.threshold = 0.55,
+      #
+      # mod_spot_indices
+      #
+      xmin = -90, 
+      xmax = 90, 
+      ymin = -90, 
+      ymax = 90, 
+      resolution = 0.05,
       #
       # mod_output
       #

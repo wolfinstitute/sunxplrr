@@ -9,19 +9,33 @@
 #'
 #' @param header list containing image FITS header.
 #'
+#' @param xmin num minimal value of the chart's x coordinates.
+#'
+#' @param xmax num maximal value of the chart's x coordinates.
+#'
+#' @param ymin num minimal value of the chart's y coordinates.
+#'
+#' @param ymax num maximal value of the chart's y coordinates.
+#'
+#' @param resolution num indicates the resolution of one degree along the 
+#'  grid lines. Default is 0.05, e.g. 20 points per degree.
+#'
 #' @return list with images, hdrlst, header, indices, charts and syopsis.
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
 #' @export
 
-# - `Last change`: 2025-10-09 / Frt
+# - `Last change`: 2025-10-12 / Frt
 # - `Created`    : 2020-01-05 / Frt
-# - `Last test`  : 2025-10-09 / Frt
+# - `Last test`  : 2025-10-12 / Frt
 #
-mod_spot_indices <- function(x, hdrlst, header){
+mod_spot_indices <- function(x, hdrlst, header,
+                             xmin = -90, xmax = 90, 
+                             ymin = -90, ymax = 90, 
+                             resolution = 0.05){
 
-  # indices
+  # total indices
   
   total.indices <- x %>% 
     summarize(full_disc = sum(fill), 
@@ -44,7 +58,7 @@ mod_spot_indices <- function(x, hdrlst, header){
               penarea_hem = 1E6*sum(penarea_hem)/total.indices$full_hem)
 
   latitude.indices <- x %>%
-    mutate(latitude = as.integer(B)) %>% 
+    mutate(latitude = as.integer(B*100)/100) %>% 
     group_by(latitude) %>% 
     summarize(sparea_disc = 1E6*sum(sparea)/total.indices$full_disc,
               umarea_disc = 1E6*sum(umarea)/total.indices$full_disc,
@@ -56,59 +70,15 @@ mod_spot_indices <- function(x, hdrlst, header){
   # charts: daily heliographic maps
   
   chart.indices <- x %>%
-    mutate(latitude = as.integer(B)) %>% 
-    mutate(longitude = as.integer(l)) %>% 
-    group_by(latitude, longitude) %>% 
-    summarize(sparea_disc = 1E6*sum(sparea)/total.indices$full_disc,
-              umarea_disc = 1E6*sum(umarea)/total.indices$full_disc,
-              penarea_disc = 1E6*sum(penarea)/total.indices$full_disc,
-              sparea_hem = 1E6*sum(sparea_hem)/total.indices$full_hem,
-              umarea_hem = 1E6*sum(umarea_hem)/total.indices$full_hem,
-              penarea_hem = 1E6*sum(penarea_hem)/total.indices$full_hem)
-  
-  chart.frame <- tibble::tibble(longitude=rep(seq(-90,90, by = 1), each = 181), 
-                        latitude=rep(seq(-90,90, by = 1), 181))
-  
-  charts <- chart.frame %>% 
-    left_join(chart.indices, by=c("longitude","latitude")) %>% 
-    mutate(sparea_disc = if_else(is.na(sparea_disc),0,sparea_disc)) %>%
-    mutate(umarea_disc = if_else(is.na(umarea_disc),0,umarea_disc)) %>%
-    mutate(penarea_disc = if_else(is.na(penarea_disc),0,penarea_disc)) %>%
-    mutate(sparea_hem = if_else(is.na(sparea_hem),0,sparea_hem)) %>%
-    mutate(umarea_hem = if_else(is.na(umarea_hem),0,umarea_hem)) %>%
-    mutate(penarea_hem = if_else(is.na(penarea_hem),0,penarea_hem))
+    select(i, j, flat, penandum)
 
-  # synopsis: rotational carrington charts
+  chart.frame <- fun_chart_frame(xname = "longitude", yname = "latitude",
+                                 xmin = xmin, xmax = xmax, 
+                                 ymin = ymin, ymax = ymax, 
+                                 resolution = resolution)
   
-  synopsis.indices <- x %>%
-    filter(fill > 0) %>%
-    mutate(rotation = as.integer(cr)) %>% 
-    mutate(latitude = as.integer(B)) %>% 
-    mutate(Longitude = as.integer(L)) %>% 
-    group_by(rotation, latitude, Longitude) %>% 
-    summarize(sparea_disc = 1E6*sum(sparea)/total.indices$full_disc,
-              umarea_disc = 1E6*sum(umarea)/total.indices$full_disc,
-              penarea_disc = 1E6*sum(penarea)/total.indices$full_disc,
-              sparea_hem = 1E6*sum(sparea_hem)/total.indices$full_hem,
-              umarea_hem = 1E6*sum(umarea_hem)/total.indices$full_hem,
-              penarea_hem = 1E6*sum(penarea_hem)/total.indices$full_hem)
-  
-  synopsis.frame <- tibble::tibble(
-    rotation=sort(rep(unique(synopsis.indices$rotation), 65341)),
-    Longitude=rep(rep(seq(0,360, by = 1), each = 181), 
-                  length(unique(synopsis.indices$rotation))), 
-    latitude=rep(rep(seq(-90,90, by = 1), 361), 
-                 length(unique(synopsis.indices$rotation))))
-  
-  synopsis <- synopsis.frame %>% 
-    left_join(synopsis.indices, by=c("rotation", "Longitude", "latitude")) %>% 
-    mutate(sparea_disc = if_else(is.na(sparea_disc),0,sparea_disc)) %>%
-    mutate(umarea_disc = if_else(is.na(umarea_disc),0,umarea_disc)) %>%
-    mutate(penarea_disc = if_else(is.na(penarea_disc),0,penarea_disc)) %>%
-    mutate(sparea_hem = if_else(is.na(sparea_hem),0,sparea_hem)) %>%
-    mutate(umarea_hem = if_else(is.na(umarea_hem),0,umarea_hem)) %>%
-    mutate(penarea_hem = if_else(is.na(penarea_hem),0,penarea_hem))
-  
+  charts <-fun_chart_coordinates(x = chart.indices, hdrlst = hdrlst, 
+                                 chart.frame = chart.frame)
   # update hdrlst and header
   
     hdrlst$SAREADSK  <- total.indices$sparea_disc
@@ -142,10 +112,7 @@ mod_spot_indices <- function(x, hdrlst, header){
             total.indices = total.indices, 
             hemisphere.indices = hemisphere.indices,
             latitude.indices = latitude.indices,
-            chart.indices = chart.indices, 
-            charts = charts,
-            synopsis.indices = synopsis.indices,
-            synopsis = synopsis)
+            charts = charts)
   
   return(z)
   

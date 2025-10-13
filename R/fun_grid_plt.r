@@ -11,13 +11,11 @@
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
-#' @import dplyr
-#'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2025-10-12 / Frt
 # - `Created`    : 2019-12-31 / Frt
-# - `Last test`  : 2019-12-31 / Frt
+# - `Last test`  : 2025-12-12 / Frt
 #
 fun_grid_plt <- function(x, hdrlst){ 
   

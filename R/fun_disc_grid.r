@@ -19,13 +19,11 @@
 #'
 #' @author [Thomas K. Friedli](mailto:thomas.k.friedli@bluewin.ch)
 #'
-#' @import dplyr
-#'
 #' @export
 
-# - `Last change`: 2023-02-04 / Frt
+# - `Last change`: 2025-10-12 / Frt
 # - `Created`    : 2019-12-29 / Frt
-# - `Last test`  : 2019-12-31 / Frt
+# - `Last test`  : 2025-10-12 / Frt
 #
 fun_disc_grid <- function(x, hdrlst, grid_each_deg = 10, 
                           res_each_deg_on_grid = 0.01){
